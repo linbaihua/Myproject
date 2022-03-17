@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        var a = 10;
+        console.log(a);
+        var b ="hello";
+        console.log(b);
+        document.write("hello");
+        /* 
+            使用 typeof 检查变量的类型
+            
+            -JS中可以表示的最大值  number.MAX_VALUE
+                -比这个还大的时候就是 Infinity 表示无穷大，类型是number
+
+                -Number.MIN_VALUE,正值最小值，number 类型
+
+            -NAN  表示 not a number ，不是一个数字，类型是 number
+
+            -使用浮点数计算，可能会出现错误
+        */
+       console.log(typeof a);
+       console.log(typeof b);
+       console.log(Number.MAX_VALUE);
+
+       var c = Number.MIN_VALUE;
+       console.log(c);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

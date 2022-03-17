@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的声明提前</title>
+    <script>
+
+        /* 
+            -使用函数声明创建的函数在编写时候就已经创建了，所以可以在
+                任何位置调用函数
+            -使用函数表达式创建的函数只有在运行时才创建，所以调用函数
+                只能在其创建语句之后
+        */
+
+        fun1();  // hello
+        fun2(); //undefined
+
+        // 使用函数声明创建函数
+        function fun1(){
+            console.log("hello");
+        }
+
+        // 使用函数表达式创建函数
+        var fun2 = function(){
+            console.log("world");
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

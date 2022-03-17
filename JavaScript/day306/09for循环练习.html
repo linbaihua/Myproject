@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>质数练习</title>
+    <script>
+
+      var num = prompt("请输入一个数");
+      /* 
+        给数字添加一个状态标签，初始值是true，当检测不是质数时变为false，
+        最后判断 flag 值，是true说明数字是质数即可输出
+      */
+      var flag = true;
+
+      while(isNaN(num) || num<1){
+        alert("您输入的数字不正确，请重新输入");
+        num = prompt("请输入一个数字");
+      }
+
+      for(var i=2;i<num;i++){
+        if (num%i == 0) {
+          alert(num+"不是质数");
+          flag = false;
+          break;
+        }
+      }
+
+      if(flag){
+        // alert(num+"是质数");
+        document.write(num+"是质数");
+      }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

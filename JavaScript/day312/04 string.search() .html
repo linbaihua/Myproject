@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string.search</title>
+    <script>
+
+        /* 
+            -search()
+                -检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串
+                -stringObject.search(regexp)
+                -参数 regexp 
+                   -该参数可以是需要在 stringObject 中检索的子串，也可以是需要检索的 RegExp 对象
+                -返回值
+                    -匹配成功，返回第一次匹配的位置索引
+                    -匹配失败，返回 -1
+                note：全局匹配不起作用，每次都从母字符串第一个位置开始匹配
+ 
+        */
+       var str = "how are you Today?";
+       console.log(str.search("ar"));
+       console.log(str.search(/t/i));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

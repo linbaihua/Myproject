@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 图片练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            margin: 50px auto;
+            width: 500px;
+            height: 400px;
+            background-color: bisque;
+            text-align: center;
+        }
+
+        button {
+            margin-top: 20px;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+
+            // 先获取上下按钮的id
+            var prev = document.getElementById("prev");
+            var next = document.getElementById("next");
+
+            /* 
+                -对按钮绑定事件函数实现切换图片功能
+                -切换图片的本质是改变 img 中的 src
+                    -获取 img 中的 src
+                - 
+             */
+            var img = document.getElementsByTagName("img")[0];
+
+            // 将图片src存储到一个数组中
+            var arr = ["./img/1.jpg",
+                "./img/2.jpg",
+                "./img/3.jpg",
+                "./img/4.jpg",
+                "./img/5.jpg"];
+            var index = 0;
+
+            // 利用数组循环图片的src
+            prev.onclick = function () {
+                    if (index == 0) {
+                        index = arr.length-1;
+                    }
+                    img.src = arr[index];
+                    index--;
+                };
+
+            next.onclick = function () {
+                if (index > arr.length-1) {
+                    index = 0;
+                }
+                img.src = arr[index];
+                index++;
+            };
+
+        };
+
+    </script>
+
+</head>
+
+<body>
+    <div id="outer">
+        <img src="./img/1.jpg" alt="">
+
+        <button id="prev">上一张</button>
+        <button id="next">下一张</button>
+    </div>
+</body>
+
+</html>

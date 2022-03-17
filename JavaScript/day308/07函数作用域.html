@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数作用域</title>
+    <script>
+
+
+        /* 
+           -函数作用域中也有声明提前,和全局作用域中的变量和函数声明提前一样                         
+        */
+
+        function fun2() {
+            console.log(b);  //undefined
+            var b = 10;
+
+            fun3(); //fun3
+            fun4(); //error
+            function fun3(){
+                alert("fun3");
+            }
+            var fun4 = function(){
+                alert("fun4");
+            }
+        }
+
+        fun2();
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

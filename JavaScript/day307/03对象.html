@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数对象</title>
+    <script>
+        // 创建函数
+        // 函数对象的特殊在于可以将代码直接封装在构造函数中
+        var fun = new Function("console.log('hello world');");
+        // 只有在调用的时候才执行函数
+        fun();
+
+        /* 
+            不过在开发中很少使用构造函数创建函数，一般使用函数声明来创建函数
+        */
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

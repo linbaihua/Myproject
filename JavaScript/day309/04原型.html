@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+    <script>
+
+        /* 
+            -prototype
+                -我们创建的每一个函数，解析器都会自动添加一个属性 prototype
+                -这个属性对应着一个对象，这个对象就称为 原型对象
+                -如果函数作为普通函数调用 prototype 没有任何作用
+                -如果是构造函数，构造函数创建的实例对象中都有一个隐含属性 __proto__
+                    指向原型对象，我们可以通过 __proto__来访问实例对象的原型,也就是
+                    说原构造函数和它创建的实例都有一个属性指向一个公共对象，这个对象
+                    是 原型对象
+                -实例对象寻找属性时先在自身中寻找，找不到就去原型对象中找
+                -prototype是一个对象所以它可以添加属性，但不是谁都可以添加的
+                    只有构造函数的原型对象可以添加属性，构造函数的实例对象不能
+                    添加，只有访问权
+                -以后使用构造函数创建对象时，可以将公共的属性和方法添加到构造函数
+                    的原型对象中，这样就节省了很大的内存空间
+        */
+
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        var per1 = new  Person();
+        var per2 = new  Person();
+
+        
+        // 通过构造函数的原型对象向原型对象中添加了属性
+        Person.prototype.gender = "woman"; 
+        Person.prototype.address = "花果山";
+        /* 
+            实例对象不能通过 prototype 添加属性
+            per1.prototype.tel = "188";
+         */
+        
+        /* 
+            -实例对象只能通过普通的添加属性方法给自己添加属性
+            -如果原型对象中有和实例对象中相同的属性，实例对象首先
+                访问自己的属性，没有才去原型对象中找
+        */
+        per1.gender = "man";
+        console.log(per1.gender); //man
+
+        console.log(per2.gender); //woman
+        console.log(per2.address); //花果山
+
+        // console.log(per1.tel); //error
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+body{
+    font-family: "Arial";
+    color: brown;
+    background-color: burlywood;
+    margin: auto;
+}
+h1{
+    color: chocolate;
+    background-color: darkgoldenrod;
+}
+a{
+    color: crimson;
+    background-color: coral;
+    font-weight: bold;
+    text-decoration: none;
+}
+ul{
+    padding: auto;
+}
+li{
+    float: left;
+    padding: auto;
+    list-style: none;
+}
+#imagegallery{
+    list-style: auto;
+}
+#imagegallery li{
+    display: inline;
+}

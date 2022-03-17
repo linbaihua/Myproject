@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/css.css">
+    <script>
+
+        window.onload = function () {
+
+            /* 
+                -00将函数独立出来，调用的回收传入引用
+            */
+            function deleteA() {
+                var tr = this.parentNode.parentNode;
+                var name = tr.children[0].innerHTML;
+                var flag = confirm("确认删除" + name + "吗？");
+                if (flag) {
+                    tr.parentNode.removeChild(tr);
+                }
+                return false;
+            }
+            /* 
+                -01删除一列
+                    -找到这个delete按钮
+                        -delete按钮绑定在a连接中，返回a数组
+                    -给每个delete绑定函数
+                    -找到delete所在的td
+                    -td的父级节点 tr
+                    -tr的父级节点table，删除这个tr
+            */
+            var delA = document.getElementsByTagName("a");
+            for (var i = 0; i < delA.length; i++) {
+                delA[i].onclick = deleteA;
+            }
+
+            /* 
+                 -02添加用户
+                     -绑定submit按钮
+                     -获取文本输入框的值
+                         -先找到各个文本输入框
+                         -获取input.value
+            */
+            var addEmpButton = document.getElementById("addEmpButton");
+            addEmpButton.onclick = function () {
+
+                var empName = document.getElementById("empName");
+                var email = document.getElementById("email");
+                var salary = document.getElementById("salary");
+
+                var empNameText = empName.value;
+                var emailText = email.value;
+                var salaryText = salary.value;
+
+
+                var tr = document.createElement("tr");
+
+                tr.innerHTML = "<td>" + empNameText + "</td>" +
+                    "<td>" + emailText + "</td>" +
+                    "<td>" + salaryText + "</td>" +
+                    "<td><a href='javascript:;'>Delete</a></td>";
+
+                var aa = tr.getElementsByTagName("a")[0];
+                aa.onclick = deleteA;
+
+                var employeeTable = document.getElementById("employeeTable");
+                var tbody = employeeTable.getElementsByTagName("tbody")[0];
+                tbody.appendChild(tr);
+
+
+
+            };
+
+            ;
+        }
+
+    </script>
+</head>
+
+<body>
+    <table id="employeeTable">
+        <!-- 
+            tr 是行
+            td 是列
+         -->
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@tom.com</td>
+            <td>5000</td>
+            <td><a href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@sohu.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id=002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>bob@tom.com</td>
+            <td>10000</td>
+            <td><a href="deleteEmp?id=003">Delete</a></td>
+        </tr>
+    </table>
+    <div id="formDiv">
+        <h4>添加新员工</h4>
+        <table>
+            <tr>
+                <td class="word">name: </td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email: </td>
+                <td class="inp">
+                    <input type="text" name="email" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary: </td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmpButton" value="abc">
+                        Submit
+                    </button>
+                </td>
+            </tr>
+        </table>
+</body>
+
+</html>

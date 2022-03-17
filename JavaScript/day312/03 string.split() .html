@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string.split</title>
+    <script>
+
+        /* 
+            -split() 
+                -把字符串分割为字符串数组 
+                -stringObject.split(separator,howmany)
+                    -separator 必需。字符串或正则表达式，从该参数指定的地方分割 stringObject 
+                    -howmany 可选。该参数可指定返回的数组的最大长度 
+                -返回值 ：一个字符串数组
+                -注释：如果把空字符串 ("") 用作 separator，那么 stringObject 中的每个字符之间都会被分割
+
+        */
+       var str = "how are you todAy";
+       console.log(str.split(""));
+       console.log(str.split(" "));
+       console.log(str.split(" ",3));
+
+        // 使用正则表达式传递参数
+        console.log(str.split(/o|a/i));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

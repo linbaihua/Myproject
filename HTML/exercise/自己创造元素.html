@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>自己定义一个新元素</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <script>
+            document.createElement("lin001");
+        </script>
+        <style>
+            lin001{
+                display: block;
+                background-color: rgb(58, 205, 224);
+                padding: 50px;
+            }
+        </style>
+
+        <lin001>这是我自己创造的元素，定义名称为 lin001</lin001>
+    </body>
+</html>
+<!-- 
+    可以自己创造一个标签，创造语句为
+    document.createElement("名称")
+    然后再 style 中设置它的默认样式
+ -->

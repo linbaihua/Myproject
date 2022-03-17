@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档的加载顺序</title>
+    <!-- 
+        -文档的加载时自上而下的，读取一行就运行一行，如果将script标签写到head中，则body中的部分
+            还没有加载进来，容易出错，所以一般会将script标签放在body底部，等html的页面加载完毕
+            再加载 JS 代码
+
+        -如果非要在 head 中写 JS，我们可以让他在页面加载完毕后再执行
+            -onload 事件，就是加载完页面后再执行它
+
+        -document是一个对象，代指这个网页，这个网页就是一个对象，可以通过document中的属性和方法
+            操作这个网页
+
+        -window 对象是打开的窗口对象，窗口中有打开的网页（document），所以document对象再window对象
+            之中
+     -->
+     <script>
+         window.onload = function(){
+            var btn = document.getElementById("btn");
+            btn.onclick = function(){
+                alert("hello");
+            };
+         };
+     </script>
+
+</head>
+<body>
+    <button id="btn">点击此按钮</button>
+</body>
+</html>

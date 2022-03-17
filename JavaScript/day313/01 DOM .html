@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOm 开始</title>
+    <script>
+        /* 
+            -DOM  document object model(文档对象模型)
+                -页面就是文档对象，网页中的各个节点就是就是模型，文档节点，元素节点等
+            -DOM 说到底就是可以利用JS操作网页
+            -每个载入浏览器的 HTML 文档都会成为 Document 对象
+            -提示：Document 对象是 Window 对象的一部分，可通过 window.document 属性对其进行访问
+        */
+    </script>
+</head>
+<body>
+    <button id="btn">我是一个按钮</button>
+    <script>
+        
+        var btn = document.getElementById("btn");
+        /* 
+            -innnerHTML就是往这个html中写字
+        */
+        btn.innerHTML = "good";
+
+    </script>
+</body>
+</html>

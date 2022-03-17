@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>打印水仙花数</title>
+    <script>
+
+      for(var num=100;num<1000;num++){
+        a = parseInt(num/100);
+        b = parseInt((num%100)/10);
+        c = num-a*100-b*10;
+        if(a*a*a+b*b*b+c*c*c == num){
+          document.write(num + "<br/>")
+        }
+      }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

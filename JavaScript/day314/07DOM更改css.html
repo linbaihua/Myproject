@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 更改 css</title>
+    <style>
+        body{
+            margin: 200px;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        /* 
+            -currentstyle
+            -getComputedStyle()
+            -这两个都是只读的，不能对css属性进行更改
+        */
+        window.onload = function(){
+            /* 
+                -currentStyle
+                    -获取当前css样式的值，不止是内联样式的值
+                    -但是但是这个属性只要 IE 浏览器支持
+            */
+           var btn = document.getElementById("btn");
+           var box = document.getElementById("box");
+           btn.onclick = function(){
+               alert(box.currentstyle.width); //只有 IE 浏览器可以使用 
+           };
+
+           /* 
+                -Window.getComputedStyle(css对象，可选参数（null）)
+                    -返回一个对象，解析css实时的值
+                    -解析的样式值是实时的，即使是窗口的大小变化也可以读取出来
+                    -第二个参数可以不写，不过有的老浏览器不行
+                    -window对象下的方法可以在网页中随时调用，不用通过对象调用
+                    -但是 IE8 不支持这个元素，IE8 需要用 currentstyle属性
+           */
+           var btn2 = document.getElementById("btn2");
+           btn2.onclick = function(){
+               alert(getComputedStyle(box,null).width);
+               alert(getComputedStyle(box).width);
+           } ;
+
+           /* 
+                -定义一个函数
+                    -obj 就是一个css 标签对象
+                    -name 就是 css 标签中的属性
+                    -通过 中括号调用对象中属性，传入的属性是以字符串的方式
+           */
+          function getStyle(obj,name){
+              return getComputedStyle(obj)[name];
+          }
+
+        };
+    </script>
+</head>
+<body>
+    <button id="btn">点我一下</button>
+    <button id="btn2">获取css样式</button>
+    <div id="box"></div>
+</body>
+</html>

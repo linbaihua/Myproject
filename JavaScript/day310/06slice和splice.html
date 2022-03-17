@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组方法：slice splice</title>
+    <script>
+
+        /* 
+            -slice()
+                -返回 指定部分的数组元素
+                -两个参数
+                    -start 指定部分的开始位置，包括此位置
+                    -end  指定部分的结束位置，不包括此位置
+                        -可以是负值，负值就是倒着数的位置
+        */
+
+        var arr = ["孙悟空","猪八戒","沙僧","唐僧"];
+
+        var result = arr.slice(0,2);
+        console.log(result);  //"孙悟空","猪八戒"
+        console.log(arr.slice(1,-1));  //"猪八戒","沙僧"
+
+        /* 
+            -splice()
+                -删除指定部分元素并可以添加新元素进去
+                -参数
+                    -first  删除部分开始位置，包括此位置
+                    -second  删除的额数量
+                    -third...  插入的新元素，可以插入多个，插入位置是
+                        删除开始位置的前面
+                -返回值：由被删除的元素组成的一个数组。如果只删除了一个元素
+                    则返回只包含一个元素的数组。如果没有删除元素，则返回空数组。
+        */
+
+        var arr2 = ["孙悟空","猪八戒","沙僧","唐僧"];
+        var result2 = arr2.splice(0,2);
+        console.log(result2); 
+        console.log(arr2);
+        arr2.splice(1,0,"牛魔王","铁扇公主"); 
+        console.log(arr2);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

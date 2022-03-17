@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数的问题</title>
+    <script>
+
+        /* 
+            -构造函数创建方法时，每创建一个实例就生成一个方法而且这些方法是
+                存于不同的内存的，这样就非常的占用内存空间
+            -解决方法：将构造函数中的方法放到函数外成为公共函数，只需将方法
+                的地址给到构造函数就可以了
+                    -缺点：但是在全局作用域中定义不安去，函数名容易被覆盖重写
+            -最终解决办法：原型
+        */
+
+        function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+
+            this.sayHello = function fun1(){
+                document.write("hello,大家好，我是"+this.name);
+            };
+            this.sayHello2 = fun2;
+        }
+
+        function fun2(){
+            document.write("大家好，今年我"+this.age+"岁");
+        }
+
+        var per1 = new Person("孙悟空",16,"man");
+        var per2 = new Person("猪八戒",18,"man");
+
+        console.log(per1.sayHello == per2.sayHello); //false
+        console.log(per1.sayHello2 == per2.sayHello2);  //true
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/css.css">
+    <script>
+
+        window.onload = function () {
+
+            /* 
+                -00将删除函数写在外面
+            */
+            function delA() {
+                //  获取超链接的爷爷节点，也就是这一列节点
+                // this = alist[i] = 这个超链接
+                var tr = this.parentNode.parentNode;
+
+                // 获取删除一列的name
+                var name = tr.children[0].innerHTML;
+
+                /* 
+                    -confirm()
+                        -弹出一个带有确认和取消的窗口
+                        -返回一个字符串
+                            -确认：true
+                            -取消：false
+                */
+                var flag = confirm("确认删除" + name + "吗？");
+
+                // 删除这一列
+                /* 
+                    -一般对一个节点操作如果是它自己的内部属性，就是 节点.属性
+                    -但是如果是对这个整个节点进行操作，那么此时这个整个节点
+                        就是一个属性，需要找到它的父节点对它进行操作
+                */
+                if (flag) {
+                    tr.parentNode.removeChild(tr);
+                }
+
+
+                // 点击超链接后，连接会自动跳转页面，可以通过return false阻止这个行为
+                return false;
+            }
+
+            /* 
+                -01点击超链接后，删除一个员工的信息
+                -步骤
+                    -获取超链接数组
+                    -给每个超链接都绑定单击响应函数
+                    -函数实现删除这一列的信息
+            */
+            var aList = document.getElementsByTagName("a");
+            for (var i = 0; i < aList.length; i++) {
+                aList[i].onclick = delA;
+            }
+
+            // 02添加用户功能
+            /* 
+                1、获取文本框输入信息
+                    -找到三个input对象
+                    -获取 input.text.value
+                2、将文本框输入信息提交到表格中
+                    -创建一个tr节点
+                    -创建四个td节点
+                    -创建四个文本节点
+                    -创建一个a节点
+                    -给a添加文本节点
+                    -给a赋予链接
+                    -将a节点连接到第四个td节点中
+                    -给a节点赋予单击响应函数
+                    -将其余个文本节点连接到td节点中
+                    -将四个td节点添加到tr节点中
+                    -将tr节点添加到 tbody 节点中
+                    -给新添加的 a连接 添加删除单击响应函数
+                
+                -tbody
+                    -浏览器会自动将table中的子节点放到一个新建的tbody节点中
+                -a标签
+                    -需要有href链接才会生效
+                    -href绑定在a标签中的文字
+                    -所以一个a标签需要有 href（链接）和 链接用的文字
+            */
+            var btn = document.getElementById("addEmpButton");
+            btn.onclick = function () {
+
+                var empName = document.getElementById("empName").value;
+                var email = document.getElementById("email").value;
+                var salary = document.getElementById("salary").value;
+
+                var tr = document.createElement("tr");
+
+                var nameTd = document.createElement("td");
+                var emailTd = document.createElement("td");
+                var salaryTd = document.createElement("td");
+                var delTd = document.createElement("td");
+
+                var nameText = document.createTextNode(empName);
+                var eamilText = document.createTextNode(email);
+                var salaryText = document.createTextNode(salary);
+
+                var delText = document.createTextNode("Delete");
+
+                var aa = document.createElement("a");
+                aa.appendChild(delText);
+                aa.href = "javascript:;";
+                delTd.appendChild(aa);
+                aa.onclick = delA;
+
+                nameTd.appendChild(nameText);
+                emailTd.appendChild(eamilText);
+                salaryTd.appendChild(salaryText);
+
+                tr.appendChild(nameTd);
+                tr.appendChild(emailTd);
+                tr.appendChild(salaryTd);
+                tr.appendChild(delTd);
+
+
+                var employeeTable = document.getElementById("employeeTable");
+                var tbody = employeeTable.getElementsByTagName("tbody")[0];
+                tbody.appendChild(tr);
+
+            };
+        };
+
+    </script>
+</head>
+
+<body>
+    <table id="employeeTable">
+        <!-- 
+            tr 是行
+            td 是列
+         -->
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>tom@tom.com</td>
+            <td>5000</td>
+            <td><a href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>jerry@sohu.com</td>
+            <td>8000</td>
+            <td><a href="deleteEmp?id=002">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Bob</td>
+            <td>bob@tom.com</td>
+            <td>10000</td>
+            <td><a href="deleteEmp?id=003">Delete</a></td>
+        </tr>
+    </table>
+    <div id="formDiv">
+        <h4>添加新员工</h4>
+        <table>
+            <tr>
+                <td class="word">name: </td>
+                <td class="inp">
+                    <input type="text" name="empName" id="empName" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">email: </td>
+                <td class="inp">
+                    <input type="text" name="email" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td class="word">salary: </td>
+                <td class="inp">
+                    <input type="text" name="salary" id="salary" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button id="addEmpButton" value="abc">
+                        Submit
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

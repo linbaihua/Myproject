@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex stydy</title>
+    <style>
+        ul{
+            width: 1000px;
+            /* height: 200px; */
+            border: 2px red solid;
+            margin: 200px auto;
+
+            /* 开启 flex  */
+            display: flex;
+            flex-direction: row;
+        }
+        ul li:first-child{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+            /* 
+                初始是0，就是原宽度
+                它的单位就是剩余父元素的空间，0.5就是剩余空间的一半，1就是一个剩余空间直接填充完毕
+                如果子元素都开启 flex-grow 则按比例分配剩余的空间
+            */
+            flex-grow: 0.5;
+        }
+        ul li:nth-child(2){
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+        ul li:last-child{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>
+<!-- 
+    -弹性盒子的开启  display flex
+    -弹性盒可以不设置高度，它可以由里面的弹性元素撑开
+    -flex-direction  设置水平还是垂直排列
+    -主轴  弹性盒子中弹性元素的排列方向，与之垂直的是交叉轴就是辅轴
+    -flex-grow 弹性元素增长
+    -flex-shrink  弹性元素缩小
+ -->

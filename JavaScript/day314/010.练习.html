@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #p1{
+            width: 200px;
+            height: 300px;
+            background-color: yellowgreen;
+            /* margin: 0 auto; */
+            overflow: auto;
+        }
+    </style>
+    <script>
+        /* 
+            -scrollHeight-scrollTop == clientHeight  说明滚动条到底了
+        */
+        window.onload = function(){
+            var p1 = document.getElementById("p1");
+            var input = document.getElementsByTagName("input");
+            p1.onscroll = function(){
+                if (p1.scrollHeight-p1.scrollTop == p1.clientHeight) {
+                    input[0].disabled = false;
+                    input[1].disabled = false;
+                }
+            };
+            input[1].onclick = function(){
+                alert("恭喜你注册成功");
+            };
+        };
+    </script>
+</head>
+<body>
+    <p id="p1">
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+        请你读完才可以选择注册
+    </p>
+    <!-- 
+        -disabled
+            -禁用这个元素，添加上就是禁用，默认为true
+            -值为false，可用
+     -->
+    <input type="checkbox" disabled>已经读完
+    <input type="submit" value="注册" disabled>
+</body>
+</html>

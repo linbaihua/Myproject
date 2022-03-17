@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试img中的图片能不能通过css修改大小</title>
+    <style>
+        div{
+            /* 没设置高度和宽度则这个盒子不在，不能按规则调整样式 */
+            margin: 100px auto;
+
+            width: 300px;
+            height: auto;
+            background-color: yellowgreen;
+        }
+        img{
+            /* 测试说明可以使用css调整img中的图片大小*/
+            /* width: 400px;
+            height: auto; */
+
+            /* 通常使用百分百来匹配父元素框的大小，不然父元素框变大，图片不变大就很丑 */
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <img src="./微信截图_20220227164628.png" alt="">
+    </div>
+</body>
+</html>

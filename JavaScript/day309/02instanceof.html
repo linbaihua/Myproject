@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数创建对象</title>
+    <script>
+
+        /* 
+           -instanceof运算符
+                -用来检查一个实例是否是这个类的
+                -是返回 true，否则 false
+        */
+
+        function Person(name,age,gender){
+
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+
+            this.sayHello = function fun(){
+                document.write(this.name);
+            };
+        }
+
+        function Dog(name,age){
+            this.name = name;
+            this.age = age;
+
+            this.sayHello = function(){
+                document.write(this.name);
+            };
+        }
+
+        var dog = new Dog("二狗",3);
+        var per = new Person("猪八戒",18,"man");
+
+        console.log(per);
+        console.log(dog);
+
+        console.log(dog instanceof Dog);
+        console.log(per instanceof Person);
+
+        /* 
+            -object 是所有构造函数的祖先，所以自定义的构造
+                函数肯定是object类型
+        */
+        console.log(dog instanceof object);
+        console.log(per instanceof object);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>表单练习1</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <form action="">
+            first name: <input type="text" name="firstname"><br>
+            last name: <input type="text" name="lastname"><br>
+        </form>
+
+        <form action="">
+            password: <input type="password" name="pwd">
+        </form>
+
+        <form action="">
+            <input type="radio" name="sex" value="male">male<br>
+            <input type="radio" name="sex" value="female">woman
+            <!-- 
+                name:定义此表单的名称，单选框的name必须是相同的才能单选，否则只能复选
+             -->
+        </form>
+
+        <input type="radio" name="sex" >male<br>
+        <input type="radio" name="sex">female
+
+        <form action="">
+            <input type="checkbox" name="subject" value="math">math<br>
+            <input type="checkbox" name="subject" value="english">english<br>
+            <input type="checkbox" name="subject" value="physics">physics<br>
+        </form>
+
+        <form action="">
+            username: <input type="text" name="user" id="">
+            <input type="submit" value="submit">
+        </form>
+        <!-- 
+            form是一个大表单将两个input包括，这两个input就在一个框架中
+         -->
+    </body>
+</html>
+<!-- 
+    form：定义表单      
+        action：表单提交时向何处发送数据，是一个URL
+        input：定义输入域
+            name:定义这个表单的名称
+            type：定义输入类型
+                text类型：输入文本，数字等
+                password类型：输入密码，但是不以明文显示，以星号或者圆点显示
+                radio：表单单选框按钮
+                CheckBox：复选框按钮
+                submit：提交按钮
+            value：input的默认值，与type相关
+                当 type 的取值为 button、reset、submit 中的其中一个时，此时 value 属性的值表示的是按钮上显示的文本
+                当 type 的取值为 text、password、hidden 中的其中一个时，此时 value 属性的值表示的是输入框中显示的初始值，此初始值可以更改，
+                    并且在提交表单时，value 属性的值会发送给服务器（既是初始值，也是提交给服务器的值）
+                当 type 的取值为 checkbox、radio 中的其中一个时，此时 value 属性的值表示的是提交给服务器的值
+                当 type 的取值为 image 时，点击它提交表单后，会将用户的点击位置相对于图像左上角的 x 坐标和 y 坐标提交给服务器
+
+                注意：当type是 radio 和 checkbox 时必须设置value的值
+
+ -->

@@ -1,0 +1,25 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>2021.12.5 study</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <p id="demo"></p>
+        <script>
+            var person={ //注意使用驼峰命名
+                firstname : "li",
+                lastname : "qiang",
+                age : 50,
+                eyecolor: "black", //只要是字符串就要加上双引号
+                fullName: function(){
+                    return this.firstname+" "+this.lastname; //对象中键值对得属性不光可以是属性值，还可以是方法
+                }
+            };
+            document.write(person.fullName()+"<br>");
+            document.getElementById("demo").innerHTML = person.firstname + " 现在 " + person.age + " 岁。";
+            document.write(person.firstname+person.lastname+"this year is"+person.age);
+            document.write(person["firstname"]);  //访问对象得属性有两种方法，上面是一种，这是第二种,这种一定要加双引号。
+        </script>
+    </body>
+</html> 

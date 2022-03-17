@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+    <script>
+
+        //构造函数创建一个对象
+
+        var obj = new Object();
+
+        obj.name = "linbaihua";
+        obj.age = 18;
+        obj.sex = "man";
+
+        /* 
+            使用中括号方式添加属性
+                这种方式更加的灵活，属性名可以是变量传入
+        */
+        obj["lin"] = "hello";
+
+        var a = "wor";
+        obj[a] = "world";
+
+        /* 
+            一个对象中还可以嵌套一个对象，就是大框子套小框，可以一直套
+        */
+        var obj2 = new Object();
+        obj.test = obj2;
+        obj2.name = "liqiang";
+
+        // in运算符
+        document.write("lin" in obj);
+        document.write("<br/>");
+
+        document.write(obj.name + "<br/>");
+        document.write(obj["lin"] + "<br/>");
+        document.write(obj[a] + "<br/>");
+        document.write(obj.test.name); //输出obj中的obj2的属性值
+        console.log(obj);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

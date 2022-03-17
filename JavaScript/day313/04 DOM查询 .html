@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 查询</title>
+    <script>
+
+        /* 
+            -innerHTML
+                -属性：通过这个属性可以获取或设置元素内部的html标记（内部文本）
+        */
+       window.onload = function(){
+            var bj = document.getElementById("bj");
+            bj.onclick = function(){
+                alert(bj.innerHTML);
+            };
+       };
+
+       /* 
+            -getElementsByTagName() 返回带有指定标签名的对象集合(数组)
+            -返回值是一个数组，所以可以对返回值进行数组的一些操作
+       */
+
+       /* 
+            -getElementsByName() 返回带有指定名称的对象集合 
+            -返回值：一个数组
+       */
+
+       /* 
+            -如果需要读取元素节点的属性，直接使用 元素.属性
+                -例如： element.id  element.name   element.vaule
+                -只有一个例外，class，因为class是保留字，所以是  element.className
+       */
+
+    </script>
+</head>
+<body>
+    <ul id="list">
+        <li id="bj">beijing</li>
+        <li id="sh">shanghai</li>
+        <li id="gz">guangzhou</li>
+        <li id="hz">hangzhou</li>
+    </ul>
+</body>
+</html>

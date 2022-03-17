@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if 练习</title>
+    <script>
+        /* 
+            prompt 函数返回值是一个 string 类型，但是在运算符时，纯数字
+            字符串会自动转换成数字，非数字字符串会转换成 NAN
+        */
+        var grade = prompt("请输入小明的成绩：0-100");
+
+        // 确保成绩输入的正确性， isnan函数可以判断是不是数字
+        // isnan 函数，是非数字就返回true，否则返回false
+        if(grade>100 || grade<0 || isNaN(grade)){
+            alert("成绩输入不正确，请重新输入：")
+            /* 
+                下面这行语句只能保证输入两次错误，如果第三次输入错误就需要重新刷新页面
+                ，有没有一种方法可以一直错误一直刷新知道输入值正确的
+            */
+            grade = prompt("请输入小明的成绩：0-100");{
+                if(grade == 100) //这里不能用赋值等号，只能用相等等号
+                {
+                    alert("奖励小汽车");
+                }else if(grade>=80 && grade <= 99)
+                {
+                    alert("奖励一台手机");
+                }else if(grade >=60 && grade <=80)
+                {
+                    alert("书");
+                }else
+                {
+                    alert("什么也没有");
+                }
+            }
+
+        }
+
+        var a = "hello";
+        a = isNaN(a);
+        console.log(a);
+        console.log(typeof a);
+        console.log(typeof grade);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

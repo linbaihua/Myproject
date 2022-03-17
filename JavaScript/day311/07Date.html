@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>date 对象</title>
+    <script>
+        /* 
+            -Date 对象用于处理日期和时间
+            -var myDate=new Date()
+        */
+
+        /* 
+            -Date() 
+                -返回当日的日期和时间
+                -可以不创建 date 对象，直接调用date方法 
+        */
+        var newDate = new Date();
+        console.log(newDate);
+        console.log(typeof newDate);
+        console.log(Date());
+        console.log(typeof Date());
+
+        /*
+            -getDate() 
+                -从 Date 对象返回一个月中的某一天 (1 ~ 31)。
+        */  
+        console.log(newDate.getDate());
+
+
+        /* 
+            我们可以自己定义一个日期 
+        */
+        var day1 = new Date("6/06/2016, 01:12:15");
+        console.log(day1.getDate());
+
+        /* 
+            -getMonth() 
+                 -从 Date 对象返回月份 (0 ~ 11)。
+                 -返回值是 0（一月） 到 11（十二月） 之间的一个整数
+                 -所以我们可以在返回值上加 1
+        */
+            // 字符串和number使用 + 就都变成字符串类型，所以我们可以用括号先给number括起来
+        console.log("当前月是：" + (newDate.getMonth() + 1));
+        console.log("getmonth的返回值类型：" + typeof newDate.getMonth());
+        console.log("当前月是：" + (day1.getMonth() + 1));
+
+        /* 
+         -getFullYear() 
+            -从 Date 对象以四位数字返回年份 
+            -该方法总是结合一个 Date 对象来使用
+        */
+        console.log("今年是：" + newDate.getFullYear());
+        console.log("今年是：" + day1.getFullYear());
+
+        /* 
+            -getHours() 
+                -返回 Date 对象的小时 (0 ~ 23)。 
+        */
+       console.log("现在是："+newDate.getHours()+" 点");
+       console.log("现在是："+day1.getHours()+" 点");
+
+       /* 
+            -getMinutes() 返回 Date 对象的分钟 (0 ~ 59)。 
+            -getSeconds() 返回 Date 对象的秒数 (0 ~ 59)。 
+       */
+      
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>canvas的学习</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <canvas id="001" width="500px" height="700px" style="border: 1px; background-color: skyblue;"></canvas>
+
+        <canvas id="002" width="500px" height="500px" style="text-align: center; background-color: tan;"></canvas>
+        <script>
+            var a = document.getElementById("002");
+            var b = a.getContext("2d");
+            b.fillStyle = "red";
+            b.fillRect(0,0,150,75);
+        </script>
+    </body>
+</html>
+
+<!-- 
+    canvas 用于画各种图形，单独的引用图片已经不够用了，有时候我们需要再网页上绘制图形
+    canvas标签就是定义一个画布让你在这个画布上绘制图形，结合JS的绘制图形的 API 使用效果更佳
+    定义一个 id，因为需要经常调用它
+    定义画布的 width 和 height
+    如果要定义画布其他的 style，就定义一个 style在里面设置它的样式
+ -->

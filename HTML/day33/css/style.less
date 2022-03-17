@@ -1,0 +1,73 @@
+
+// 变量的设置
+@total-widht:750px;
+
+html{
+    // 数学运算加括号，不然没效果
+    // 设置 rem 的大小
+    font-size: ((100vw/@total-widht)*100);
+    background-color: rgb(227, 229, 230);
+}
+
+.w{
+    width: 6.93rem;
+    margin:  0 auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+// 设置头部
+.top-bar:extend(.w){
+    display: flex;
+    height: 1.75rem;
+    // 居中
+    align-items: center;
+    justify-content: space-between;
+    a{
+        color: rgb(66, 66, 66);
+        font-size: 0.5rem;
+        i{
+            color: rgb(63, 63, 63);
+        }
+    }
+}
+
+// 设置banner
+.banner:extend(.w){
+    img{
+        width: 100%;
+        margin:  0 0 8px 0;
+        padding: 0;
+        border-radius: 0.3  rem;
+    }
+}
+
+// 设置菜单
+.menu{
+    display: flex;
+    flex-flow: row wrap;
+    height: 3.27rem;
+    text-align: center;
+    align-items: space-around;
+    justify-content: space-evenly;
+    a{
+        width: 3.27rem;
+        height: 1.04rem;
+        text-align: center;
+        color: aliceblue;
+        font-size: 0.8rem;
+        margin: 3px;
+        border-radius: 0.2rem;
+    }
+    i{
+        font-size: 0.8rem;
+    }
+    .study{
+        background-color: rgb(207, 72, 139);
+    }
+    .learn{
+        background-color: rgb(212, 170, 55);
+    }
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型中的toString方法</title>
+    <script>
+        /* 
+            -为什么打印实例对象的引用时有时返回一个object？
+                -其实这是祖先原型对象中的一个 方法 toString方法，返回对象类型
+                -默认打印对象其实就是调用了 toString 方法
+                -不过现在大多数浏览器都是返回本身的构造函数类型而不是 object了
+            
+            -可不可以打印对象时不是只单单返回一个对象类型 object？
+                -可以，我们可以在构造函数的原型对象中添加一个 toString 方法
+                -这样再打印对象时调用的就是自己原型对象中的 toString 而不是祖先原型对象中的
+        */
+
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        Person.prototype.toString = function(){
+            console.log(" name= "+this.name+" age= "+this.age);
+        }
+
+        var per = new Person("jack",16);
+
+        /* 
+            -这个知识点好像过时了
+            -直接打印 per就可以输出本身的构造函数类型和属性值
+        */
+        console.log(per);  
+        console.log(per.toString());
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

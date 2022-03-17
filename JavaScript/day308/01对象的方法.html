@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数作为对象的属性</title>
+    <script>
+        /*  
+            -对象的属性也可以是函数，这是这个函数就称为对象的方法
+        */
+
+        // 构造函数创建对象
+        var obj = new Object();
+        obj.name = "linbaihua";
+        obj.age = 18;
+        // 函数作为对象的属性
+        obj.sayHello = function(){
+            document.write(obj.name+"今年"+obj.age);
+        };
+
+        obj.sayHello();
+
+        // ---------------------------------------------------------
+        /* 
+            字面量创建对象
+                -字面量创建对象别忘了后面的结束分号
+        */
+       var obj2 ={
+            name:"liqiang",
+            age:16,
+            sayHello:function(){
+                document.write(obj2.name+"今年"+obj2.age);
+            }
+       };
+
+       obj2.sayHello();
+        
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

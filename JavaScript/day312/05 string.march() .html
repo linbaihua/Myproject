@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string.march</title>
+    <script>
+
+        /* 
+            -match() 
+                -在字符串内检索指定的值，或找到一个或多个正则表达式的匹配
+                -类似 indexOf() 和 lastIndexOf()，但是它返回指定的值，而不是字符串的位置
+                -语法：
+                    -stringObject.match(searchvalue)
+                    -stringObject.match(regexp)
+                -返回值：返回一个数组存储匹配到的值
+                -g
+                    -如果不设置全局模式匹配，第一次匹配到就结束不会继续匹配下去
+                    -设置 g 后，就会将一个字符串匹配完才结束
+        */
+
+        var str = "1 how are you  2 how are you 3";
+        console.log(str.match("how"));
+        console.log(str.match(/are/ig));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

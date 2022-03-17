@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数作用域</title>
+    <script>
+
+        /* 
+            -函数作用域
+                -函数作用域中能访问全局变量，全局作用域总不能访问函数作用域
+                    中的变量
+                -函数作用域总操作变量时先在自己作用域中找变量，没有再去上一级
+                    作用域
+                -在函数作用域中访问全局变量可以使用 window
+        */
+
+        var a = "我是全局变量a";
+
+        function fun1() {
+            var a = "我是函数变量a";
+            console.log(a);  //我是函数变量a
+            console.log(window.a);  //我是全局变量a
+        }
+
+        fun1();
+        console.log(a);  //我是全局变量a
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

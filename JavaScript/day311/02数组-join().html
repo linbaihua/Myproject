@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组方法-join（）方法</title>
+    <script>
+
+        /* 
+            -join():把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。
+                -separator:可选。指定要使用的分隔符。
+                    如果省略该参数，则使用逗号作为分隔符。
+                -返回一个字符串
+        */
+
+        // 不使用分隔符，默认是逗号
+        var arr = ["jack","mary","sony"];
+        var result = arr.join();
+        console.log(typeof result);
+        console.log(result);
+
+        // 使用分隔符
+        var arr2 = ["canon","nikon","sony"];
+        result = arr2.join("-");
+        console.log(typeof result);
+        console.log(result);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex justify-content</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul{
+            width: 800px;
+            /* 弹性盒子可以不设置宽高，弹性元素会自动撑开 */
+            /* height: 100px; */
+            border: 4px red solid;
+            margin: 100px auto;
+
+            /* 开启弹性盒 */
+            display: flex;
+            /* 
+                justify-content 内容对齐方式
+                    flex-start 主轴开始线
+                    flex-end  主轴终止线
+                    center 中间
+                    space-around 空白部分均匀分布在内容两侧
+                    space-between  空白部分均匀分布在内容之间
+            */
+            justify-content: flex-end;
+            justify-content: center;
+            justify-content: space-around;
+            justify-content: space-between;
+            justify-content: space-evenly;
+        }
+        li{
+             /* 内容居中 */
+            line-height: 100px;
+            text-align: center;
+        }
+        li:first-child{
+            width: 200px;
+            height: 100px;
+            background-color: yellowgreen;
+
+        }
+        li:nth-child(2){
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+        }
+        li:nth-child(3){
+            width: 200px;
+            height: 100px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

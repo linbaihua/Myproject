@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用原型对象解决构造函数的问题</title>
+    <script>
+
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+
+        // 使用原型对象存储实例对象的公共方法
+        Person.prototype.sayHello = function(){
+            console.log("hello I am "+this.name);
+        };
+
+        var per1 = new Person("jack",16);
+        var per2 = new Person("mary",18);
+
+        per1.sayHello();
+        per2.sayHello();
+        console.log(per1.sayHello == per2.sayHello);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

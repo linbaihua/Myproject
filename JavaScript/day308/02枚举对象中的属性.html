@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>枚举对象中的属性</title>
+    <script>
+
+        /* 
+            通过 for---in 枚举对象中的属性
+        */
+       var obj = {
+           name:"孙悟空",
+           age:18,
+           gender:"男",
+           address:"花果山"
+       };
+
+       /* 
+            - a 代表对象中属性
+            -获取对象中的属性值使用中括号的方式 obj[a]
+            -obj.a 中的 a 不是变量，中括号中的 a 是变量
+       */
+       for (var a in obj) {
+            document.write("属性名："+a);
+            document.write("属性值："+obj[a]+"<br/>");
+       }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

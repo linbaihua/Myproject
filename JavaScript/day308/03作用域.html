@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+    <script>
+
+        /* 
+            -JavaScript中作用域分为全局作用域和函数作用域
+                -全局作用域
+                    -全局作用域在页面打开时创建，页面关闭时自动销毁
+                    -window 全局对象，由浏览器创建可以直接使用
+                    -全局作用域中创建的变量都是 window 的属性，创建的函数都是window的方法
+                -函数作用域
+        */
+
+        var a = 10;
+        console.log(a);
+        console.log(window.a);
+        window.alert(a);
+        window.alert(window.a);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

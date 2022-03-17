@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>div随着鼠标移动</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 
+                -开启绝对定位div才可以脱离文档流到处移动
+            */
+            position: absolute;
+        }
+        body{
+            width: 2000px;
+            height: 2000px;
+        }
+    </style>
+    <script>
+        // 永远别忘了在html如果script在head中先写这个window.onload
+        window.onload = function(){
+
+            /* 
+                -div随着鼠标移动
+                    -获得div对象
+                    -绑定鼠标移动事件(因为移动的是一整个网页，所以给网页对象document绑定)
+                    -获得鼠标的实时xy坐标然后赋予div的位置
+            */
+            var box = document.getElementById("box");
+            document.onmousemove = function(event){
+
+                    // 为了兼容不同的浏览器，有的浏览器中event不是对象，是window对象下的属性
+                    event = event||window.event;
+    
+                    var x = event.clientX;
+                    var y = event.clientY;
+
+                    /* 
+                        -获取浏览器的滚动长度
+                            -Chrome认为 scroll是body的，可以通过body对象调用
+                            -火狐等浏览器认为 scroll 是html的，需要通过 html 对象来调用
+                            -documentElement是一个会返回文档对象（document）的根元素的只读属性（html对象）
+                                -当一个子对象是一个父对象的属性时，那么这是这个子对象就是父对象的属性
+                    */
+                    var st = document.body.scrollTop || document.documentElement.scrollTop;
+                    var lt = document.body.scrollLeft || document.documentElement.scrollLeft;
+    
+                    box.style.left = x + "px";
+                    box.style.top = y + "px";
+
+            };
+
+        };
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

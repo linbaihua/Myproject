@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定事件的两种方式</title>
+    <!-- 
+        -事件：当用户点击某个 HTML 元素时启动一段 JavaScript
+            -事件通常与函数配合使用，这样就可以通过发生的事件来驱动函数执行
+        -事件句柄：
+            -语法：onclick="SomeJavaScriptCode"
+            -参数SomeJavaScriptCode   必需。规定该事件发生时执行的 JavaScript 
+
+        -一种就是直接在html中绑定事件
+        - 第二种就是在 JS 中获取元素对象绑定事件函数
+     -->
+</head>
+<body>  
+    <!-- alert 就是一个函数 ，别忘了后面的分号 -->
+    <button id="btn" onclick="alert('已经点击');">点击按钮</button><br><br>
+    <button id="btn1" onclick="alert('已经点击');">点击按钮</button>
+    <script>
+
+        var btn1 =document.getElementById("btn1");
+        btn1.onclick = function(){
+            alert("good");
+        };
+
+    </script>
+</body>
+</html>

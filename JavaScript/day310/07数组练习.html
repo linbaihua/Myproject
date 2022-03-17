@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组练习</title>
+    <script>
+
+        /* 
+            -问题：删除数组中重复的数字
+            -思路
+                -获取第一个元素，然后与它后面的元素比较，有重复的就删去
+                -第一类元素比较完，向右移一位，获取第二个元素，然后比较
+                    它后面的元素
+        */
+        var arr = [1,2,3,2,1,3,4,2,5];
+        
+        for(var i =0;i<arr.length;i++){
+            for(var j=i+1;j<arr.length;j++){
+                if(arr[i] == arr[j]){
+                    arr.splice(j,1);
+                }
+            }
+        }
+        console.log(arr);
+
+        // bug
+        var arr2 = [1,2,3,2,2,1,3,4,2,5];
+        
+        for(var i =0;i<arr2.length;i++){
+            for(var j=i+1;j<arr2.length;j++){
+                if(arr2[i] == arr2[j]){
+                    arr2.splice(j,1);
+                }
+            }
+        }
+        console.log(arr2);
+
+        /* 
+            -有bug，当有连续相同数字时，因为是当前为与下一位比较，所以删去前面的
+                连续相同一位，后面的相同一位自动前移，而当前数字又是与下一位
+                比较吗，所以就会跳过这一位，所以应该再与当前一位比较一次
+            -解决思路：
+                -当比较相同时，删除一位时后面的元素自动前移一位，那我们比较
+                    开始为也前移一位
+        */
+
+        var arr3 = [1,2,3,2,2,1,3,4,2,5];
+        
+        for(var i =0;i<arr3.length;i++){
+            for(var j=i+1;j<arr3.length;j++){
+                if(arr3[i] == arr3[j]){
+                    arr3.splice(j,1);
+                    j--;
+                }
+            }
+        }
+        console.log(arr3);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>实参可以是任何值</title>
+    <script>
+        
+        /* 
+            -break 是退出循环
+            -continue 是跳过当次循环
+            -return  是直接结束整个函数
+        */
+
+        /* 
+            -return 可以返回任意类型，也可以是一个对象
+        */
+       function fun1(){
+           function fun2(){
+               document.write("hello world");
+           }
+        // 即使这里return 直接调用了fun2，但是因为没有调用 fun1就触发不了2
+           return fun2();
+       }
+
+       /* var a = fun1();
+       a(); */
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

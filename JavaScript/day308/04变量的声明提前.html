@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量的声明提前</title>
+    <script>
+
+        /* 
+            -变量的声明提前
+                -使用 var 关键字声明变量，即使在输出这个变量后面赋值，
+                    运行时也不会报错，相当于一开始就创建变量了，只是没有
+                    赋值，所以显示 undefined
+                -如果不使用 var 关键字声明，那么赋值在输出语句后就会报错
+        */
+
+        console.log(a); //undefined
+        var a = 10; 
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

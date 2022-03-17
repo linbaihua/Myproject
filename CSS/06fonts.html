@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS 字体</title>
+        <style>
+            p.class1{
+                /* 设置字体，一般设置多个字体中间用逗号隔开，以防第一个字体不能用，字体名称超出一个字符使用引号 */
+                font-family: 'Courier New', Courier, monospace;
+                /* 设置字体样式，正常或者斜体等 */
+                font-style: italic;
+                /* 设置字体大小，字体默认大小是16px */
+                font-size: large;
+            }
+            p.class2{
+                /* 1em = 16px,默认字体大小是1em,em就是倍数的关系 */
+                font-size: 2.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="class1">测试字体的段落</p>
+        <p>我是浏览器默认的字体</p>
+        <p class="class2">我是2.5倍大的字体</p>
+    </body>
+</html>

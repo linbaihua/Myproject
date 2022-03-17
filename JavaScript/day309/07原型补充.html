@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型补充</title>
+    <script>
+        /* 
+            -hasOwnProperty用来检测自身是否有某个属性
+            -原型对象也有原型
+                -__proto__.__proto__
+                -最多只能追溯到原型的原型，也就是追溯到爷爷就无了
+                -object 只能追溯到它爸爸，因为object已经是 上一辈了
+            -prototype是构造函数像原型对象中添加公共属性
+                -__proto__是对象链接到自己的原型对象
+        */
+       function Person(name){
+            this.name = name;
+       }
+
+       var per = new Person();
+       var obj = new Object();
+
+       console.log(per.hasOwnProperty("name"));
+       console.log(per.__proto__.__proto__.__proto__); //null
+       console.log(per.__proto__.__proto__.hasOwnProperty("hasOwnProperty")); //true
+       console.log(obj.__proto__.hasOwnProperty("hasOwnProperty")); //true
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>javascript 图片库</title>
+    <meta charset="utf-8">
+    <style>
+        /* 可以在这里定义body的样式，style 节点定义在head中 */
+    </style>
+</head>
+
+<!-- 这里引入js, 以供调用showPic 方法 -->
+<script src="./script/function showPic(whichpic){.js"></script>
+
+<body>
+
+    <h1>图片列表</h1>
+    <ul>
+        <li>
+            <!-- onclick 中调用 showPic方法,传入参数 this 就是 本节点 a -->
+            <a href="./2345截图20210123195443.png" onclick="showPic(this); return false;" title="screen1">截图1</a>
+        </li>
+        <li>
+            <a href="./2345截图20210123195545.png" onclick="showPic(this); return false;" title="screen2">截图2</a>
+        </li>
+        <li>
+            <a href="./2345截图20210123195213.png" onclick="showPic(this); return false;" title="screen3">截图3</a>
+        </li>
+        <li>
+            <a href="./2345截图20210123195338.png" onclick="showPic(this); return false;" title="screen4">截图4</a>
+        </li>
+
+        <!-- 添加一个标记文件用以替换href-->
+            <img id="placeholder" src="./2345截图20210123195418.png" alt="my image agllery">
+
+            <!-- 为标记添加一段描述 -->
+            <!-- p.firstChild.nodeValue 获得 p节点的文本 -->
+            <p id="description" >choose a image</p>
+    </ul>
+
+</body>
+
+</html>

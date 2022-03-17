@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组方法-sort()</title>
+    <script>
+
+        /* 
+            -sort():对数组的元素进行排序
+                -sortby:可选。规定排序顺序。必须是函数。
+                -返回值：数组在原数组上进行排序，不生成副本。
+                -方法是按照 Unicode 编码进行排序，并不一定准确
+                -可以提供函数排序：该函数要比较两个值，然后返回一个用于说明
+                    这两个值的相对顺序的数字。比较函数应该具有两个参数 a 和 b，
+                    其返回值如下：
+                        -a<b: return -1; a 在 b 前面
+                         a=b: return 0;   位置不变
+                         a>b: return 1;  a 在 b 后面
+                         -实现上面的三个语句，可以用一个语句
+                            return a-b;
+        */
+
+        // 使用默认的 Unicode 排序
+        var arr = [1,3,5,2,7,4];
+        arr.sort();
+        console.log(arr);
+
+        // 默认排序出 bug
+        var arr1 = [3,4,7,2,9,3,11];
+        arr1.sort();
+        console.log(arr1);
+
+        // 提供函数排序,将函数引用作为参数传递给 sort
+        function sortFun(a,b){
+            return a-b;
+        }
+        var arr3 = [3,4,7,2,9,3,11]
+        console.log(arr3.sort(sortFun));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

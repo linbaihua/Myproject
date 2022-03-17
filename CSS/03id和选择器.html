@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CSS ID 和选择器</title>
+        <style>
+            #id1{
+                background-color: aqua;
+                color: rgb(35, 65, 55);
+                text-align: center;
+            }
+            #id2{
+                color: rgb(107, 86, 55);
+                text-align: end;
+            }
+            .class1{
+                color: blue;
+                text-align: center;
+            }
+            p.class2{
+                color: rgb(123, 0, 238);
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="id1">第一个段落</p>
+        <p id="id2">第二个段落</p>
+        <p class="class2">我是p元素同时选中了class2</p>
+        <p class="class2">我也是p原色也同时选中了class2</p>
+        <h1 class="class1">这是一个标题</h1>
+        <h2 class="class1">这是一个标题</h2>
+        <h3 class="class2">即使我选中了但是我不是p元素</h3>
+    </body>
+</html>
+<!-- 
+    1、# 就是一个选择器，意思就是选择id，比直接定义某个
+    2、. 选择器是多选，id改成class标记
+    3、#是单选，.是多选，x. 是单个元素多选
+    4、类名的第一个字符不能是数字，因为无法在有的浏览器中起作用
+ -->

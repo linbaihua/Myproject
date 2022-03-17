@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>质数练习</title>
+    <script>
+
+      var num = prompt("请输入一个数字:");
+
+      while(isNaN(num) || num<1){
+        alert("您输入的数字不正确，请重新输入");
+        num = prompt("请输入一个数字：");
+      }
+
+      /* 这里只能知道一个数不是质数，怎么才能知道一个数是质数呢，看09 */
+      for(var i=2;i<num;i++){
+        if (num%i == 0) {
+          alert("不是质数");
+          break;
+        }
+      }
+ 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

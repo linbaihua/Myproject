@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>call() 和 apply() bind()</title>
+    <script>
+
+        /* 
+            -该方法的语法和作用与 apply() 方法类似，只有一个区别，
+              就是 call() 方法接受的是一个参数列表，
+              而 apply() 方法接受的是一个包含多个参数的数组。
+            -call()、apply()、bind() 都是用来重定义 this 这个对象的
+                -bind() 返回的是一个新函数，得调用它才执行
+                -传参数时
+                    -call 和 bind 参数直接用逗号隔开
+                    -apply 参数用数组存储，传入一个数组
+        */
+
+        var obj = {
+            name: "jack",
+            age: 16,
+            sayHello: function () {
+                console.log(this.name);
+            }
+        }
+        var obj1 = {
+            name: "mary",
+            age: 18
+        }
+        obj.sayHello();
+        obj.sayHello.call(obj1);
+        obj.sayHello.apply(obj1);
+        obj.sayHello.bind(obj1)();
+
+        var obj2 = {
+            name: "canon",
+            address: "japan",
+            sayHello: function (a, b) {
+                console.log(this.name + "-" + this.address + "-" + a + "-" + b);
+            }
+        }
+        var obj3 = {
+            name: "lecia",
+            address: "germany"
+        }
+        obj2.sayHello.call(obj2, "5d4", "24-70");
+        obj2.sayHello.apply(obj3, ["5d3", "17-40"]);
+        obj2.sayHello.bind(obj3, "5d2", "35")();
+
+        var sData = 'Wisen';
+
+        function display() {
+            console.log('sData value is %s ', this.sData);
+        }
+
+        display();  // sData value is Wisen
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

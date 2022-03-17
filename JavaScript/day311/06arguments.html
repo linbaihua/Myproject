@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arguments</title>
+    <script>
+
+        /* 
+            -arguments
+                -一个数组对象
+                -传递给函数的参数数组
+                -虽然它是一个数组对象，但是它除了 length 属性，没有
+                    别的数组对象拥有的方法
+                -属性
+                    -callee:函数体本身
+        */
+
+        
+        function fun(a,b,c){
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+            console.log(arguments.length);
+            console.log(typeof arguments);
+            console.log(arguments.callee);
+        }
+        fun(1,2,3);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

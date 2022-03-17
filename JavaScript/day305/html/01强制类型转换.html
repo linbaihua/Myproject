@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>强制类型转换</title>
+    <script>
+        var a = 123;
+        // null undefined 出错
+        a=null;
+        a=undefined;
+        // a=a.toString(); //返回错误
+        a=String(a); //返回 string undefined
+
+        console.log(typeof a);
+        console.log(a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

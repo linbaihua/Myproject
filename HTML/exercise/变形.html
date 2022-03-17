@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(221, 221, 221);
+        }
+        .box1,.box2{
+            width: 200px;
+            height: 400px;
+            background-color: rgb(255, 255, 255);
+            margin: 100px 10px;
+            float: left;
+            transition: all 0.5s;
+        }
+        .box1{
+            margin-left: 200px;
+        }
+        .box1:hover,.box2:hover{
+            transform: translateY(5px);
+            box-shadow: 0 0 3px rgba(0, 0, 0, .3);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+</body>
+</html>

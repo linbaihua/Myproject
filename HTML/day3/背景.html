@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .image {
+            width: 500px;
+            height: 500px;
+            /* 设置背景颜色 */
+            background-color: aquamarine;
+            margin: 0 auto;
+            padding: 20px;
+            /* 设置背景图片，URL设置背景图片的地址 */
+            background-image: url(../day01/img/1.png);
+            /* 设置背景图片的大小 */
+            background-size: 150px 100px;
+            /* 设置背景图像在元素框中的排列方式 */
+            background-repeat: no-repeat;
+            border: 10px red double;
+            /* 设置背景图像的位置，不是背景的位置，背景是没有位置的 */
+
+            background-position: 0 0;
+            /* 设置背景颜色的范围 
+                -content-box
+                -padding-box
+                -border-box
+            */
+            background-clip: border-box;
+
+            /* 设置背景图片初始位置的参看原点范围
+                -内容框  content-box
+                -内边距框 padding-box
+                -边框框 border-box
+           */
+            background-origin: content-box;
+            overflow: auto;
+        }
+        .box2{
+            width: 150px;
+            height: 1000px;
+            /* background-color: yellow; */
+            background-image: url(../day01/img/2.png);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="image">
+        <div class="box2"></div>
+    </div>
+</body>
+
+</html>

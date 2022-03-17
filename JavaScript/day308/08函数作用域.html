@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数作用域</title>
+    <script>
+   
+        /* 
+            -使用 var 关键字和不使用 var 关键字声明变量
+        */
+       
+        var c = "全局c";
+        var d = "全局d";
+        function fun5(){
+            document.write(c+"<br/>"); //undefined
+            var c ="函数c";
+
+            document.write(d+"<br/>"); // 全局d
+            d = "函数d";
+        }
+        
+        fun5();
+        document.write(d); //函数d，因为函数中没有用var声明了d，等于重写了全局d
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

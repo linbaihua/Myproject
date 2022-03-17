@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 更改 css</title>
+    <style>
+        body{
+            margin: 200px;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+    <script>
+        /* 
+            -currentstyle
+            -getComputedStyle()
+            -这两个都是只读的，不能对css属性进行更改
+        */
+        window.onload = function(){
+
+           var btn = document.getElementById("btn");
+           var box = document.getElementById("box");
+           btn.onclick = function(){
+               alert(box.currentstyle.width); //只有 IE 浏览器可以使用 
+               box.style.width = "400px";
+           };
+
+           var btn2 = document.getElementById("btn2");
+           btn2.onclick = function(){
+               alert(getComputedStyle(box,null).width);
+               alert(getComputedStyle(box).width);
+           } ;
+
+           /* 
+                -定义一个函数，使得能兼容一般浏览器和 IE8
+                    -为什么用window.getComputedStyle而不用getComputedStyle？
+                        -因为window.getcomputedstyle 检测是否有这个属性，有时true，没有undefined
+                            undefined--> Boolean 是false
+                        -如果是单独的 getcomputedstyle（引用变量）,一般window对象下的方法，会自动识别出这是
+                            一个方法，所以会是 true，但是如果不是window对象中的方法，那么单独的一个变量就会 error
+                        -window 对象下的属性和方法会在 JS 中会自动识别出来
+           */
+          function getStyle(obj,name){
+                if (window.getComputedStyle) {
+                    return getComputedStyle(obj)[name];
+                }else{
+                    return obj.currentstyle[name];
+                }
+          }
+
+        };
+    </script>
+</head>
+<body>
+    <button id="btn">点我一下</button>
+    <button id="btn2">获取css样式</button>
+    <div id="box"></div>
+</body>
+</html>

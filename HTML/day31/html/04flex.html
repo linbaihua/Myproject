@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex 的样式</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul{
+            width: 600px;
+            height: 600px;
+            border: 4px red solid;
+
+            margin: 50px auto;
+
+            display: flex;
+
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        li:first-child{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+        li:nth-child(2) div{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+        li:nth-child(3) div{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+        }
+        li:nth-child(4){
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>
+            <div>2</div>
+            <div>2</div>
+        </li>
+        <li>
+            <div>3</div>
+            <div>3</div>
+            <div>3</div>
+        </li>
+        <li>
+            4
+        </li>
+        <li>
+            <div>5</div>
+            <div>5</div>
+        </li>
+    </ul>
+</body>
+</html>

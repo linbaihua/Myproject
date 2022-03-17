@@ -1,0 +1,351 @@
+/* 首页样式表 */
+/* 
+    -设置样式时候是有顺序的
+    -先设置大的框架基本样式和公共的样式
+    -再设置框架中按顺序来每一个小样式
+    -设置点击时候的样式等
+    -总之不要先设置精细的样式然后设置大的框架样式和公共样式，后面的样式会覆盖
+        前面相同的样式
+*/
+
+/* 最外层容器宽高设置*/
+.topbar-wrapper{
+    width: 100%;
+    height: 40px;
+    /* 垂直居中 */
+    line-height: 40px;
+    background-color: #333;
+}
+
+/* 左侧导航栏向左浮动 */
+.nav-category , .topbar-wrapper li{
+    float: left;
+}
+
+/* 左侧导航栏-下载APP框架 */
+.app .qrcode{
+    /* 绝对定位脱离文档流 */
+    position: absolute;
+    width: 124px;
+    /* 为了下拉APP过度效果，初始为0，最终在点击时height=148  */
+    height: 0;
+    /* 未点击链接时，高度为0，将溢出部分隐藏 */
+    overflow: hidden;
+    /* 因为一开始做左侧导航栏设置了 line-height，所以小米商城APP字被挤下去了，所以现在
+    重新设置一下行高，并设置字体在父元素框中居中方式 */
+    line-height: 1px;
+    text-align: center;
+
+    background-color: rgb(255, 255, 255);
+    /* 设置阴影效果 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color: rgba(112, 112, 112, 0.911);
+    left: -35px;
+
+    /* transition用于为样式设置过度效果 */
+    transition: height 0.3s;
+}
+
+/* 开启非static 定位给下面的 after，成为其祖先元素
+    absolute 定位的包含块是离它最近的开启了定位的祖先元素
+*/
+.app{
+    position: relative;
+}
+
+/* 下拉APP小三角 */
+.app-wrapper:hover >.app::after{
+    content: '';
+    /* 设置绝对定位
+        -脱离文档流
+        -行内变成块，所以这个伪元素就可以设置 width和height
+    */
+    position: absolute;
+    width: 0;
+    height: 0;
+    /* 设置四个方向的边框 */
+    border: 8px transparent solid;
+    /* 去除上边框 */
+    border-top: none;
+    /* 单独设置下边框的颜色 */
+    border-bottom-color: rgb(255, 255, 255);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.app:hover .qrcode,
+.app:hover::after{
+    display: block;
+    height: 148px;
+}
+/* 左侧导航栏-下载APP二维码图片 */
+.app .qrcode img{
+    width: 90px;
+    margin: 17px;
+    margin-bottom: 20px;
+}
+
+/* 左导航栏-下载APP-二维码中文字 */
+.app .qrcode span{
+    font-size: 10px;
+    color: black;
+}
+
+/* 登录注册和购物车向右浮动，多个选择器中间用逗号隔开,注意逗号是英文逗号*/
+.shop-car , .user-info{
+    float: right;
+}
+
+/* 购物车框右移 */
+.shop-car{
+    margin-left: 20px;
+}
+
+/* 设置超链接 */
+.topbar-wrapper a{
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.76);
+    text-decoration: none;
+    /* 让超链接变成块以至于鼠标在文字上下也可以显示可点击 */
+    display: block;
+}
+
+/* 点击超链接时 */
+.topbar-wrapper a:hover{
+    color: rgb(255, 255, 255);
+}
+
+/* 设置超链接中间的分割线 */
+.topbar-wrapper .line{
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.116);
+    margin: 0 8px;
+}
+
+/* 设置购物车 */
+.shop-car a{
+    width: 120px;
+    background-color: rgba(109, 107, 107, 0.342);
+    text-align: center;
+}
+
+/* 设置购物车点击时 */
+.shop-car:hover a{
+    color: rgb(255, 166, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.heder-wrapper{
+    position: relative;
+}
+
+/* 设置中间的header */
+.header{
+    height: 100px;
+    /* background-color: yellowgreen; */
+}
+
+/* logo */
+.header .logo{
+    width: 70px;
+    height: 70px;
+
+    float: left;
+    margin-top: 15px;
+
+    /* 为下面的绝对定位提供参照物 */
+    position: relative;
+
+    overflow: hidden;
+    /* 隐藏文字手段 */
+    text-indent: -9999px;
+}
+
+/* logo链接 */
+.header .logo a{
+    width: 70px;
+    height: 70px;
+    background-color: rgb(255, 123, 0);
+
+    /* display: block; */
+    position: absolute;
+
+    background-image: url(../image/logo.png);
+    background-position: center;
+
+    left: 0px;
+    transition: left 0.2s;
+}
+
+/* home logo */
+.header .logo .home{
+    left: -70px;
+    background-image: url(../image/logo2.png);
+}
+
+/* logo点击切换 */
+.header .logo:hover .mi{
+    left: 70px;
+}
+.header .logo:hover .home{
+    left: 0;
+}
+
+/* 中间导航条 */
+.nav-wrapper{
+    float: left;
+    margin-left: 7px;
+    /* background-color: yellowgreen; */
+}
+
+/* 导航条中的li */
+.nav>li{
+    float: left;
+}
+
+/* ul */
+.nav{
+    height: 100px;
+    line-height: 100px;
+    padding-left: 58px;
+}
+
+.nav li a{
+    font-size: 16px;
+    margin-right: 20px;
+    color: #333;
+    text-decoration: none;
+
+    display: block;
+}
+
+/* 点击 UL 中的 a */
+.nav li a:hover{
+    color: orange;
+}
+
+/* 全部商品分类 */
+.nav .all-goods{
+    /* 这里不能用display none，因为这样就直接脱离文档流了 */
+    visibility: hidden;
+}
+
+/* --------------------------------------------全部商品分类中的左侧菜单------------------------------------------- */
+/* 左侧菜单 */
+.left-menu{
+    width: 234px;
+    height: 460px;
+    background-color: rgba(110, 195, 245, 0.534);
+
+    position: absolute;
+    left: -135px;
+
+    line-height: 1;
+    padding: 20px 0;
+}
+/* 左侧菜单链接样式*/
+ul.left-menu a{
+    width: 100%;
+    height: 66px;
+    /* 设置居中 */
+
+    line-height: 42px;
+    display: block;
+
+    font-style: 20px;
+    margin: 0;
+    padding: 0 0;
+    color: rgb(97, 97, 97);
+}
+/* 左侧菜单栏箭头样式 */
+.left-menu a i{
+    float: right;
+    /* 设置居中 */
+    line-height: 42px;
+    padding-right: 20px;
+}
+/* 左侧菜单的父元素li */
+.nav-first-li{
+    /* 开启定位 */
+    position: relative;
+}
+/* 点击链接时 */
+.left-menu a:hover{
+    background-color: orange;
+}
+/* ------------------------------------------------------------------------------------------------------------- */
+
+/* 点击nav-li 的下拉列表 */
+.nav .goods-info{
+    width: 100%;
+    height: 0;
+    background-color: rgb(235, 235, 235);
+
+    position: absolute;
+    top: 140px;
+    left: 0;
+
+    overflow: hidden;
+    transition: height 0.3s;
+}
+
+/* 当点击 li 时，选中后面的 class=goods-info 和点击 goods-info 时*/
+.nav .show:hover ~.goods-info,
+.goods-info:hover{
+    height: 228px;
+
+    border-top:1px rgba(51, 51, 51, 0.021) solid;
+    box-shadow: 0 5px 5px rgba(0,0,0, 0.3);
+}
+
+/* -------------------------------------------------------------------------------------------- */
+/* 右侧搜索框 */
+.search-wrapper{
+    width: 296px;
+    height: 50px;
+
+    float: right;
+    margin-top: 25px;
+}
+.search-wrapper .search-input{
+    float: left;
+
+    /* 设置好宽高，设置盒子大小是以border开始算的，则包括border在内，padding怎么改都会自动
+    计算宽高，不用自己来回改宽高 */
+    width: 244px;
+    height: 50px;
+    box-sizing: border-box;
+
+    padding: 0 10px;
+    border: 1px solid rgba(141, 141, 141, 0.603);
+    
+    background-color: rgb(255, 255, 255);
+
+    /* 点击时会有一个轮廓，让它消失，让点击时直接改变border的颜色 */
+    outline: none;
+
+    /* 设置输入字体的样式 */
+    font-size: 15px;
+    color: rgb(124, 124, 124);
+}
+.search-wrapper .search-input:focus,
+.search-wrapper .search-input:focus+.search-button{
+    border-color: orange;
+}
+
+/* 图标的样式更改和字体是一样的 */
+.search-wrapper .search-button{
+    height: 50px;
+    width: 52px;
+    padding: 0;
+    border: 1px solid rgba(141, 141, 141, 0.603);
+    border-left: none;
+    font-size: 18px;
+}
+.search-button:hover{
+    background-color: orange;
+    border: none;
+    color: #fff;
+}

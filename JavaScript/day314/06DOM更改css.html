@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 更改 css</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: yellowgreen;
+        }
+        body{
+            margin: 200px;
+        }
+    </style>
+    <script>
+
+        window.onload = function(){
+
+            /* 
+                -通过DOM更改css的样式
+                    -语法：元素.style.属性 = 属性值
+                    -不是直接就调用css的元素，和html一样，也要首先先获取到css中的元素对象才可以
+                    -注意：
+                        -css的名称在JS中的不能有 -，按照驼峰命名方式
+                    
+                    -我们通过DOM读取的css样式都是内联样式
+                        -内联样式：就是写在标签内部的style
+                        -内联样式具有较高的优先级，所以JS更改后会立即显示（除了！important）
+                        -写了 （！important）的css不能通过JS更改
+            */
+           var btn = document.getElementById("btn");
+           btn.onclick = function(){
+               var box1 = document.getElementById("box1");
+                box1.style.width = "400px";
+           };
+
+           /* 
+                -02按钮2获取css样式信息
+                    -width我们通过上面的JS进行了重新设置，写入到标签内部称为内联样式
+                    -所以可以读到 width 属性，但是 height 没有重新设置，所以读取不到
+           */
+          var btn02 = document.getElementById("btn02");
+          btn02.onclick = function(){
+                var box1 = document.getElementById("box1");
+                alert(box1.style.width);
+                alert(box1.style.height);
+          };
+
+        };
+    </script>
+</head>
+<body>
+    <button id="btn">点我一下</button>
+    <button id="btn02">再点我一下</button>
+    <div id="box1"></div>
+</body>
+</html>

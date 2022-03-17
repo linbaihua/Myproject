@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <link rel="stylesheet" href="../../reset.css">
+    <style>
+        ul{
+
+            width: 500px;
+            border: 3px red solid;
+
+            margin:  100px auto;
+            /* 开启弹性盒子 */
+            display: flex;
+            /* 开启换行 */
+            flex-wrap: wrap;
+        }
+        li{
+            width: 200px;
+            height: 100px;
+            /* 内容垂直居中 */
+            line-height: 100px;
+            /* 水平居中 */
+            text-align: center;
+            /* 弹性元素不压缩 */
+            flex-shrink: 0;
+        }
+        li:first-child{
+            background-color: yellowgreen;
+        }
+        li:nth-child(2){
+            background-color: yellow;
+        }
+        li:nth-child(3){
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

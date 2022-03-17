@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>第二种事件绑定方法</title>
+    </head>
+    <body>
+        <button type="button" id="aa">按钮</button>
+        <script>
+            function bb(){
+                alert("hello world");
+            }
+            document.getElementById("aa").onclick = bb;
+            // document.getElementById("aa").onclick = bb();  不用加括号，加括号就直接运行了
+        </script>
+    </body>
+</html>
+<!-- 
+    用id绑定一个按钮，然后给id赋予 onclick 事件
+ -->

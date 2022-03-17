@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+    <script>
+
+        /*  
+            -this代指一个对象
+                -以函数调用时 this 就是 window
+                -以对象方法调用时，this 就是那个对象
+                -以构造函数调用时候，this 是这个构造函数的实例对象
+        */
+
+        function fun1(){
+            console.log(this);
+        }
+
+        var obj1 = {
+            name:"lin",
+            age:18,
+            sayFun1:fun1
+        };
+
+        fun1(); // this=window
+        obj1.sayFun1(); //this=obj1
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

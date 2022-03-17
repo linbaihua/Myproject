@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 操作css</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            margin: 10px;
+            border: 10px red solid;
+            background-color: yellowgreen;
+        }
+        #box4{
+            width: 200px;
+            height: 300px;
+            border: 5px red solid;
+            overflow:auto;
+            margin-left: 400px;
+            margin-top: -200px;
+        }
+        #box5{
+            width: 400px;
+            height: 500px;
+            background-color: aqua;
+        }
+        button{
+            margin: 5px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            /* 
+                -element.clientHeight 返回元素的可见高度。 
+                -element.clientWidth 返回元素的可见宽度 
+
+                -可见高度就是包括content和padding
+            */
+           var box = document.getElementById("box");
+           var btn = document.getElementById("btn");
+           btn.onclick = function(){
+                // alert(box.clientWidth);
+                alert(box.clientHeight);
+           };
+
+           /* 
+                -element.offsetHeight 返回元素的高度。 
+                -element.offsetWidth 返回元素的宽度 
+
+                    -返回的是包括 content padding border的总长度，不包括margin
+           */
+           var btn1 = document.getElementById("btn1");
+           btn1.onclick = function(){
+                alert(box.offsetWidth);
+                // alert(box.offsetHeight);
+           };
+
+           /* 
+                -element.offsetParent 返回元素的偏移容器 
+                    -获取到离当前元素最近的开启了定位的祖先元素
+                    -只要position不是 static 就是开启了定位
+           */
+           var btn2 = document.getElementById("btn2");
+           btn2.onclick = function(){
+                var box3 = document.getElementById("box3");
+                alert(box3.offsetParent.id);
+           };
+
+           /* 
+                -element.offsetLeft 返回当前元素相对于其父元素左边偏移位置(margin-left) 
+                -element.offsetTop 返回当前元素相对于其父元素上面偏移位置(amrgin-top)
+           */
+          var btn3 = document.getElementById("btn3");
+          btn3.onclick = function(){
+                alert(box.offsetLeft);
+          };
+          var btn4 = document.getElementById("btn4");
+          btn4.onclick = function(){
+                alert(box.offsetTop);
+          };
+
+          /* 
+                -element.scrollWidth 返回元素的全部整体宽度(包括被hidden起来的）
+                -element.scrollHeight 返回元素的全部整体高度 
+          */
+         var btn5 = document.getElementById("btn5");
+         var box5 = document.getElementById("box5");
+         btn5.onclick = function(){
+            alert(box5.scrollWidth);
+         };
+         var btn6 = document.getElementById("btn6");
+         btn6.onclick = function(){
+            alert(box5.scrollHeight);
+         };
+
+         /* 
+                -Element.scrollLeft 属性可以读取或设置子元素滚动条到元素左边的距离。
+                -Element.scrollTop 属性可以获取或设置子元素滚动条到元素上边的距离。
+                -scrollHeight-scrollTop == clientHeight   说明滚动条到底了
+                -scrollWidth-screenLeft == clientWidth    说明滚动条到底了
+         */
+        var btn7 = document.getElementById("btn7");
+        var box4 = document.getElementById("box4");
+        btn7.onclick = function(){
+            alert(box4.scrollLeft);
+        };
+        var btn8 = document.getElementById("btn8");
+        btn8.onclick = function(){
+            alert(box4.scrollTop);
+        }; 
+
+        };
+    </script>
+</head>
+<body>
+    <div id="box">box</div>
+    <div id="box1">
+        <div style="position: relative;" id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+    <div id="box4">
+        <div id="box5">box5<br>width:400<br>height:500</div>
+    </div>
+
+    <button id="btn">点我一下</button><br>
+    <button id="btn1">返回元素的高度/宽度</button><br>
+    <button id="btn2">返回元素的偏移量</button><br>
+    <button id="btn3">返回元素的水平偏移量</button><br>
+    <button id="btn4">返回元素的垂直偏移量</button><br>
+    <button id="btn5">返回box5元素的整体宽度</button><br>
+    <button id="btn6">返回box5元素的整体高度 </button><br>
+    <button id="btn7">返回box5元素距离其父元素box4的左边滚动距离 </button><br>
+    <button id="btn8">返回box5元素距离其父元素box4顶部的滚动距离</button><br>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body{
+        margin: 100px auto;
+        text-align: center;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+
+            var btn = document.getElementById("btn");
+            var input = document.getElementById("input");
+            btn.onclick = function(){
+                alert(input.value);
+            };
+
+        };
+    </script>
+</head>
+<body>
+    <input type="text" id="input" value="d" name="dd" />
+    <button id="btn">submit</button><br>
+    <!-- 
+        -input 
+            -<input> 标签用于搜集用户信息。根据不同的 type 属性值，输入字段拥有很多种形式。输入字段可以是文本字段、复选框、掩码后的文本控件、单选按钮、按钮等等
+            -如果是text 类型，那么value就是input输入框的值，value是它的属性
+            -在DOM中，获取input输入框的值 就是 input.value
+
+     -->
+    <input type="text" value="jack"><br>
+    <input type="text" value="mary">
+    <input type="text">
+    <input type="text">
+</body>
+</html>

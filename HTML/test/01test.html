@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试margin让图片居中效果</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            /* line-height: 200px; */
+            background-color: yellowgreen;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        /* .box2{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            margin: 0 auto;
+        } */
+        div img{
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <img src="../项目练习/小米官网/image/微信截图_20220228102213.png" alt="">
+        <!-- <div class="box2"></div> -->
+    </div>
+</body>
+</html>
+<!-- 
+    测试结果
+        -img是行内元素，是不可以直接通过margin auto就水平居中的
+        -让行内元素水平居中得把它变成块元素，或者给它外面套一个块元素框
+ -->

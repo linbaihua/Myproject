@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数声明和函数表达式</title>
+    <script>
+
+        /* 
+            不过在开发中很少使用构造函数创建函数，一般使用函数声明来创建函数
+                -函数声明的function 是小写
+                -构造函数的 function 开头是大写
+        */
+        function fun1() {
+            alert("hello world");
+            document.write("函数声明创建函数");
+        }
+
+        /*
+            使用函数表达式创建函数
+        */
+        var fun2 = function(){
+            document.write("函数表达式创建函数");
+        }
+
+        fun1();
+        fun2();
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

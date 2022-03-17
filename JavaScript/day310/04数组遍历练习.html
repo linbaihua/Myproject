@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组练习</title>
+    <script>
+
+        /* 
+            -问题：将年龄大于等于18的实例对象存储到一个数组中并输出
+        */
+        
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        // 重写祖先的tostring方法，调用才又效果，默认输出对象好像不行
+        Person.prototype.toString = function(){
+            console.log("[ name="+name+" age= "+age+" ]");
+        };
+        var per1 = new Person("jack",16);
+        var per2 = new Person("mary",17);
+        var per3 = new Person("jony",18);
+        var per4 = new Person("sary",19);
+        
+        var perArr = [per1,per2,per3,per4];
+
+        /* 
+            -遍历person对象，输出成年人到一个新的数组
+                -新建一个数组
+                -return 这个数组
+                -过滤原有数组
+        */
+        function getAdult(arr){
+            var newArr = [];
+
+            for(var i=0;i<arr.length;i++){
+                if (arr[i].age >= 18) {
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
+
+        // return只是返回了，但是你没有输出它你又看不到
+        var result = getAdult(perArr);
+        console.log(result); 
+        // console.log(getAdult(perArr));  这种写法就是一部输出返回值
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

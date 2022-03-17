@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if 练习</title>
+    <script>
+
+        var grade = prompt("请输入小明的成绩：0-100");
+
+        /* 
+            问题：想在输入成绩不正确的情况下再次输入而不是重新刷新页面，那么
+                就是在输入错误时不断输入，这就是一个循环
+        */
+        while (grade > 100 || grade < 0 || isNaN(grade)) {
+            alert("成绩输入不正确，请重新输入：")
+            grade = prompt("请输入小明的成绩：0-100");
+        }
+
+        // 通过上面循环输入的成绩就是正确的了
+        if (grade == 100) //这里不能用赋值等号，只能用相等等号
+        {
+            alert("奖励小汽车");
+        } else if (grade >= 80 && grade <= 99) {
+            alert("奖励一台手机");
+        } else if (grade >= 60 && grade <= 80) {
+            alert("书");
+        } else {
+            alert("什么也没有");
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

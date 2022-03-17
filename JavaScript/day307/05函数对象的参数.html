@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>函数对象的参数</title>
+    <script>
+
+        /* 
+            在函数的括号中指定一个或多个形参
+                -多个形参之间用逗号隔开
+                -声明形参就相当于在函数内部声明了变量但还没有赋值
+        */
+       function sum(a,b){
+            console.log(a+b);
+            console.log(a+b);
+       }
+
+       /* 
+            -调用函数时解析器不会检查实参的类型，所以要注意有可能
+            会收到非法的类型，所以需要对实参进行检查
+            -也不会检查实参的数量，多余的实参不会被赋值，如果实参
+            的数量少于形参的数量，则赋值 undefined
+            -函数的实参可是任意的数据类型
+       */
+       sum(1,2);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

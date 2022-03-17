@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象</title>
+    <style>
+        div{
+            border: 2px black solid;
+        }
+        #outer{
+            width: 300px;
+            height: 100px;
+            margin-bottom: 5px;
+        }
+        #inner{
+            width: 300px;       
+            height: 50px;
+        }
+    </style>
+    <script>
+        /* 
+            -事件对象
+                -事件对象就是当响应函数被触发时，浏览器给这个响应函数生成的一个对象，就是触发事件生成对象
+                -事件对象中有很多属性，可以对键盘，鼠标等一些进行操作
+                -altKey 返回当事件被触发时，"ALT" 是否被按下。 
+                button 返回当事件被触发时，哪个鼠标按钮被点击。 
+                clientX 返回当事件被触发时，鼠标指针的水平坐标。 
+                clientY 返回当事件被触发时，鼠标指针的垂直坐标。 
+                ctrlKey 返回当事件被触发时，"CTRL" 键是否被按下。 
+                metaKey 返回当事件被触发时，"meta" 键是否被按下。 
+                relatedTarget 返回与事件的目标节点相关的节点。 
+                screenX 返回当某个事件被触发时，鼠标指针的水平坐标。 
+                screenY 返回当某个事件被触发时，鼠标指针的垂直坐标。 
+                shiftKey 返回当事件被触发时，"SHIFT" 键是否被按下 
+
+        */
+        window.onload = function(){
+            var outer = document.getElementById("outer");
+            var inner = document.getElementById("inner");
+            /* 
+                -onmousemove
+                    -鼠标移动触发响应函数
+                -clientX  返回数鼠标的x坐标
+                -clienty  返回鼠标的y坐标
+
+                -event在一般浏览器中都是作为一个对象存在，可以直接调用的，但是在 IE8 中是作为
+                    一个window属性存在的，必须通过window调用，所以需要兼容 IE8
+            */
+            outer.onmousemove = function(event){
+
+                // 兼容IE8浏览器
+                event = event||window.event;
+
+                var x = event.clientX;
+                var y = event.clientY;
+                inner.innerHTML = "x="+x+" y="+y;
+            };
+        };
+    </script        >
+</head>
+<body>
+    <div id="outer"></div>
+    <div id="inner"></div>
+</body>
+</html>

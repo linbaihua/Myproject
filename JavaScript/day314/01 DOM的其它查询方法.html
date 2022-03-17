@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        window.onload = function () {
+
+
+            /* 
+                -Document.documentElement
+                     是一个会返回文档对象（document）的根元素的只读属性（如HTML文档的 <html> 元素
+                    -返回的是 html 对象
+                    -document是不可以当做变量名，保留字不可以当变量名，容易出错
+
+            */
+            // var document = document.documentElement;
+            var element = document.documentElement;
+            console.log(element);
+
+            /* 
+                -document.body
+                    -查找body元素
+                    -返回的是body对象
+            */
+            var bdy = document.body;
+            console.log(typeof bdy);
+
+            /* 
+                 -document.all 已经废弃
+                 -document.getElementByTagName("*")
+                     -返回文档中所有的节点，返回的是一个数组对象
+            */
+            var all = document.getElementsByTagName("*");
+            console.log(all);
+            console.log(all.length);
+
+            /* 
+                  -document.getElementsByClassName()
+                    -返回一组class name相同的数组对象
+                    -但是该方法不支持IE8及以下的浏览器
+            */
+           var divList = document.getElementsByClassName("div");
+           console.log(divList);
+           console.log(divList.length);
+
+            /* 
+                -document.querySelector(".div");
+                    -结合css选择器来使用，传入css选择器字符串
+                    -但是它只传回它找到的第一个css选择器，不会传回所有
+            */
+           var query = document.querySelector(".div");
+           console.log(query);
+           console.log(typeof query);
+
+           var query1 = document.querySelector(".div2 div");
+           console.log(query1.innerHTML);
+
+           /* 
+                -document.querySelectorAll()
+                    -返回一个数组
+                    -可以查早相同css选择器的所有元素
+           */
+          var queryAll = document.querySelectorAll(".div");
+          console.log(queryAll);
+          console.log(queryAll.length);
+
+        };
+
+    </script>
+</head>
+
+<body>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div2">
+        <div>div div</div>
+    </div>
+    <div></div>
+</body>
+
+</html>

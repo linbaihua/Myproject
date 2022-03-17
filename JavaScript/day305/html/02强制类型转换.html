@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>强制类型转换为 number</title>
+    <script>
+        var a = "123"; //123
+        a = "123a";  // nan
+        a=true;  //1
+        a=false;  //0
+        a=null;  //0
+        a=undefined;  // nan
+
+        a="123a"; //123
+        a="123a456";  //123
+        a="123.345";  //123
+        
+        // a = Number(a);
+        // a=parseInt(a);
+
+        a="123.456"; //123.456
+        a="123.456.789";  //123.456
+        a="123.4a6"; //123.4
+        a="a123.4"; //nan
+
+        a=parseFloat(a);
+
+        console.log(typeof a);
+        console.log(a);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

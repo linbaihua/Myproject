@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>getAttribute和setAttribute的学习</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <p title="这是第一个title">这是第一个段落</p>
+        <!-- p 标签中定义一个title -->
+        <p title="这是第二个title">这是第二个段落</p>
+
+        <p>这是第三个段落</p>
+        
+        <!-- 定义一个无 title 的列表 canon -->
+        <ul id="canon" >
+            <li class="5D">佳能5D2</li>
+            <li class="5D">佳能5D3</li>
+        </ul>
+
+        <!-- 定义第二个无序列表nikon -->
+        <ul id="nikon" title="nikon camera">
+            <li class="D">nikon D3</li>
+            <li class="D">nikon D4</li>
+        </ul>
+        <script>
+            // var tag1=document.getElementsByTagName("p");
+            // // 获取这个 p 标签
+            // for (var i = 0; i < tag1.length; i++) {
+            //     alert(tag1[i].getAttribute("title"));
+            //     // 调用这个 p 标签这个元素节点的 getAttribute 参数是而且只能是title
+            // }
+
+            // var tag2=document.getElementsByTagName("p");
+            // // 定义 tag2 为 p 标签
+            // for (var i = 0; i < tag2.length; i++) {
+            //     var a=tag2[i].getAttribute("title");
+            //     // 定义 a 为 p(tag2) 标签的 title 
+            //     if (a) {
+            //         // 判断 a 是否为空,默认true就执行
+            //         alert(a);
+            //     }
+            // }
+
+            // setAttribute
+            // // 没有定义title的 UL 列表
+            // var tag3=document.getElementById("canon");
+            // alert(tag3.getAttribute("title"));
+
+            // // 使用 setAttribute 给没有定义的 canon 列表赋予了 title
+            // tag3.setAttribute("title","canon camera");
+            // alert(tag3.getAttribute("title"));
+
+            // // 定义了 title 的 nikon 列表
+            // var nikon1=document.getElementById("nikon");
+            // alert(nikon1.getAttribute("title"));
+
+            // 将所有序列为title都改值
+            var sony1=document.getElementsByTagName("ul");
+            for (var i = 0; i < sony1.length; i++) {
+                var sonyTitle1=sony1[i].getAttribute("title");
+                    if (sonyTitle1) {
+                        sony1[i].setAttribute("title","sony camera");
+                        alert(sony1[i].getAttribute("title"));
+                    }
+            }
+            
+
+        </script>
+    </body>
+</html>

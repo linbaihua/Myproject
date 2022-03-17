@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.css">
+    <style>
+        .nav{
+            /* nav设置一个整体的框架宽高和背景颜色 */
+            width: 1000px;
+            height: 40px;
+            background-color: beige;
+            margin: 200px auto;
+        }
+        .nav-list{
+            /* li将自己设置为浮动元素，这样li里面的a元素就可以水平排列了 */
+            float: left;
+            width: 20%;
+            /* line-height会使子元素在父元素中垂直居中 */
+            line-height: 40px;
+        }
+        .nav a{
+            /* 将a元素设置为块元素，就可以设置它的宽高度了，那么链接就可以在文字之外点击 */
+            display: block;
+            height: 40px;
+            padding-left:50px;
+        }
+        .nav a:hover{
+            /* 设置点击时的背景颜色 */
+            background-color: rgb(109, 109, 128);
+            /* color: steelblue; 
+            设置点击时的字体颜色
+            */
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li class="nav-list">
+            <a href="#">html</a>
+        </li>
+        <li class="nav-list">
+            <a href="#">css</a>
+        </li>
+        <li class="nav-list">
+            <a href="#">c++</a>
+        </li>
+        <li class="nav-list">
+            <a href="#">java</a>
+        </li>
+        <li class="nav-list">
+            <a href="#">ES</a>
+        </li>
+    </ul>
+</body>
+</html>

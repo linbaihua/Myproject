@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/reset.css">
+    <link rel="stylesheet" href="../source/css/all.css">
+    <style>
+        /* 1、先设置最外层框的样式 */
+        .outer{
+            width: 290px;
+            margin: 100px auto;
+            /* 设置阴影 
+                水平方向
+                竖直方向
+                模糊大小
+                模糊颜色rgba（最后一个是不透明度，在0-1之间）
+            */
+            box-shadow:0 0 10px rgba(0, 0, 0, 0.3);
+            /* background-color: yellowgreen; */
+        }
+        .img-wrapper{
+            /* border 不设置边框样式不显示 */
+            border: 1px red solid;
+        }
+        /* 设置图片宽度和父元素一样 ,这样即使最外层outer变大图片也能跟着变大*/
+        .img-wrapper img{
+            width: 100%;    
+            /* 图片垂直对齐方式  vertical 垂直的 align 对齐 */
+            vertical-align: bottom;
+        }
+        /* 设置内容区样式 */
+        .content{
+            padding: 0 18px;
+            /* margin: 0 18px; */
+        }
+        /* 即使通过title也能精准选择好，但是前面加一个父元素选择器方便以后维护 */
+        .content .title{
+            color: rgb(97, 107, 116);
+            font-size: 18px;
+            margin: 13px 0 15px;
+        }
+        .content .category{
+            color: rgb(66, 73, 73);
+            font-size: 14px;
+            margin: 15px 0 15px;
+        }
+        .content .category i{
+            margin-left: 4px;
+            margin-right: 7px;
+        }
+        .content .introduce{
+            font-size: 14px;
+            color: rgb(121, 131, 139);
+            margin: 16px 0 ;
+            line-height: 20px;
+        }
+        /* 设置评分的样式 */
+        .grade{
+            border-top: 1px rgb(166, 174, 187) solid;
+            height: 50px;
+            /* 使得这个元素框中的内容垂直居中 */
+            line-height: 50px;
+        }
+        /* 设置星星的样式
+            设置了ul浮动，没设置li浮动，所以li可以垂直居中
+        */
+        .star{
+            /* 星星图标浮动在左侧 */
+            float: left;
+            margin-left: 15px;
+        }
+        .star .green{
+            color: yellowgreen;
+        }
+        /* 设置微博的样式 */
+        .grade .weibo{
+            /* 让微博图标浮动到右边 */
+            float: right;
+            margin-right: 18px;
+            /* background-color: yellowgreen; */
+        }
+    </style>
+</head>
+<body>
+    <!-- 最外层 -->
+    <div class="outer">
+        <!-- 图片div -->
+        <div class="img-wrapper">
+            <img src="./微信截图_20220227164628.png" alt="">
+        </div>
+        <!-- 内容div -->
+        <div class="content">
+            <h2 class="title">
+                 动画电影
+            </h2>
+            <h3 class="category">
+                <!-- 行内元素和动画电影在一行显示 -->
+                <i class="fas fa-map-marked"></i>动画
+            </h3>
+            <p class="introduce">
+                这是一部迪士尼电影,非常非常的好看，好看的不要不要的
+            </p>
+        </div>
+        <!-- 评分div -->
+        <div class="grade">
+            <ul class="star">
+                <li class="fas fa-star green"></li>
+                <li class="fas fa-star green"></li>
+                <li class="fas fa-star"></li>
+                <li class="fas fa-star"></li>
+                <!-- shift+alt 就可以向上或者向下复制 -->
+            </ul>
+            <div class="weibo">
+                <!-- 分享到微博图标 -->
+                <span class="fab fa-weibo"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!-- 
+    关于怎么让子元素框中的内容垂直居中
+        -在子元素内容的外面套一个框架，然后设置 line-height=height
+ -->

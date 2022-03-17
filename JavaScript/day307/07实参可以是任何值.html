@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>实参可以是任何值</title>
+    <script>
+        /* 
+            实参可以是任何类型，也可以是一个对象
+                -当我们的参数过多时，可以将参数封装到一个对象中
+        */
+       function sayHello(obj){
+           console.log(obj.name+obj.age+obj.gender);
+       }
+       var objTest = {
+           name:"linbaihua",
+           age:18,
+           gender:"man"
+       };
+       sayHello(objTest);
+
+       /* 
+            -实参也可以是一个函数
+       */
+      function name1(a){
+            a(objTest)
+      }
+      name1(sayHello);
+      
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

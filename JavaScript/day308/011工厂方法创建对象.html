@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工厂方法创建对象</title>
+    <script>
+        /* 
+            -需要大量批量的创建类型相同的对象时使用工厂方法
+        */
+
+// 函数是不是对象，为啥this不行
+
+        function createPerson(name,age,gender){
+            
+            var obj = new Object();
+            obj.name = name;
+            obj.age = age;
+            obj.gender = gender;
+            obj.sayHello = function(){
+                alert(this.name);
+            };  
+
+
+            return obj;
+        }
+        var obj2 = createPerson("jack",16,"man");
+        var obj3 = createPerson("mary",18,"woman");
+        console.log(obj2);
+        console.log(obj3);
+
+        obj2.sayHello();
+        obj3.sayHello();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

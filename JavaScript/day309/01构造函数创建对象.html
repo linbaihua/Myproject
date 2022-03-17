@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造函数创建对象</title>
+    <script>
+
+        /* 
+            -自定义构造函数创建对象
+                -object 是 JS 自带的构造函数，通过 object 创建的实例都是 object类型
+                -为了区分不同的实例对象，通过自定义构造函数创建对象
+                -构造函数创建出来通过 new 就是创建实例，不通过 new 直接调用就是一般调用函数
+                -和工厂模式的区别在于工厂模式是在函数里面直接调用 object 构造函数
+                    创建实例，所以创造出来的实例都是相同的 object 数据类型
+                -通过相同的构造函数创造出的一类实例对象成为一类对象
+                -构造函数自动返回return
+                    -怎么分辨构造函数，通过 new 创建对象的函数就是构造函数
+        */
+
+        // 人的构造函数
+        function Person(name,age,gender){
+            /* 
+                这里的this是指实例对象
+            */
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            /* 
+                函数中的this指的是person
+            */
+            this.sayHello = function fun(){
+                document.write(this.name);
+            };
+        }
+
+        // 狗的构造函数
+        function Dog(name,age){
+            this.name = name;
+            this.age = age;
+
+            this.sayHello = function(){
+                document.write(this.name);
+            };
+        }
+
+        // 创建实例
+        var dog = new Dog("二狗",2);
+        var per = new Person("孙悟空",16,"man");
+
+        dog.sayHello();
+        per.sayHello();
+
+        // 检查类型
+        console.log(dog);
+        console.log(per);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

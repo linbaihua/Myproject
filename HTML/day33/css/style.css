@@ -1,0 +1,59 @@
+html {
+  font-size: 13.33333333vw;
+  background-color: #e3e5e6;
+}
+.w,
+.top-bar,
+.banner {
+  width: 6.93rem;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+}
+.top-bar {
+  display: flex;
+  height: 1.75rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-bar a {
+  color: #424242;
+  font-size: 0.5rem;
+}
+.top-bar a i {
+  color: #3f3f3f;
+}
+.banner img {
+  width: 100%;
+  margin: 0 0 8px 0;
+  padding: 0;
+  border-radius: 0.3 rem;
+}
+.menu {
+  display: flex;
+  flex-flow: row wrap;
+  height: 3.27rem;
+  text-align: center;
+  align-items: space-around;
+  justify-content: space-evenly;
+}
+.menu a {
+  width: 3.27rem;
+  height: 1.04rem;
+  text-align: center;
+  color: aliceblue;
+  font-size: 0.8rem;
+  margin: 3px;
+  border-radius: 0.2rem;
+}
+.menu i {
+  font-size: 0.8rem;
+}
+.menu .study {
+  background-color: #cf488b;
+}
+.menu .learn {
+  background-color: #d4aa37;
+}
+/*# sourceMappingURL=./style.css.map */

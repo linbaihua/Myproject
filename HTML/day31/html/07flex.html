@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex align-items</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul{
+            width: 700px;
+            height: 600px;
+            border: 4px red solid;
+            margin: 50px auto;
+
+            /* 开启弹性盒子，默认水平排列 */
+            display: flex;
+            /* 开启换行 */
+            flex-wrap: wrap;
+            /* align-items  弹性元素在垂直方向上对齐方式
+                stretch  元素长度一样对齐
+                其它的就和水平方向上对齐方式差不多自己慢慢试
+            */
+          /* 弹性元素水平垂直都对齐 */
+            align-items: center;
+            justify-content: center;
+        }
+        li{
+            /* 弹性盒子不给弹性元素指定高度默认匹配盒子的高度 */
+            width: 200px;
+            font-size: 20px;
+            /* 元素居中 */
+            line-height: 100px;
+            text-align: center;
+        }
+        li:first-child{
+            background-color: yellowgreen;
+        }
+        li:nth-child(2){
+            background-color: yellow;
+        }
+        li:nth-child(3){
+            background-color: aqua;
+        }
+        li:nth-child(4){
+            background-color: rgb(29, 197, 43);
+        }
+        li:nth-child(5){
+            background-color: rgb(52, 28, 184);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2
+            <div>2</div>
+        </li>
+        <li>3
+            <div>3</div>
+            <div>3</div>
+        </li>
+        <li>4</li>
+        <li>5
+            <div>5</div>
+            <div>5</div>
+        </li>
+    </ul>
+</body>
+</html>

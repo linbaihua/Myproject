@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this的作用</title>
+    <script>
+
+        /* 
+            -利用 this 输出不同函数和作用域的同名变量
+        */
+        var name = "全局";
+
+        function fun(){
+            console.log(this.name);
+        }
+
+        var obj ={
+            name:"obj",
+            sayHello:fun
+        };
+
+        var obj2 = {
+            name:"obj2",
+            sayHello:fun
+        };
+
+        fun();  //全局
+        obj.sayHello();  //obj
+        obj2.sayHello();  //obj2
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

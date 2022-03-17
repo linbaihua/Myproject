@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>算数运算符</title>
+    <script>
+        var a =123;
+        a="123";
+        a=typeof a; //typeof 返回值类型是 string
+        a=123;
+        a+1; // 运算符都会有一个返回值，并不会改变原有变量
+        a=a+1; // 124
+        //  + 号运算符
+        /* 
+            非字符串与数字相加，都是想变成数字然后相加
+        */
+        var result;  //undefined
+        result =  true;
+        result = true+1; //2
+        result = true + false; //1
+        result =  null +1; //1，null-->number 0
+        result = undefined+1; // nan undefined-->number 0
+        result = NaN+1; // nan,任何值与nan相加都是 nan
+
+        result =undefined;
+        result = Number(result); // nan，undefined转换为数字是 nan，所以与任何数字相加都是 nan
+        /* 
+            任何类型的值与字符串想加，都是先变成字符串然后拼接字符串
+        */
+        result = 1+"123"; //数字与字符串相加会先把数字--》字符串然后拼接字符串
+        result = true+"123"; //true123
+        result = null+"123"; //null123
+        result = undefined+"123";  //undefined123
+
+        /* 
+            boolean与null undefined 相加
+        */
+       result = true+null; // 1
+       result = true+undefined; //nan
+       result = true+NaN; //nan
+       result = NaN+undefined; //nan
+
+       /* 
+            减法
+                全部先转换成number值然后执行减法
+       */
+        result = 100 - "1"; //99 number
+        result = 100 - true; //99 number
+        result = 100 - null; // 100 number null-->0
+        result = 100 - NaN; // nan
+        result = 100 -undefined; //nan
+        result = "100" - true; //99 number
+        result = "100" - null; //100 number
+        result = "100" - undefined; // nan
+        result = true - null; //1 number
+
+
+        console.log(typeof result);
+        console.log(result);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

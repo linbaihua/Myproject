@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        form {
+            margin: 100px auto;
+            margin-left: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            /* 
+                -将全局都用到的变量先提取出来
+            */
+            var its = document.getElementsByName("items");
+            var checkedAllBox = document.getElementById("checkedAllBox");
+
+            /* 
+                -全选
+            */
+            var checkAll = document.getElementById("checkedAllBtn");
+            checkAll.onclick = function () {
+                for (var i = 0; i < its.length; i++) {
+                    its[i].checked = true;
+                }
+                // items全选中时，上面的全选按钮也被选中
+                checkedAllBox.checked = true;
+            };
+
+            /* 
+                -全不选
+            */
+            var checkAllNo = document.getElementById("checkedNoBtn");
+            checkAllNo.onclick = function () {
+                // var its = document.getElementsByName("items");
+                for (var i = 0; i < its.length; i++) {
+                    its[i].checked = false;
+                }
+                // items全未选中时，上面的全选按钮也未被选中
+                checkedAllBox.checked = false;
+            };
+
+            /* 
+                -反选
+            */
+            var checkedRevBtn = document.getElementById("checkedRevBtn");
+            checkedRevBtn.onclick = function () {
+                // 默认上面全选/全不选选中
+                checkedAllBox.checked = true;
+
+                // var its = document.getElementsByName("items");
+                // 遍历选框，反选选中状态
+                for (var i = 0; i < its.length; i++) {
+
+                    /* if (its[i].checked == true) {
+                        its[i].checked = false;
+                    } else {
+                        its[i].checked = true;
+                    } */
+                    its[i].checked = !its[i].checked;
+
+                    // 四个全选框有一个没选中，全选/全不选不选中
+                    if (!its[i].checked) {
+                        checkedAllBox.checked = false;
+                    }
+                }
+
+            };
+
+            /* 
+                 -提交
+            */
+            var sendBtn = document.getElementById("sendBtn");
+            sendBtn.onclick = function () {
+                // var its = document.getElementsByName("items");
+                for (var i = 0; i < its.length; i++) {
+                    /* if (its[i].checked == true) {
+                        alert(its[i].value);
+                    } */
+                    if (its[i].checked) {
+                        alert(its[i].value);
+                    }
+                }
+            };
+
+            /* 
+                -全选/全不选按钮
+            */
+        //    var checkedAllBox = document.getElementById("checkedAllBox");
+           checkedAllBox.onclick = function(){
+            //    var its = document.getElementsByName("items");
+
+                /* if (checkedAllBox.checked) {
+                    for(var i=0;i<its.length;i++){
+                        its[i].checked = true;
+                    }
+                }else{
+                    for(var i=0;i<its.length;i++){
+                        its[i].checked = false;
+                    }
+                } */
+
+                // 响应函数绑定的哪个，this就是哪个
+                for(var i=0;i<its.length;i++){
+                    its[i].checked = this.checked;
+                }
+           };
+           /* 
+                -四个全选框
+                    -四个全选框全选中时，上面的全选/全不选也选中
+                    -四个全选框有一个没选中，上面的全选/全不选不选中
+                -为四个多选框全部绑定单击响应函数
+           */
+        //    var items = document.getElementsByName("items");
+           for(var i=0;i<its.length;i++){
+               
+               its[i].onclick = function(){
+
+                   // 初始为选中
+                   checkedAllBox.checked = true;
+    
+                   // 每次点击其中一个多选框时都遍历所有的多选框
+                       for(var j=0;j<its.length;j++){
+                           if (!its[j].checked) {
+                               checkedAllBox.checked = false;
+                           }
+                       }
+               };
+           }
+
+        };
+    </script>
+</head>
+
+<body>
+    <form action="" method="post" id="form">
+        你爱好的运动是？<input type="checkbox" id="checkedAllBox">全选/全不选
+        <br />
+        <input type="checkbox" name="items" value="足球" />足球
+        <input type="checkbox" name="items" value="篮球" />篮球
+        <input type="checkbox" name="items" value="羽毛球" />羽毛球
+        <input type="checkbox" name="items" value="乒乓球" />乒乓球
+        <br />
+        <input type="button" id="checkedAllBtn" value="全　选" />
+        <input type="button" id="checkedNoBtn" value="全不选" />
+        <input type="button" id="checkedRevBtn" value="反　选" />
+        <input type="button" id="sendBtn" value="提　交" />
+    </form>
+</body>
+
+</html>

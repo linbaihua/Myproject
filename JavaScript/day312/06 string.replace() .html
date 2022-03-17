@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>string.replace</title>
+    <script>
+        /* 
+            -replace() 
+                -在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串
+                -语法：
+                    -stringObject.replace(regexp/substr,replacement)
+                    -replacement：replace() 方法的参数 replacement 可以是函数而不是字符串。
+                        在这种情况下，每个匹配都调用该函数，它返回的字符串将作为替换文本使用
+                -返回值：替换后的新字符串
+                -注意：如果 regexp 具有全局标志 g，那么 replace() 方法将替换所有匹配的子串。否则，它只替换第一个匹配子串
+        */
+        var str = "how are you how are you";
+        console.log(str.replace("how", "HOW"));
+        console.log(str.replace(/how/g, "HOW"));
+        //    替换字符可以是空串
+        console.log(str.replace(/how/g, ""));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

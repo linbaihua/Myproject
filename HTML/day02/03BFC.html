@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .outer{
+            /* background-color: yellowgreen; */
+            border: 20px red solid;
+            /* BFC隐藏模式，overflow hidden */
+            overflow: hidden;
+        }
+        .inner{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            float: left;
+        }
+        .inner2{
+            width: 100px;
+            height: 100px;
+            background-color: violet;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+        <div class="inner2"></div>
+    </div>
+    <!-- 快捷键写法，.box1按enter就直接出来 -->
+    <div class="box"></div>
+    <div class="box2"></div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则语法</title>
+    <script>
+
+        /* 
+            -a|b|C
+                查找 abc 中的任何一个
+            -[abc] 
+                查找方括号之间的任何字符 
+            -[^abc] 
+                查找任何不在方括号之间的字符 
+            -[0-9]
+                 查找任何从 0 至 9 的数字 
+            -[a-z]
+                 查找任何从小写 a 到小写 z 的字符 
+            -[A-Z]
+                 查找任何从大写 A 到大写 Z 的字符
+            -[A-z]
+                 查找任何从大写 A 到小写 z 的字符 
+
+        */
+        var regexp1 = /a|b|c/;
+        console.log(regexp1.test("aded"));
+
+        var regexp2 = /[abc]/;
+        console.log(regexp2.test("apple"));
+
+        var regexp3 = /[^ab]/;
+        console.log(regexp3.test("abc"));
+
+        var regexp4 = /[0-9]/;
+        console.log(regexp4.test("123456"));
+
+        var regexp5 = /[a-z]/;
+        console.log(regexp5.test("linbaihua"));
+
+        // 
+        var regexp6 = /[A-Z]/;
+        console.log(regexp6.test("linbaihua"));
+
+        // 
+        var regexp7 = /[A-Z]/i;
+        console.log(regexp7.test("linbaihua"));
+
+        // [A-z]
+        var regexp8 = /[A-z]/;
+        console.log(regexp8.test("linbaihua"));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

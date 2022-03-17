@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for each 遍历数组</title>
+    <script>
+
+        /* 
+            -for each
+                -遍历数组的方法，但是IE8及以下不支持
+                -需要一个函数作为参数（匿名函数）
+                -函数中可以传三个形参
+                    -第一个参数 数组中的值
+                    -第二个参数 数组索引
+                    -第三个参数 数组本身
+            -回调函数
+                -由我们创建的函数但是不由我们调用的函数
+        */
+
+        var arr = ["jack","mary","jony","beer"];
+
+        arr.forEach(function(element,index,array){
+            console.log("element>"+element);
+            console.log("index>"+index);
+            console.log("array>"+array);
+        });
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            
+            /* 开启box1的绝对定位，那样它才能随意浮动 */
+            position: absolute;
+        }
+        #box2{
+            width: 300px;
+            height: 300px;
+            background-color: yellowgreen;
+        }
+        body{
+            width: 2000px;
+            height: 2000px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            /* 
+                -让div可以跟着鼠标移动 
+                -div跟着鼠标移动，是div获取鼠标的坐标传给div的偏移量
+                    -所以是给网页绑定鼠标移动对象（document）
+                    -返回鼠标的坐标给div的偏移量
+            */
+            var box1 = document.getElementById("box1");
+            document.onmousemove = function(event){
+
+                // 兼容不同的浏览器
+                event = event || window.event;
+
+                // 获取鼠标的xy坐标
+                var x = event.clientX;
+                var y = event.clientY;
+
+                // 获取滚动条的的xy距离
+                /* 
+                    -chrome认为scrollTop是body的，可以通过body获取，但是火狐等浏览器认为
+                        scrollTop是html的
+                    -body可以直接通过document获取
+                    -html 通过 document.documentElement，documentElement指html
+                */
+                var st = document.body.scrollTop || document.documentElement.scrollTop;
+                var lt = document.body.scrollLeft || document.documentElement.scrollLeft;
+
+                // 设置div的偏移量
+                box1.style.left = x + lt + "px";
+                box1.style.top = y + st + "px";
+            };
+
+            // 取消box2的事件冒泡
+            /* 
+                -这里事件是鼠标移动事件
+                -box2的父级是body
+                -所以这里取消的是box2在body中的鼠标移动事件，所以box1就不能进入box2
+                    因为box2 已经脱离了鼠标移动的body范围
+            */
+            var box2 = document.getElementById("box2");
+            box2.onmousemove = function(event){
+                event = event || window.event;
+                event.cancelBubble = true;
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

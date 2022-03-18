@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽练习</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+
+            /* 开启了绝对定位才可以脱离文档流 */
+            position: absolute;
+        }
+    </style>
+    <script>
+        /* 
+            -鼠标移动事件和鼠标松开事件都是由鼠标按下事件引起的，所以
+                
+        */
+        window.onload = function(){
+
+            var box1 = document.getElementById("box1");
+
+            /* 01鼠标按下响应事件 */
+            box1.onmousedown = function(event){
+                
+                event = event || window.event;
+                /* 
+                    -获得鼠标按下位置时距离box1原点的距离，以便后面鼠标移动时去掉
+                        这些距离，这才是鼠标移动的真正距离
+                */
+                var ol = event.clientX - box1.offsetLeft;
+                var ot = event.clientY - box1.offsetTop;
+
+                /* 02鼠标移动事件 */
+                document.onmousemove = function(event){
+
+                    event = event || window.event;
+                    
+                    var x = event.clientX - ol;
+                    var y = event.clientY - ot;
+
+                    box1.style.left = x + "px";
+                    box1.style.top = y + "px";
+
+                };
+
+                /* 03鼠标松开事件 */
+                /* 
+                    -在整个网页中松开鼠标，为什么不是box1，因为box1可能会被别的元素遮挡
+                    -在松开鼠标的同时停止鼠标的移动事件
+                    -在松开鼠标的同时停止鼠标松开事件，不然鼠标松开事件会一直存在
+                */
+                document.onmouseup = function(){
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+
+                /* 
+                    -当我们拖拽一个网页的内容到顶部的搜索框中，浏览器会默认的就行搜索，此时
+                        会导致拖拽功能的异常，我们可以通过  return false 来取消这个行为
+                */
+                return false;
+                
+            };
+
+        };
+
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

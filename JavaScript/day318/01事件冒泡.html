@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的冒泡（Bubble）</title>
+    <!-- 
+        -事件冒泡的简介和用法
+     -->
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+        #s1{
+            background-color: yellow;
+        }
+    </style>
+    <script>
+
+        window.onload = function(){
+             /* 
+                -bubble(事件冒泡)
+                    -事件冒泡就是后代元素触发响应同时也触发了父代元素
+                    -在开发中大多是有用的，不过我们也可以手动关闭它
+                    -想让事件不冒泡给父级元素，就在本对象中设置 cancelBubble
+             */
+            var s1 = document.getElementById("s1");
+            s1.onclick = function(event){
+                // 兼容事件对象
+                event = event || window.event;
+                alert("我是span的单击响应函数");
+
+                /* 
+                    -取消冒泡
+                    -可以将事件对象的 cancelBubble设置为 true,就可以取消冒泡
+                */
+               event.cancelBubble = true;
+            }
+
+            // 给box1绑定一个单击响应函数
+            var box1 = document.getElementById("box1");
+            box1.onclick = function(event){
+                // 兼容浏览器event
+                event = event || window.event;
+                alert("我是box1的单击响应函数");
+
+                event.cancelBubble = true;
+            };
+
+            // 为body绑定一个单击响应函数
+            document.body.onclick = function(){
+                alert("我是body的单击响应函数");
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="box1">
+        我是box1
+        <!-- span是行内元素 -->
+        <span id="s1">我是span</span>
+    </div>
+</body>
+</html>

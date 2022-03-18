@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件的绑定</title>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById("btn");
+                /* 
+                    -addEventListener()
+                        -通过这个方法可以为元素绑定多个响应函数
+                        -三个参数
+                            -事件的字符串，不加on，比如onclick就传入click
+                            -一个回调函数，当事件触发时调用的函数
+                            -是否在捕获阶段触发函数，传入一个Boolean，一般都是false
+                        -这个方法不支持 IE8及以下的浏览器
+                        -有别的方法支持 IE8
+                        -返回的this是btn
+                */
+                btn.addEventListener("click", function () {
+                    alert(this);
+                }, false);
+
+                /* 
+                    -attachEvent()
+                        -返回的this是window对象
+                */
+                btn.attachEvent("onclick", function () {
+                    alert(this);
+                });
+
+            /* 
+                 -问题：能不能让两个方法返回的this都是btn?(兼容不同的浏览器)
+                    -和之前一样，判断不同的浏览器，有哪个方法就用哪个方法
+                    -但是要返回同样的this需要搞一下
+            */
+           var btn2 = document.getElementById("btn2");
+
+           function bind(obj, eventStr, callback){
+
+               if (obj.addEventListener) {
+                    obj.addEventListener(eventStr, callback, false);
+               }else{
+                   obj.attachEvent("on"+eventStr, function(){
+                       /* 
+                            -call()
+                                -在调用函数的同时指定this是哪个具体对象
+
+                            -这里就是调用callback函数同时指定它的this是指定的obj
+                            -这里的callback就是一个函数，这个函数输出this，现在指定它的
+                                this是obj
+                       */
+                        callback.call(obj);
+                   });
+               }
+
+           }
+           /* 
+                -bind函数里面的匿名函数没名字，但是作为参数传进去后，它的名字就是
+                    那个形参，就有名字了，就像 var callback = function(){}
+           */
+           bind(btn2, "click", function(){
+               alert(this);
+           });
+
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn">点击按钮以后弹出一个内容</button>
+    <button id="btn2">点击按钮以后弹出一个内容（btn2)</button>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件的绑定</title>
+    <script>
+        window.onload = function(){
+            var btn  = document.getElementById("btn");
+                /* 
+                    -addEventListener()
+                        -通过这个方法可以为元素绑定多个响应函数
+                        -三个参数
+                            -事件的字符串，不加on，比如onclick就传入click
+                            -一个回调函数，当事件触发时调用的函数
+                            -是否在捕获阶段触发函数，传入一个Boolean，一般都是false
+                        -这个方法不支持 IE8及以下的浏览器
+                        -有别的方法支持 IE8
+                */
+                btn.addEventListener("click",function(){
+                    alert("1")
+                },false);
+
+                btn.addEventListener("click",function(){
+                    alert("2")
+                },false);
+
+                btn.addEventListener("click",function(){
+                    alert("3")
+                },false);
+
+                /* 
+                    -attachEvent()
+                        -两个参数
+                            -事件的字符串，需要on
+                            -回调函数（事件触发时调用的函数）
+                        -不同的时这个方法是后绑定先执行
+                */
+               btn.attachEvent("onclick",function(){
+                   alert("1");
+               });
+               btn.attachEvent("onclick",function(){
+                   alert("2");
+               });
+               btn.attachEvent("onclick",function(){
+                   alert("3");
+               });
+        };
+    </script>
+</head>
+<body>
+    <button id="btn">点击按钮以后弹出一个内容</button>
+</body>
+</html>

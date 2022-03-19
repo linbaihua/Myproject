@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>按键事件</title>
+    <script>
+        window.onload = function(){
+
+            // /* 
+            //     -按键按下事件
+            // */
+            // document.onkeydown = function(){
+            //     console.log("按键按下");
+            // };
+            // /* 
+            //     -按键松开事件
+            // */
+            // document.onkeyup = function(){
+            //     console.log("按键松开");
+            // };
+
+            var input = document.getElementById("input");
+            input.onkeydown = function(event){
+
+                event = event || window.event;
+
+                // 返回按键的编码
+                console.log(event.keyCode);
+
+                // 让数字不出现在输入框中
+                if (event.keyCode >= 48 && event.keyCode <= 57) {
+
+                    // return false 可以让输入内容不显示
+                    return false;
+                }
+
+                /* 
+                    -alt ctrl shift 有其独自的属性
+                    -可以通过事件对象获取属性，如果按下就返回 true
+                */
+                if (event.altKey) {
+                    alert("按下了alt");
+                }else if(event.ctrlKey){
+                    alert("按下了 Ctrl");
+                }else if(event.shiftKey){
+                    alert("按下了 shift");
+                }
+            }; 
+
+            document.onkeydown = function(event) {
+                
+                /* 
+                    -可以同时按下两个按键
+                */
+                if (event.keyCode == 89 && event.ctrlKey) {
+                    console.log("Ctrl+y");
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <input type="text" id="input">
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>滚轮事件</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+
+            var box1 = document.getElementById("box1");
+
+            // 一般浏览器的滚轮绑定方式
+            /* 
+                -onmousewheel事件
+                    -event.wheelDelta > 0 是向上滚动
+                    -event.wheelDelta < 0 是向下滚动
+            */
+            box1.onmousewheel = function(event){
+                
+                if (event.wheelDelta > 0 || event.detail < 0) {
+                    box1.style.height = box1.clientHeight - 10 + "px";
+                }else{
+                    box1.style.height = box1.clientHeight + 10 + "px";
+                }
+
+                /* 
+                    -当滚轮滚动时，如果浏览器有滚动条，滚动条会随之滚动，这是浏览器的默认
+                        行为，如果不希望发生，使用return false 取消
+                */
+                return false;
+            };
+
+            // 火狐浏览器的滚轮事件
+            /* 
+                -火狐浏览器不支持 onmousewheel,它的滚轮需要使用 addeventlistener 方法
+                    来绑定，而且传入的方法是 DOMMouseScroll 函数
+                -火狐浏览器是通过 event.detail 来检测滚轮上下滚动的
+                    -向上滚动 event.detail < 0
+                    -向下滚动  event.detail > 0
+            */
+            box1.addEventListener("DOMMouseScroll",function(event){
+                if (event.detail < 0){
+                        box1.style.height = box1.clientHeight - 10 + "px";
+                }else{
+                    box1.style.height = box1.clientHeight + 10 + "px";
+                }
+            }, false);
+
+        };
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>

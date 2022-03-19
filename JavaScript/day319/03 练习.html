@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color:yellowgreen;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+
+            var box = document.getElementById("box");
+            // up-38 down-40 left-37 right-39
+            document.onkeydown = function(event){
+                // console.log(event.keyCode);
+                var top = box
+                if (event.keyCode == 38) {
+                    
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>

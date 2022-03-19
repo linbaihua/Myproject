@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* *{
+            margin: 0;
+            padding: 0;
+        } */
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+            left: 200px;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+
+            /* 
+                -为什么要有事件？
+                    -事件是用来当我们触发页面中某个东西时可以改变元素（比如onclick）
+                    -如果我们只是想获取页面中元素的属性值(行内属性）是不用事件的
+                    -但是我们想改变元素的属性值（更改或者添加行内属性）就需要通过事件触发函数来改变元素属性值
+
+                -关于网页中的元素和对象
+                    -网页中的元素我们可以在 JS 中直接读取到，获得它们的属性值和设置它，
+                        但是在JS中直接设置属性值是静态的，不是动态的，当然我们可以通过
+                        函数去动态设置，但是如果函数没有绑定一个网页中的事件，我们就
+                        不能在网页中动态的设置元素属性值
+                    -所以我们想动态的设置元素属性值就需要网页中首先有一个看的见得元素，
+                        然后给这个元素绑定一个事件，再给这个事件绑定一个触发事件函数，
+                        再函数中动态的设置元素的属性值
+            */
+
+            /* 
+                -left是元素的相对于其父元素的位置，我们可以在style中设置，它属于style对象
+                    的属性，所以我们直接通过元素去读取它是读取不到的，left是元素的属性style的
+                    属性，我们只能通过 元素.style 去读取和设置它
+                -offsetLeft 是元素的属性（element），可以查看元素有哪些属性，所以我们可以直接
+                    通过元素去读取和设置
+            */
+            /* 
+                -style对象中的属性不可以直接就读取到,得先设置才可以读取到，因为这两个对象
+            */
+        //    var box = document.getElementById("box");
+        //    box.style.left = 500 + "px";
+        //    console.log(box.style.left);
+        //    console.log(typeof box.style);
+                console.log(box.offsetLeft);
+                console.log(btn.offsetLeft);
+                btn.onclick = function(){
+                    alert("good");
+                };
+        };
+    </script>
+</head>
+<body>
+    <div id="box"></div>
+    <button id="btn">点我一下</button>
+</body>
+</html>

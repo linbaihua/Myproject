@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>练习</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
         #box {
             width: 100px;
             height: 100px;
@@ -13,16 +17,34 @@
     </style>
     <script>
         window.onload = function() {
-
-            var box = document.getElementById("box");
-            // up-38 down-40 left-37 right-39
+            
             document.onkeydown = function(event){
-                // console.log(event.keyCode);
-                var top = box
-                if (event.keyCode == 38) {
-                    
+                
+                event = event || window.event;
+                /* 
+                -如果不按住Ctrl，那么下面用的speed是外面的10，但是按了speed后，就等于在函数内部生成了一个
+                新的speed变量，作用域是函数内部的，后面的speed就都是这个50的speed，覆盖了外面的10speed
+                */
+               var speed = 10;
+                if (event.ctrlKey) {
+                    speed = 50;
                 }
-            }
+                switch (event.keyCode) {
+                    case 37:
+                        box.style.left = box.offsetLeft - speed + "px";
+                        break;
+                    case 38:
+                        box.style.top = box.offsetTop - speed + "px";
+                        break;
+                    case 39:
+                        box.style.left = box.offsetLeft + speed + "px";
+                        break;
+                    case 40:
+                        box.style.top = box.offsetTop + speed + "px";
+                        break;
+                }
+            };
+
         };
     </script>
 </head>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+            -BOM对象
+                -window
+                    -代表的是整个浏览器窗口，所有对象的祖先？
+                -navigator
+                    -浏览器对象，通过这个对象识别不同的浏览器
+                -location
+                    -地址栏对象，可以操作地址栏信息或者跳转网页
+                -history
+                    -历史记录，由于隐私原因，不能看到别人的历史记录，只能操作网页前后跳转
+                -screen
+                    -屏幕信息
+                -上面的对象都是window对象的属性，可以通过window对象去调用
+                
+        */
+        /* 
+            -navigator
+                -由于历史原因，navigator中的大多数属性都已经不能用了，不好通过navigator对象去识别出不同的浏览器
+                -一般用navigator中的 userAgent 来识别出不同的浏览器，userAgent 中存放着浏览器的具体内容
+
+                -chrome
+                    -Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36
+                -firefox
+                    -Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0
+                -edge
+                    -使用的Chrome内核，所以识别是Chrome，后面开发中edge可以看做是和Chrome，内核是一样的
+                -所以现在浏览器两大阵营就是火狐和谷歌了呗，IE已经停用了
+        */
+        var ua = navigator.userAgent;
+        console.log(ua);
+        if(/firefox/i.test(ua)){
+				alert("你是火狐！！！");
+			}else if(/chrome/i.test(ua)){
+				alert("你是Chrome");
+			}
+            
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

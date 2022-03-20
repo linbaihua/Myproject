@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>-location 对象</title>
+    <script>
+        window.onload = function () {
+            /* 
+                -location对象
+                    -对象包含有关当前 URL 的信息
+                    -是window的属性
+
+                    -href属性
+                        -返回当前页面URL
+                    -assign()
+                        -传入一个URL，就和一个超链接一样，会生成历史记录，可以回退
+                    -replace()
+                        -和assign差不多，只是不会生成历史记录
+                    -reload()
+                        -刷新页面,有参数 false 和 true，但是感觉好像没用
+            */
+            console.log(location);
+            console.log(history.length);
+
+            var btn = document.getElementById("btn");
+            btn.onclick = function () {
+
+                // 返回当前页面的URL
+                // console.log(location.href);
+
+                //    可以直接更改location的值，直接就跳转到指定的页面
+                // location = "http://baidu.com";
+
+                // location.assign("http://baidu.com");
+
+                // location.replace("http://baidu.com");
+
+                location.reload();
+
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn">点我一下</button><br>
+     请输入<input type="text">
+</body>
+
+</html>

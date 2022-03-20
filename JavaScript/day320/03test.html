@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+
+            console.log(history.length);
+            
+            var btn = document.getElementById("btn");
+            btn.onclick = function(){
+                history.forward();
+            };
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function(){
+                history.back();
+            };
+        };
+    </script>
+</head>
+<body>
+    <h1>03test</h1>
+    <button id="btn">下一个页面</button>
+    <button id="btn1">上一个页面</button>
+    <a href="./02 history.html">go history</a>
+</body>
+</html>

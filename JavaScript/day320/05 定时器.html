@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器</title>
+    <script>
+        window.onload = function(){
+
+            var count = document.getElementById("count");
+            
+            var num = 1;
+
+            /*
+                -setInterval()
+                    -window下的属性
+                    -间隔一定时间重复调用一个函数
+                    -参数
+                        -回调函数（就是被当作参数的函数，匿名）
+                        -间隔时间，1秒就是1000毫秒，以毫秒为单位
+                    -有一个返回值(number)，作为这个定时器的标识，可以通过 clearInterval 去关闭 
+
+                -clearInterval()
+                    -传入 setInterval() 的表示id终止定时器
+             */
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function(){
+                
+                var time1 = setInterval(function(){
+                    count.innerHTML = num++;
+                },1000);
+
+                var btn = document.getElementById("btn");
+                btn.onclick = function(){
+                    clearInterval(time1);  
+                };
+            };
+        };
+    </script>
+</head>
+<body>
+    <h1 id="count"></h1>
+    <button id="btn">关闭定时器</button>
+    <button id="btn1">开启定时器</button>
+</body>
+</html>

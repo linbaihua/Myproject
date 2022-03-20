@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>history对象</title>
+    <script>
+        window.onload = function () {
+
+            /*   -history对象
+                  -历史记录对象
+                -length  
+                  -返回浏览器历史列表中的URL数量
+                  -当在vscode中使用debugger打开页面时显示2，可能是因为debugger也算一个，但是在文件夹中使用浏览器
+                      打开就显示1
+                -back()
+                    -上一个页面
+                -forward()
+                    -下一个页面
+                -go()
+                    -go(1) 下一个页面
+                    -go(2)  下第二个页面
+                    -go(-1)  上一个页面
+                    -go(-2)  上两个页面
+                
+                -back和forward要想实现两个页面都可以上下页面，则两个页面都要有这两个函数才能配对跳转
+               */
+            console.log(history);
+            console.log(history.length);
+
+            var btn = document.getElementById("btn");
+            btn.onclick = function () {
+                history.back();
+            };
+            var btn1 = document.getElementById("btn1");
+            btn1.onclick = function () {
+                history.forward();
+            };
+
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn">上一个页面</button>
+    <button id="btn1">下一个页面</button>
+    <a href="./03test.html">go 03test</a>
+</body>
+
+</html>

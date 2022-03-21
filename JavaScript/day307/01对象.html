@@ -14,7 +14,7 @@
         obj.sex = "man";
 
         /* 
-            使用中括号方式添加属性
+            -使用中括号方式添加属性
                 这种方式更加的灵活，属性名可以是变量传入
         */
         obj["lin"] = "hello";
@@ -33,6 +33,11 @@
         document.write("lin" in obj);
         document.write("<br/>");
 
+        /* 
+            -使用[]输出的时候传入的是一个字符串，这在后面用于方法传参数就很
+                有用处，因为很多方法的参数是以string传入的，那么使用
+                点的读取就不行，需要使用[]读取
+        */
         document.write(obj.name + "<br/>");
         document.write(obj["lin"] + "<br/>");
         document.write(obj[a] + "<br/>");

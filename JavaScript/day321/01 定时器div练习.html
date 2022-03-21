@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器div练习</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+
+            var dir = 0;
+            var speed = 10;
+
+            // var box1 = document.getElementById("box1");
+            document.onkeydown = function(event){
+
+                dir = event.keyCode;
+
+                if (event.ctrlKey) {
+                    speed = 30;
+                }else{
+                    // else 就是没有按下Ctrl按键
+                    speed = 10;
+                }
+            };
+
+            document.onkeyup = function(){
+                dir = 0;
+            };
+
+            setInterval(function(){
+                switch (dir) {
+                    case 37:
+                        box1.style.left = box1.offsetLeft - speed + "px";
+                        break;
+                    case 39:
+                        box1.style.left = box1.offsetLeft + speed + "px";
+                        break;
+                    case 38:
+                        box1.style.top = box1.offsetTop - speed + "px";
+                        break;
+                    case 40:
+                        box1.style.top = box1.offsetTop + speed + "px";
+                        break;
+                }
+            },30);
+        };
+    </script>
+</head>
+<body>
+    <div id="box1"></div>
+</body>
+</html>

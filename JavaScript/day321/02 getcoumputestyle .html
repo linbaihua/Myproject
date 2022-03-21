@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+
+    <script>
+        var box1 = document.getElementById("box1");
+
+        /* 
+            -getComputedStyle()
+                -返回指定对象的css数组
+                -通过返回的数组对象可以访问css设置的值
+            -参数
+                -第一个参数 元素
+                -第二个参数  指定一个要匹配的伪元素的字符串。必须对普通元素省略（或null）
+                    如果是普通元素就传入null，这里box1是普通元素就传入null
+        */
+        var box1Style = window.getComputedStyle(box1,null);
+        console.log(box1Style);
+        console.log(box1Style.length);
+        console.log(box1Style.left);
+        console.log(getComputedStyle(box1,null).width);
+        console.log(getComputedStyle(box1,null).height);
+
+        function getStyle(obj,name){
+            
+            // 函数返回了一个值需要一个变量接收或者直接输出
+            return getComputedStyle(obj,null)[name];
+        }
+
+        // getStyle(box1,"left");
+        console.log(getStyle(box1,"left"));
+ 
+    </script>
+</body>
+</html>

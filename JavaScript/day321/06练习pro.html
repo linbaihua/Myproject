@@ -25,6 +25,7 @@
             background-color: yellow;
             position: absolute;
             top: 150px;
+            left: 0;
         }
     </style>
 </head>
@@ -44,6 +45,9 @@
 
         var btn01 = document.getElementById("btn01");
         var btn02 = document.getElementById("btn02");
+        var btn03 = document.getElementById("btn03");
+        var btn04 = document.getElementById("btn04");
+        var btn05 = document.getElementById("btn05");
 
         btn01.onclick = function () {
             move(box1, "left", 500, 10);
@@ -51,6 +55,20 @@
 
         btn02.onclick = function () {
             move(box1, "left", 0, 10);
+        };
+
+        btn03.onclick = function () {
+            move(box2, "left", 800, 10);
+        };
+
+        btn04.onclick = function () {
+            move(box2, "left", 0, 10);
+        };
+
+        btn05.onclick = function () {
+            move(box2, "width", 500, 10, function(){
+                
+            });
         };
 
     </script>

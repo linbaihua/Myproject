@@ -25,6 +25,9 @@ function move(obj, attr, target, speed, callback){
         }
         obj.style[attr] = position + "px";
         
+        /* 
+            -下面的回调函数可以做很多事情
+        */
         if(position == target){
             clearInterval(obj.timer);
             callback && callback();

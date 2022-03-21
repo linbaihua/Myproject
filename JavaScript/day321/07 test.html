@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+            left: 20px;
+            position: absolute;
+        }
+    </style>
+    <script src="./js/02 test.js"></script>
+</head>
+<body>
+    <div id="box1"></div>
+
+    <script>
+        // var box1 = document.getElementById("box1");
+
+        // console.log(box1.style.left);
+        // console.log(box1.offsetLeft);
+
+        /* 
+            -getComputedStyle()
+                -可以读取到css中的属性值
+                -而通过style对象只能读取到行内对象的属性值
+        */
+        // console.log(getComputedStyle(box1,null)["left"]);
+        var left = getComputedStyle(box1,null).left;
+        console.log(parseInt(left));
+        console.log(getComputedStyle(box1,null).width);
+        console.log(box1);
+
+        fun1(box1,"width");
+
+    </script>
+</body>
+</html>

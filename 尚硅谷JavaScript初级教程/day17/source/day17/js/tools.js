@@ -47,7 +47,7 @@ function move(obj, attr, target, speed, callback) {
 		if(newValue == target) {
 			//达到目标，关闭定时器
 			clearInterval(obj.timer);
-			//动画执行完毕，调用回调函数
+			/* 动画执行完毕，调用回调函数,&&先判断有没有callback，有就调用，没有就不调用了 */
 			callback && callback();
 		}
 

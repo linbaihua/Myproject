@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn01">向右移动</button>
+    <button id="btn02">向左移动</button>
+    <br>
+    <br>
+    <div id="box1"></div>
+
+    <script>
+
+        // var box1 = document.getElementById("box1"); 如果不绑定事件感觉不用get
+        var btn01 = document.getElementById("btn01");
+        var btn02 = document.getElementById("btn02");
+
+        btn01.onclick = function () {
+            move(box1, 500, 10);
+        };
+
+        btn02.onclick = function () {
+            move(box1, 0, 10);
+        };
+
+        /* 
+            -关于这个timer为什么要放在window作用域中
+                -因为如果放在move里面，那么一开始的clearInterval就没有timer，会是undefined
+                    那么在左右移动的点击按钮之间切换就不能结束上次的定时器
+        */
+        // var timer;
+        function move(obj, target, speed) {
+
+            clearInterval(obj.timer);
+
+            /* 
+                -这个判断要放在定时器外面，因为在每次进入一个定时器都要判断speed的正负值
+            */
+            if (obj.offsetLeft > target) {
+                speed = -speed;
+            }
+
+            obj.timer = setInterval(function () {
+
+                var position = obj.offsetLeft + speed;
+
+                if ((speed > 0 && position > target) || (speed < 0 && position < target)) {
+                    position = target;
+                }
+                obj.style.left = position + "px";
+
+                if (position == target) {
+                    clearInterval(obj.timer);
+                }
+            }, 30);
+        }
+    </script>
+</body>
+
+</html>

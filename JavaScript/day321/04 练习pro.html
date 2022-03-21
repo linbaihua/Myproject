@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片定时器练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+        }
+
+        #box2 {
+            width: 0;
+            height: 1000px;
+            border: 1px red solid;
+            left: 500px;
+            position: absolute;
+        }
+
+        .btn {
+            margin-top: 100px;
+        }
+    </style>
+     <script>
+         window.onload = function(){
+
+            var box1 = document.getElementById("box1");
+
+             var btn1 = document.getElementById("btn1");
+             btn1.onclick = function () {
+                 move(box1, 500, 10);
+             };
+     
+             var btn2 = document.getElementById("btn2");
+             btn2.onclick = function () {
+                 move(box1, 0, 10);
+             };
+     
+             var timer;
+     
+             function move(obj, target, speed) {
+     
+                 // 将之前的定时器关闭
+                 clearInterval(timer);
+     
+                 /* 
+                     -判断speed的正负
+                         -向右移动时，未过target就是正，过了target就是负值
+                         -向左移动时，未过target就是负，过了target就是正
+                 */
+                 if (obj.offsetLeft > target) {
+                     speed = -speed;
+                 }
+     
+                 setInterval(function(){
+     
+                     /* 
+                         -position是每次元素移动的位置
+                         -下面的循环语句是判断元素是否移动过头，移动过头就直接等于target
+                     */
+                     var position = obj.offsetLeft + speed;
+                     if ((speed < 0 && position < target) || (speed > 0 && position > target)) {
+                         position = target;
+                     }
+                     obj.style.left = position + "px";
+     
+                     /* 
+                         -元素移动到位置后，关闭移动
+                     */
+                     if (position == target) {
+                         clearInterval(timer);
+                     }
+                 }, 30);
+             }
+         };
+
+
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <button id="btn1" class="btn">向右移动</button>
+    <button id="btn2" class="btn">向左移动</button>
+
+   
+</body>
+
+</html>

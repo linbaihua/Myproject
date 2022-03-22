@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数和实例</title>
+</head>
+<body>
+    <script>
+        /* 
+            -函数名大写的都是准备作为构造函数的
+            -官方给的构造函数只有几个，Object, Function, Array 等等，开头字母大写的是构造函数
+            -当然构造函数也是函数，当我们不 new一个实例的时候，直接调用它就是普通函数
+            -构造函数不是必须是大写开头，只是不定义的这样用
+        */
+        function Person(name, age){
+            this.name = name;
+            this.age = age;
+            return name + " " + age;
+        }
+        function per(name, age){
+            this.name = name;
+            this.age = age;
+            return name + " " + age;
+        }
+        // 作为构造函数
+        var person = new Person("jack", 18);
+        console.log(person.name);
+        console.log(person.age);
+
+        // 也可以作为构造函数
+        var person2 = new per("sony", 15);
+        console.log(person2.name);
+
+        //作为普通函数
+        console.log(Person("mary", 16));
+
+    </script>
+</body>
+</html>

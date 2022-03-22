@@ -9,7 +9,6 @@
             -RegExp 
                 -对象表示正则表达式，它是对字符串执行模式匹配的强大工具
                 -可以构造函数创建对象
-                -可以字面量创建对象
                 -参数
                     -参数 pattern 
                         -是一个字符串，指定了正则表达式的模式或其他正则表达式
@@ -19,6 +18,7 @@
                         -g 执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。 
                         -m 执行多行匹配 
                         -如果 pattern 是正则表达式，而不是字符串，则必须省略该参数
+                -可以字面量创建对象
                 -test() 
                     -方法用于检测一个字符串是否匹配某个模式
 
@@ -34,7 +34,7 @@
         console.log(regexp2.test(str));
 
         // 忽略大小写
-        var regexp3 = new RegExp("o","i");
+        var regexp3 = new RegExp("o", "i");
         console.log(regexp3.test(str));
 
         // 字面量创建
@@ -44,7 +44,7 @@
         // 字面量创建
         var regexp5 = /H/i;
         console.log(regexp5.test(str));
-        
+
     </script>
 </head>
 

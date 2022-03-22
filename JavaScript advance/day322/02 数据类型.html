@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型判断基本类型</title>
+</head>
+
+<body>
+    <script>
+        /*
+            1. 分类(2大类)
+            * 基本(值)类型
+                * Number: 任意数值
+                * String: 任意文本
+                * Boolean: true/false
+                * undefined: undefined
+                * null: null
+            * 对象(引用)类型
+                * Object: 任意对象
+                * Array: 特别的对象类型(下标/内部数据有序)
+                * Function: 特别的对象类型(可执行)
+            2. 判断
+            * typeof:
+                * 可以区别: 数值, 字符串, 布尔值, undefined, function
+                * 不能区别: null与对象, 一般对象与数组
+            * instanceof
+                * 专门用来判断对象数据的类型: Object, Array与Function
+            * ===
+                * 可以判断: undefined和null
+                * ==(不推荐用，==可以做数据转换，===不会做数据转换)
+        */
+        var obj = {
+            name: 'linbiahua',
+            age: 18,
+            bool: false,
+            nu: null,
+            un: undefined
+        };
+        console.log('----------------------------------------------');
+        console.log(typeof obj.name === 'string'); //string
+        console.log(typeof obj.age === 'number'); //true
+        console.log(typeof obj.bool === 'boolean'); //true
+        console.log(typeof obj.bool === 'Boolean'); //false
+        console.log(typeof obj.un === 'undefined'); //true
+        console.log('typeof只能判断四个基本类型');
+        console.log('--------------------------------------------------');
+
+        /* 
+            -typeof 不可判断null
+            -也不可判断对象和数组，函数的区别，对于引用类型，全部判断为object
+        */
+        console.log(typeof obj.nu); //object
+        console.log(obj.nu === null); //true
+        console.log(obj.un === undefined); //true
+        console.log('===可以判断两个基本类型，null和undefined');
+        console.log('----------------------------------------------------');
+        
+    </script>
+</body>
+
+</html>

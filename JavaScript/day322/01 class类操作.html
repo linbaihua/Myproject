@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css class类操作</title>
+    <style>
+        .b1 {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+
+        .b2 {
+            height: 300px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn01">点击按钮以后修改box的样式</button>
+    <br>
+    <br>
+    <div id="box" class="b1"></div>
+
+    <script>
+        /* 
+            -为什么不用style对象去修改元素的属性值？
+                -因为style设置的是行内样式，并不能设置到css中的样式，这样
+                    对于批量修改样式非常麻烦，而且每次使用style只能修改一个
+                    样式，一行代码只能修改一个样式，浪费了大量的资源
+
+            -使用 class类修改样式可以一次修改很多，使得变现和行为进一步分离
+        */
+        var btn01 = document.getElementById("btn01");
+        var box = document.getElementById("box");
+
+        btn01.onclick = function () {
+            toggleClass(box,"b2");
+        }
+        
+        /* 
+            -判断一个元素是否含有指定的class属性值
+            -如果有该class，就返回true,没有则返回false
+        */
+        function hasClass(obj, cn) {
+            /* 
+                -我们传入的cn是一个字符串，所以必须是构造函数定义
+                    一个正则表达式，字面量不能接收字符串，就和数组对象
+                    中的中括号一样
+            */
+            var reg = new RegExp("\\b" + cn + "\\b");
+            /* 
+                -RegExp.test()
+                    -方法判断有无匹配的字符串
+                    -有TRUE 无false
+                -obj.calssName
+                    -元素的属性中，只有class属性名是className
+                    -元素中是一个字符串，返回的也是一个字符串
+            */
+            return reg.test(obj.className);
+        }
+
+        /* 
+            -用来向一个元素中添加指定的class属性值
+             -参数
+                -obj 要添加的class属性的元素
+                -cn  要添加的class值
+        */
+        function addClass(obj, cn) {
+            if (!hasClass(obj, cn)) {
+                obj.className += " "+cn;
+            }
+        }
+
+        /* 
+            -删除一个元素中的指定的class属性
+            -不用判断元素中是否有没有这个元素，反正都要删除，有就删除，没有就不管
+        */
+        function removeClass(obj, cn) {
+            var reg = new RegExp("\\b" + cn + "\\b");
+            obj.className = obj.className.replace(reg, "");
+        }
+
+        /* 
+            -用来切换一个类
+            -如果元素中有该class，就删除
+            -如果没有该 class，就添加
+            -toggle :切换的意思
+        */
+        function toggleClass(obj, cn) {
+            if (hasClass(obj, cn)) {
+                removeClass(obj, cn);
+            } else {
+                addClass(obj, cn);
+            }
+        }
+    </script>
+</body>
+
+</html>

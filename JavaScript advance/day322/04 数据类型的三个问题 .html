@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于数据类型的三个问题</title>
+</head>
+
+<body>
+    <script>
+
+        console.log('-------------------------------------------------');
+        /* 
+            -undefined 和 null 的区别？
+                -undefined 代表定义了未赋值
+                -null 代表定义并且赋值了，只是值是null
+        */
+        var a;
+        console.log(a); //undefined
+        a = null;
+        console.log(a); //null
+
+        console.log('---------------------------------------------------');
+        /* 
+             -什么时候给一个值赋值为null？
+                 -就是准备给一个变量赋值为对象但是还没有确定的值，先给这个变量赋值为null
+                 -是程序员的不定义规则，别人一看就知道这个变量后面接收一个对象
+                 -最后再给这个变量赋值为null，回收垃圾对象（用不到的对象）
+                 -所以前后都定义null，说明中间的对象是垃圾对象
+        */
+        var b = null; 
+        b = [1, 2 ,3, 4];
+        console.log(b);
+        b = null;
+        console.log(b);
+
+        console.log('----------------------------------------------------');
+        /* 
+            -区分变量类型和数据类型
+                -数据的类型
+                    -基本类型数据
+                    -对象类型数据
+                -变量的类型
+                    -基本类型变量
+                    -引用类型变量
+
+                -引用（地址）放在栈内存中，对象数据存放在堆内存中，堆一听就大一点
+                -JavaScript是以一个弱类型的语言，变量都是用var生命的，不能区分类型，根据变量值区分类型
+        */
+       var c = 2; //c是基本类型变量， 2是基本类型数据
+       var arr = [1, 2, 3, 4]; //arr 是引用类型变量， [1, 2, 3, 4]是对象类型数据
+       console.log(typeof arr); //object
+
+       console.log('-----------------------------------------------------');
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="b1 b2" id="box1">
+			
+		</div>
+		<script type="text/javascript">
+		
+			var string1 = "linbaihua";
+			
+			function inspect(obj,cn){
+				// var reg = /cn/;
+				var reg = new RegExp(cn);
+				return reg.test(obj);
+			}
+			// var a = "lin";
+			console.log(inspect(string1 , "lin"));
+			/* 
+				-还是那个问题，传入的参数是引用类型还是基本数据类型
+					-上面正则表达式如果是字面量写法，那么就不好传参数，因为字面量不是以
+						构造函数 字符串形式传入正则表达式的，而我们如果要传入非对象的
+						引用一般都是以 字符串 形式传参，所以就只能用构造函数构造正则表达式
+			 */
+		</script>
+	</body>
+</html>

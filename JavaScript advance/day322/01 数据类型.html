@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型</title>
+</head>
+
+<body>
+    <script>
+        /*
+            * 基本(值)类型
+                * Number: 任意数值
+                * String: 任意文本
+                * Boolean: true/false
+                * undefined: undefined
+                * null: null
+            * 对象(引用)类型
+                * Object: 一般对象类型
+                * Array: 特别的对象类型(下标/内部数据有序)
+                * Function: 特别的对象类型(可执行)
+                2. 判断
+            * typeof:
+                * 可以区别: 数值, 字符串, 布尔值, undefined, function
+                * 不能区别: null与对象, 一般对象与数组
+            * instanceof
+                * 专门用来判断对象数据的类型: Object, Array与Function
+            * ===
+                * 可以判断: undefined和null
+        */
+
+        // 2、对象
+        var b1 = {
+            b2: [1, "abc", console.log],
+            b3: function () {
+                console.log('lin');
+                return function(){
+                    return "liqiang";
+                }
+            }
+        };
+        /* 
+            -instanceof
+                -实例
+                -判断是不是一个构造函数的实例
+        */
+        // 判断 b1 是不是 object类型（是不是object的实例），object是一个构造函数 new object()
+        console.log('------------------------------------------------');
+        console.log(b1 instanceof Object); // true
+        console.log(b1.b2 instanceof Array); //true
+        console.log(b1.b2 instanceof Object); //true
+        console.log(b1.b3 instanceof Function); //true
+        console.log(b1.b3 instanceof Object); //true
+        console.log('上面的都是构造函数，instanceof 判断的是不是构造函数的实例');
+        
+        console.log('-----------------------------------------------');
+        console.log(typeof b1.b3 === "Function"); //false
+        console.log(typeof b1.b3 === 'function'); //true
+        console.log(typeof b1.b3 === 'object'); //false，function 使用typeof返回就是function，不是object
+        console.log(typeof b1.b2 === 'Array'); //false
+        console.log(typeof b1.b2 === 'array'); //false
+        console.log(typeof b1.b2 === 'object'); //true
+        console.log('typeof 判断的是不是一个类型,都是小写，引用类型只可以判断 function 和 object');
+        console.log('----------------------------------------------------');
+        console.log(typeof b1.b2[2] === 'function'); //true
+        console.log(b1.b2[2] instanceof Function); //true,console.log 是一个函数，只要是函数，就是构造函数Function的实例
+        console.log(console.log()); //undefined,因为log()什么也没有，返回了undefined,j即使有也是先返回里面的值，再返回undefined
+        console.log(console.log('linbaihua'));  //linbaihua  undefined
+        console.log('-----------------------------------------------------');
+        console.log(b1.b3());
+        console.log(b1.b3()()); //不用管函数里面有什么，只要函数里面套函数，不断()调用就行
+
+    </script>
+</body>
+
+</html>

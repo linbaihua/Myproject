@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            -JSON
+                -用于数据交互时，JS语言只有JS才能看得懂，别的语言看不懂，那么数据交换怎么办
+                -JSON是一个特殊格式的字符串，可以被任何语言所识别
+                -可以转换成任意语言的中的对象，用于数据交换
+            -JSON 中允许的值
+                -字符串
+                -数值
+                -布尔值
+                -null
+                -基本对象
+                -数组
+                -除了这些JSON中都不可以，所以基本对象中的属性名也要加双引号
+            -JSON分类
+                -对象
+                -数组
+
+            -JS-->JSON
+                -JSON.stringify(js对象)
+            -JSON-->JS
+                -JSON.parse(json)
+        */
+
+        var obj = {
+            name: "linbiahua",
+            age: 18,
+            gender: "man"
+        };
+
+        var json = JSON.stringify(obj);
+        console.log(typeof json);
+        console.log(json);
+
+        var obj1 = JSON.parse(json);
+        console.log(obj1);
+        console.log(obj1.name);
+
+    </script>
+</body>
+</html>

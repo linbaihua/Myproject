@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量，内存，数据之间的关系</title>
+</head>
+<body>
+    <script>
+        /* 
+            -栈内存
+                -栈内存中存放基本数据类型和变量（对象的地址）
+                -基本数据类型都是值传递，引用数据类型才是地址传递
+            -堆内存
+                -对象放在堆内存中
+
+        */
+        /* 
+            -函数调用的时候参数传递的都是值，只不过可能是基本数据类型值和对象的地址值
+        */
+       
+        console.log('-----------------------------------------');
+        
+        var a = 2;
+        var b = a; //分配了两个空间在栈内存中
+        console.log(a == b); //值传递
+
+        var obj1 = {name: "lin"};
+        var obj2 = obj1; // 地址传递，堆内存中只有一个空间分配，栈内存中分配了两个空间分别存放 obj1 obj2
+        var obj3 = {name: "lin"};
+        console.log(obj1 == obj3); //fasle, obj1 obj3中放的是地址，肯定不一样
+
+        var str1 = "lin";
+        var str2 =  "lin";
+        console.log(str1 == str2); //str1 str2 存放的就是"lin", 基本数据类型可理解为无地址
+
+        console.log('-------------------------------------------');
+
+       function fun1(obj){
+            obj.name = "linbiahua";
+       } //函数就是给对象添加一个属性并赋值
+
+       var obj1 = {age: 16};
+       console.log(obj1);
+
+       fun1(obj1); //传递的还是地址值，只不过可以顺着地址值找到对象可以给对象添加属性并赋值
+       console.log(obj1);
+
+       console.log('-----------------------------------------------------');
+
+    </script>
+</body>
+</html>

@@ -20,9 +20,11 @@
   function f2(a) {
     a.name = 'atguigu'
   }
-  n = {}
+  n = {age:16};
+  console.log(n);
   f2(n) // 传递的是n指向的对象 ---> 引用传递   ???
   console.log(n.name)
+  console.log(n);
 </script>
 </body>
 </html>

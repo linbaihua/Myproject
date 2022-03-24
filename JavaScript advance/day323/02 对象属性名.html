@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的属性名</title>
+</head>
+<body>
+    <script>
+
+        /* 
+            -对象属性的两种调用方式
+                -点
+                -中括号
+            -什么时候使用中括号使用属性名？
+                -不是合法的属性名
+                -需要传递变量的时候，只用中括号添加属性名可以传递变量
+                    而使用点事直接添加点后的名字
+        */
+
+        var obj = {};
+        // obj.content-type = "linbaihau"; 不是合法的属性名
+        var name = "xxx";
+        var age = 123;
+        obj.name = age; //这个是添加了name属性名
+        obj[name] = age; // 这个是添加了name值'xxx' 的属性名
+        console.log(obj);
+        console.log(obj.name); //undefined,没有添加name属性名
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型补充</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            -相同构造函数构造的实例对象的原型对象不一定相同（根据原型对象是否更改）
+            -也就是说原型对象如果使用对象字面量的赋值则原来的原型对象就直接变成
+                字面量赋值的那个值，prototype指向新的字面量赋值的对象，但是原来的
+                原型对象没有消失，依然保持着与当初原型对象创造的实例保持着联系
+        */
+        function Person() { }
+
+        Person.prototype.name = 'lin'; //{name:'lin'}
+        console.log(Person.prototype);
+        Person.prototype.age = 16; //{naem:'lin',age:16},这种方式是不断往原型中，原型对象没变
+        console.log(Person.prototype);
+        var per1 = new Person();
+        console.log(per1.__proto__); //{name: 'lin', age: 16, constructor: ƒ}
+
+        Person.prototype = {address:'xiamen',gender:'man'};
+        console.log(Person.prototype); //{address: 'xiamen', gender: 'man'} 直接就新建了一个原型对象
+        var per2 = new Person();
+        console.log(per2.__proto__); //{address: 'xiamen', gender: 'man'}
+
+        console.log(per1.name); //lin
+        console.log(per1.address); //undefined
+         console.log(per2.name); //undefined
+        console.log(per2.address); //xiamen
+
+
+    </script>
+</body>
+
+</html>

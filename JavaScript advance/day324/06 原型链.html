@@ -19,42 +19,65 @@
                 -Function = new Funciton
                     -它本身就是实例是它自己创造的
                     -它的实例（本身作为实例）原型和它的原型式一样
+            
+            -读取属性和方法时顺着原型链往下读的
+            -设置属性只会在当前对象
+            -一般把方法设置在原型对象中，属性设置当前对象中
         */
         function Person(name, age){
-            this.name = name;
-            this.age = age;
-            this.sayHello = function(){
-                console.log(this.name);
-            };
         }
-        var per1 =  new Person('linbiahua', 18);
-        console.log(Person.prototype); //空Object
+        var per1 =  new Person();
+        console.log(Person.prototype); //
         console.log(Person.prototype.__proto__); // Object prototype
-        console.log(Person.__proto__); //Function(Object)
+        console.log(Person.__proto__); // Function.prototype
+        console.log(per1.__proto__); //foo.prototype 等级和Function.prototype一样
         console.log(Person.__proto__.__proto__); //Object prototype
         console.log(Person.__proto__.__proto__.__proto__); //null
         console.log('---------------------------------------------');
 
-        console.log(Function.prototype);
-        console.log(Function.__proto__);
-        console.log(Function.constructor);
-        console.log(Function.prototype.__proto__);
+        console.log(Function.prototype); //Function.prototyep
+        console.log(Function.__proto__);  //Function.prototyep
+        console.log(Function.constructor); //Function
+        console.log(Function.prototype.__proto__); //object.prototype
         console.log('--------------------------');
-        console.log(Array.prototype);
-        console.log(Array.prototype.__proto__);
-        console.log(Array.__proto__);
-        console.log(Array.constructor);
+        console.log(Array.prototype); //Array.prototype
+        console.log(Array.prototype.__proto__); //object.prototype
+        console.log(Array.__proto__); //Function.prototyep
+        console.log(Array.constructor); // Function
         console.log('---------------------------');
-        console.log(Object.prototype);
-        console.log(Object.__proto__);
-        console.log(Object.__proto__.__proto__);
-        console.log(Object.constructor);
+        console.log(Object.prototype); //object.prototype
+        console.log(Object.__proto__); //Function.prototyep
+        console.log(Object.__proto__.__proto__);//object.prototype
+        console.log(Object.constructor);//Function
         console.log('--------------------------');
         console.log(Function.prototype == Function.__proto__); //true
         console.log(Array.prototype == Object.prototype); //false
         console.log(Array.prototype.__proto__ == Object.prototype); //true
         console.log(Array.__proto__ == Object.__proto__); //true
+        console.log('-------------------------------');
+        console.log(Object.prototype instanceof Object); //false
+        console.log(Function.prototype instanceof Object); //true
+        console.log(Array.prototype instanceof Object); //true
+        console.log(Object instanceof Function); //true
+        console.log(Array instanceof Function); //true
+        console.log(Array.prototype instanceof Function); //false
+        console.log(Function.prototype instanceof Function); //false
+        console.log(per1.__proto__ == Function.prototype); //false
+        /* 
+            -函数（Function.Array.Object)都是由Function.prototype 的实例
+            -只要你是函数（实例函数，还是Object)都是继承自函数原型对象（function prototype
+            -Function.prototype 是object.prototype(原型链顶端）的实例
+            -Function,Array,Object 的构造函数也都是函数
 
+            -就一句话，所有函数都是继承自Function prototype, 然后Function prototype 继承自
+                    Object.prototype
+            -所以除了 Object.prototype，其它都是object类型，万物都是对象原型创造的。
+                    除了 Function.prototype,Array.prototype，Object.prototype 
+                    其它都是函数类型，Function.prototype,Array.prototype是由对象原型
+                    创造的
+            -object.prototype create function.prototype and array.prototype
+                function.prototype create function,object,array
+        */
     </script>
 </body>
 </html>

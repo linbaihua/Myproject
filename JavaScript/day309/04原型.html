@@ -10,10 +10,8 @@
                 -我们创建的每一个函数，解析器都会自动添加一个属性 prototype
                 -这个属性对应着一个对象，这个对象就称为 原型对象
                 -如果函数作为普通函数调用 prototype 没有任何作用
-                -如果是构造函数，构造函数创建的实例对象中都有一个隐含属性 __proto__
-                    指向原型对象，我们可以通过 __proto__来访问实例对象的原型,也就是
-                    说原构造函数和它创建的实例都有一个属性指向一个公共对象，这个对象
-                    是 原型对象
+                -构造函数通过属性 prototype 访问原型对象，实例通过__proto__访问原型对象
+                    -原型对象通过 constructor 访问器构造函数
                 -实例对象寻找属性时先在自身中寻找，找不到就去原型对象中找
                 -prototype是一个对象所以它可以添加属性，但不是谁都可以添加的
                     只有构造函数的原型对象可以添加属性，构造函数的实例对象不能
@@ -36,7 +34,7 @@
         Person.prototype.address = "花果山";
         /* 
             实例对象不能通过 prototype 添加属性
-            per1.prototype.tel = "188";
+            per1.prototype.tel = "188"; error
          */
         
         /* 
@@ -49,9 +47,18 @@
 
         console.log(per2.gender); //woman
         console.log(per2.address); //花果山
+        console.log('-------------------------------------');
 
-        // console.log(per1.tel); //error
-        
+        /* 
+            -构造函数的实例通过__proto__找到原型对象
+            -构造函数本身通过 prototype 找到原型对象 
+        */
+        console.log(per1.__proto__); //返回原型对象
+        console.log(per1.prototype); //undefined
+        console.log(Person.prototype); //返回原型对象
+        console.log(Person.prototype.constructor); //Person
+        console.log(per1.__proto__ == Person.prototype); //true
+        console.log(Person.prototype.__proto__.__proto__); //null,上面就没有对象了，到头了
 
     </script>
 </head>

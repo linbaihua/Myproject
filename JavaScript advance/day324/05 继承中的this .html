@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            -yuan
+        */
+        var obj = {
+            name: 'linbaihua',
+            age: 16,
+            sayHello: function(){
+                console.log(this.name);
+            }
+        };
+        // 创建一个对象obj1并指定它的原型是obj
+        var obj1 = Object.create(obj);
+        obj1.name = 'liqiang';
+        obj1.sayHello(); //这个时候obj中的this指向的就是新建的obj1中的name，因为此时this所在的环境是在obj1中
+
+    </script>
+</body>
+</html>

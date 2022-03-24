@@ -12,7 +12,7 @@
               而 apply() 方法接受的是一个包含多个参数的数组。
             -call()、apply()、bind() 都是用来重定义 this 这个对象的
                 -bind() 返回的是一个新函数，得调用它才执行
-                -传参数时
+                -当需要传参数时
                     -call 和 bind 参数直接用逗号隔开
                     -apply 参数用数组存储，传入一个数组
         */
@@ -32,7 +32,7 @@
         obj.sayHello.call(obj1);
         obj.sayHello.apply(obj1);
         obj.sayHello.bind(obj1)();
-
+        console.log('--------------------------------');
         var obj2 = {
             name: "canon",
             address: "japan",
@@ -48,12 +48,12 @@
         obj2.sayHello.apply(obj3, ["5d3", "17-40"]);
         obj2.sayHello.bind(obj3, "5d2", "35")();
 
-        var sData = 'Wisen';
+        console.log('--------------------------------------');
 
+        var sData = 'Wisen';
         function display() {
             console.log('sData value is %s ', this.sData);
         }
-
         display();  // sData value is Wisen
 
     </script>

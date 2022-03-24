@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            -Immediately-Invoked Function Expression 立即调用函数表达式
+            -匿名函数自调用
+            -功能
+                -就是有时候把一个功能放在一个匿名函数内部，这样外部就不能使用这个功能
+                    但是匿名函数会向外释放一个全局函数供使用，这样就保证了函数功能的
+                    绝对安全，也可以隐藏函数的内部实现
+        */
+
+        (function(){
+            var a = 1;
+            // 定义函数功能
+            function test(){
+                console.log(a + 1);
+            }
+            // 给外部一个接口使用上面的函数
+            window.$ = function(){
+                return {
+                    test: test
+                }
+            }
+        })()
+        $().test(); // $是一个函数，会返回一个对象
+
+    </script>
+</body>
+</html>

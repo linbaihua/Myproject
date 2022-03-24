@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            -函数也是对象
+                -通过函数名添加属性和方法
+        */
+       
+
+        function fun4() {
+            // 在函数体内添加属性但是不知道怎么去调用它
+            this.age = 18;
+            this.name = "linbaihua";
+            this.sayHello = function(){
+                this.age = 16;
+                console.log(this.age);
+            };
+        }
+        console.log(fun4.prototype);
+        console.log(fun4.call);
+        console.log(fun4.name); //fun4,这是函数名
+        console.log(window.name);
+        console.log(window.age); 
+        // console.log(window.sayHello());
+
+    </script>
+</body>
+
+</html>

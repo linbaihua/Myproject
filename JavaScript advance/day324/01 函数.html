@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /* 
+            -如何定义函数？
+                -函数表达式
+                -函数声明
+            -如何调用执行函数？
+                -function() 直接调用
+                -new function() 构造函数创造实例调用
+                -obj.function  对象属性调用
+                -function.call/applay(obj)  指定函数的this对象
+            -函数也是对象
+                -通过函数名添加属性和方法
+        */
+        console.log('--------------------------------------');
+        // 函数表达式
+        var fun1 = function () {
+
+        };
+        // 函数声明
+        function fun2() {
+
+        }
+        console.log('--------------------------------------');
+
+        var obj = {};
+        function fun3() {
+            this.name = "linbaihua";
+            this.age = 16;
+            return this.name;
+        }
+        console.log(obj.name);
+        fun3.call(obj); //给obj添加了属性name并赋值为 linbaihua
+        console.log(obj.name);
+        console.log(fun3()); //直接调用
+        console.log('---------------------------------------');
+
+        function fun4() {
+            // 在函数体内添加属性但是不知道怎么去调用它
+            this.age = 18;
+            this.name = "linbaihua";
+            // this.sayHello = function(){
+            //     this.age = 16;
+            //     console.log(this.age);
+            // };
+        }
+        console.log(fun4.prototype);
+        console.log(fun4.call);
+        console.log(fun4.name); //fun4,这是函数名
+        console.log(window.name);
+        console.log(window.age); 
+        console.log(window.sayHello());
+
+    </script>
+</body>
+
+</html>

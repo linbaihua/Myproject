@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数提升和变量提升</title>
+</head>
+<body>
+    <script>
+        /* 
+            -变量提升
+                -变量在var的时候就已经添加到执行上下文栈中，只是未赋值
+            -函数提升
+                -函数在使用函数声明创建的函数的时候就整个进执行上下文栈中了，可以提前提前调用
+                -函数表达式创建的函数不可以提前访问函数，因为var创建的函数名本质是一个undefined值   
+        */
+        var a = 5;
+        function fun(){
+            console.log(a); //undefined，var定义的时候a就有了，只是未赋值
+            var a = 4;
+            console.log(a); //4，按照执行顺序，a赋值为4
+        }
+        fun();
+        console.log(a); //5,fun()函数在执行完就会推出栈中，不会改变window中a的值
+
+        fun1(); //可以调用，函数声明提前
+        // fun2(); //error,不可访问，函数表达式创建的函数不可提前访问
+
+        function fun1(){
+            console.log('fun1');
+        }
+        var fun2 = function(){
+            console.log('fun2');
+        }
+        fun2(); //按照语句执行顺序可以在后访问
+
+    </script>
+</body>
+</html>

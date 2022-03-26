@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包的生命周期</title>
+</head>
+<body>
+    <script>
+        /* 
+            -闭包的生命周期
+                -开始 执行阶段，创建对象时
+                -死亡  当闭包的外部函数成为垃圾对象
+        */
+       function fun1(){
+           var a = 2;           //闭包在这一行创建阶段就有了，因为下面的函数提升
+           function fun2(){
+               console.log(a);
+           }
+           return fun2; //将闭包的fun2函数作为返回值传递出去，以至于外部能够使用闭包函数
+       }
+       var f = fun1();
+       f = null; // 闭包死亡，其外部函数成为了垃圾对象
+
+    </script>
+</body>
+</html>

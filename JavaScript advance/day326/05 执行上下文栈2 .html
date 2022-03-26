@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>执行上下文栈2</title>
+</head>
+<body>
+    
+    <script>
+        /* 
+            -begin1 begin2 begin3 end3 end2 end1
+            -函数自己调用自己，递归调用
+            -进栈foo1 进栈foo2 进栈foo3 出栈foo3 出栈foo2 出栈foo1
+        */
+       var a = 1;
+       function foo(i){
+           if (i == 4){
+               return; //直接退出函数foo
+           }
+           console.log('begin' + i);
+           foo(i+1);
+           console.log('end' + i);
+       }
+       foo(a);
+
+    </script>
+</body>
+</html>

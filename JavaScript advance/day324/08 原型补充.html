@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型补充2</title>
+</head>
+<body>
+    <script>
+        /* 
+            -object.prototype 创造 Function.prototype 和 foo.prototype(foo实例对象)
+            -foo.prototype 不等于 Function.prototype,他两等级一样
+        */
+        function Person(naem, age){}
+
+        Function.prototype.fun1 = function(){
+            console.log('fun1()');
+        };
+        Object.prototype.fun2 = function(){
+            console.log('fun2()');
+        };
+        var per1 = new Person();
+        // per1.fun1(); //false,因为foo.prototype 不等于 Function.prototype
+        per1.fun2(); //可以调用
+        Person.fun1(); //可以调用
+        Person.fun2(); //可以调用
+
+    </script>
+</body>
+</html>

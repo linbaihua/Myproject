@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量提升和函数提升</title>
+</head>
+<body>
+    <script>
+
+        /* 
+            -变量在var就已经存在只是还未赋值，赋值是在代码编译的时候的开始赋值，遵循顺序
+            -函数声明创建的函数在编译之前就已经存在不需要等到编译后才有，所以可以随时调用
+            -函数表达式创建创建的函数和变量一样，只存在但没有赋值，编译后才有值
+        */
+        var a =2;
+        function fun1(){
+            console.log(a); //undefined,现在自己函数内部找a，但是编译前未赋值
+            var a = 3;
+        }
+        fun1();
+        fun2(); //正常调用，函数声明 
+        fun3(); //error, 函数表达式不能提前使用
+        function fun2(){
+            console.log('fun2');
+        }
+        var fun3 = function(){
+            console.log('fun2');
+        };
+    </script>
+</body>
+</html>

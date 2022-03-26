@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域</title>
+</head>
+<body>
+    <script>
+        /* 
+            -作用域在刚开始就已经定义好不会变
+            -这里面 fun() 的作用域是全局，所以即使它被 fun1() 调用它的作用域也是全局
+                它只会去全局中找a
+        */
+       var a = 10;
+       function fun(){
+           console.log(a);
+       }
+       function fun1(){
+           var a = 20;
+           fun();
+       }
+       fun1(); //10
+
+       var obj = {
+           fun2: function(){
+               console.log(fun2);
+            //    console.log(this.fun2); 写成这样就可以了
+           }
+       }
+       obj.fun2(); // error,因为fun2中没有定义fun2，它找不到，所以出错
+
+    </script>
+</body>
+</html>

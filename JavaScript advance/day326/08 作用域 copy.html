@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域</title>
+</head>
+<body>
+    <script>
+        
+        function fun1(){
+            var a = 10;
+            console.log(a); //10
+            function fun2(){
+                console.log(a); //10,自己没有a去外面找到了a
+            }
+            fun2();
+        }
+        fun1();
+
+        var obj = {};
+        obj.fun3 = function(){
+            console.log(fun3); //自己没有fun3去外面找，外面也没有，因为它自己就是fun3，自己找不到自己
+        }
+        obj.fun3(); //error
+
+    </script>
+</body>
+</html>

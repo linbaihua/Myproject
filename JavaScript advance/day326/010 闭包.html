@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闭包</title>
+</head>
+<body>
+    <script>
+        /* 
+            -什么是闭包？
+                -fun1就是闭包，在fun函数里面
+            -闭包产生的条件
+                -嵌套函数，fun1嵌套在fun里面
+                -调用了fun中的属性
+            -闭包什么时候产生？
+                -创建阶段就有了，执行完函数定义后
+                -闭包打开就会一直在，调用几次外部函数就会打开几个闭包
+        */
+       function fun(){
+           var a = 2;
+           function fun1(){
+               console.log(a);
+           }
+       }
+       fun();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链补充</title>
+</head>
+<body>
+    <script>
+        /* 
+            -
+        */
+        function Person(){
+
+        }
+        Function.prototype.a = 2;
+        Object.prototype.b = 3;
+        var per1 = new Person();
+        console.log(Person.prototype); //Person.prototype
+        console.log(Person.__proto__); //Function.prototype
+        console.log(per1.__proto__); //foo.prototype,和Fuction.prototype是一个等级的
+        console.log(per1.__proto__.__proto__);//object.prototype
+        console.log(Person.prototype == per1.__proto__); //true
+        console.log(per1.a);//undefined,
+        console.log(per1.b); //3
+        console.log(Person);
+
+    </script>
+</body>
+</html>

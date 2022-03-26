@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>执行上下文栈</title>
+</head>
+<body>
+    <script>
+        /* 
+            -a =10
+            bar(10) x=10
+            b =5
+            foo(15)
+            y = 15
+            c = 6
+            log(10+6+15) = 31
+
+            -其它函数可以调用foo函数，只要其它函数在foo进栈之后再执行调用就可以
+                不可在foo还没进栈就执行，那样及会出错
+        */
+        var a = 10;                 //进入window执行上下文
+        var bar = function(x){      //bar() 进栈
+            var b =5;
+            foo(x+b);
+        }
+        function fun1(i){
+            foo(i);
+        }
+        // fun1(8); error
+        // foo(6); //error, foo函数还没进栈
+        // bar(5); error, 这时候foo()还没进栈
+        var foo = function(y){      
+            var c = 6;
+            console.log(a + c + y);
+        }
+        bar(10); //可以访问，虽然bar，和fun1中都调用了foo函数，但是我没在foo进栈之前调用函数就没事
+
+
+    </script>
+</body>
+</html>

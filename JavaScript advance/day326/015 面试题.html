@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        var name = 'window';
+        var obj1 = {
+            name: 'object',
+            fun1: function(){
+                return function(){
+                    alert(this.name);  //this = window  这个匿名函数只是返回，并不是定义在fun1中的
+                };   
+            }
+        };
+        obj1.fun1()();  //window  obj1.fun1() 是获得了return的匿名函数，所以继续调用匿名函数再加一个括号
+
+        var name2 = 'window';
+        var obj2 = {
+            name2: 'object',
+            fun2: function(){
+                var that = this;    //this = obj2
+                return function(){
+                    alert(that.name2)
+                }
+            }
+        };
+        obj2.fun2()();  //object
+
+    </script>
+</body>
+</html>

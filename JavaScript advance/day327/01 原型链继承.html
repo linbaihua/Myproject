@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            -定义父类型构造函数
+            -给父类型原型添加构造方法
+            -定义子类型构造函数
+            -设置子类型的原型是父类型的对象
+            -将子类型原型的构造方法设置为自己
+            -给子类型原型添加方法
+            -创建子类型对象，可以调用父类型方法
+
+            -关键就是
+                -子类型的原型是父类型的一个实例对象
+            -优点
+                -子函数可以调用父函数原型的方法
+        */ 
+       function Supper(){
+           this.supper = 'showsupper';
+       }
+       Supper.prototype.showSupper = function(){
+            console.log(this.supper);
+       };
+       function Sub(){
+           this.sub = 'showsub';
+       }
+       Sub .prototype = new Supper();
+       Sub.prototype.constructor = Sub;
+       Sub.prototype.showSub = function(){
+           console.log(this.sub);
+       }
+       var sub1 = new Sub();
+       sub1.showSupper();
+       sub1.showSub();
+
+    </script>
+</body>
+</html>

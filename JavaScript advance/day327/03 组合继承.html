@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            -原型链+借用构造函数的组合继承
+            -利用原型链实现对父类对象的方法继承
+            -利用借用构造函数构建函数初始化的相同属性
+        */
+        function Person(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.setName = function(name){
+            this.name = name;
+        }
+        function Student(name,age,address){
+            Person.call(this,name,age);
+            this.address = address;
+        }
+        // 这一步必须写在前面
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student;
+        
+        // 添加子类型原型方法放在后面，不然就被前面覆盖了
+        Student.prototype.setAddress = function(address){
+            this.address = address
+        }
+        var stu1 = new Student('liqiang',18,'xiamen');
+        console.log(stu1.name);
+        console.log(stu1.address);
+        console.log(stu1.age);
+        stu1.setName('liinbaihua');
+        console.log(stu1.name);
+        stu1.setAddress('anhui');
+        console.log(stu1.address);
+
+    </script>
+</body>
+</html>

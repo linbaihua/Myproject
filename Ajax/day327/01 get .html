@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 100px;
+            border: 5px red solid;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击发送请求</button>
+    <div class="box1"></div>
+
+    <script>
+        /* 
+            -不成功的换端口号，8000端口不怎么支持，换成别的端口号就可以了，可能是
+                8000被占用了
+        */
+        const btn = document.getElementById('btn');
+        const box1 = document.getElementsByClassName('box1')[0];
+        btn.onclick = function(){
+            // console.log('test'); 测试
+            // 1 创建对象
+            const xhr = new XMLHttpRequest();
+            // 2 初始化，设置请求方法和URL
+            xhr.open('GET' , 'http://127.0.0.1:8000/day327/serve?a=100&b=200');
+            // 3 发送
+            xhr.send();
+
+            // 4 事件绑定,readyState发生变化就调用这个属性
+            /* 
+                -readystate 是 xhr 对象中的属性，有五个转态
+                    -0（创建对象）1（get调用）2（open调用）3（返回部分数据）4（返回全部数据）
+            */
+           xhr.onreadystatechange = function(){
+                // 数据是否全部返回
+                if (xhr.readyState ===4) {
+                    /* 
+                        -判断x响应状态码 2xx(成功)
+                        -404 客户端错误，服务器无法找到请求
+                        -403 服务器拒绝授权访问
+                        -401 缺乏身份验证，请求不足
+                        -500 服务器意外
+                    */
+                   if (xhr.status) {
+                       /* 
+                            -处理结果， 行 头 空行 体
+
+                       */
+                      console.log(xhr.status); //状态码
+                      console.log(xhr.statusText); //状态字符串
+                      console.log(xhr.getAllResponseHeaders()); //所有响应头
+                      console.log(xhr.response); //响应体
+                        box1.innerHTML = xhr.response; //写入到div中
+                   }
+                }
+           };
+
+        }
+    </script>
+</body>
+</html>

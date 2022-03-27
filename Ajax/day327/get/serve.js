@@ -8,13 +8,13 @@ const app = express();
 // 调用express。get方法
 // 创建路由规则
 // req是请求，res是响应
-app.get('/day327/serve', (req, res) => {
+app.get('/day327/get/serve', (req, res) => {
     // 设置响应头，设置允许跨域
     res.setHeader('Access-Control-Allow-Origin', '*');
     // 设置响应体
     res.setHeader('Access-Control-Allow-Header', '*');
     // 设置响应
-    res.send('hello day327 second');
+    res.send('hello day327 third');
 });
 
 // 开启监听窗口

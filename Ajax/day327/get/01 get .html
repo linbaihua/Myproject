@@ -28,8 +28,8 @@
             // 1 创建对象
             const xhr = new XMLHttpRequest();
             // 2 初始化，设置请求方法和URL
-            xhr.open('GET' , 'http://127.0.0.1:8000/day327/serve?a=100&b=200');
-            // 3 发送
+            xhr.open('GET' , 'http://127.0.0.1:8000/day327/get/serve?a=100&b=200');
+            // 3 发送请求到服务器
             xhr.send();
 
             // 4 事件绑定,readyState发生变化就调用这个属性

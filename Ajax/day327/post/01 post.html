@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax post</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 200px;
+            border: 2px royalblue solid;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button id="btn"></button> -->
+    <div id="result"></div>
+
+    <script>
+        const result = document.getElementById('result');
+        //addEventListener 是一个监听器
+        result.addEventListener('mouseover', function(){
+            // 1 创建ajax对象
+            const xhr = new XMLHttpRequest();
+            // 2 初始化，设置请求类型和URL
+            xhr.open('POST', 'http://127.0.0.1:8000/day327/post/post');
+            // 3 发送到服务端，可以传参数
+            // xhr.send();
+            xhr.send('a=100&b=200');
+            // 绑定事件（readyState 发生变化就绑定这个）
+            xhr.onreadystatechange = function(){
+                // 判断数据是否返回完全
+                if (xhr.readyState ===4) {
+                    // 判断状态码
+                    if (xhr.status >= 200 && xhr.status<300) {
+                        // 将服务器响应数据打印出来
+                        result.innerHTML = xhr.response;
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+</html>

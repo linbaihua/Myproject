@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax 返回 json 数据格式</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 200px;
+            border: 2px rebeccapurple solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <script>
+        const box1 = document.getElementById('box1');
+        // 绑定键盘按下事件,键盘按下是在整个页面，绑定window对象
+        window.onkeydown = function(){
+            const xhr = new XMLHttpRequest();
+            // 知道响应体数据类型是json格式，然后会自动转换
+            xhr.responseType = 'json';
+            // 初始化服务，配置发送类型和url（URL和serve.js中一样就行）
+            xhr.open('GET', 'http://127.0.0.1:8000/json-serve?');
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // 手动转换数据格式
+                        /* var data = JSON.parse(xhr.response);
+                        console.log(data);
+                        box1.innerHTML = data.name; */
+                        // 2 自动转换数据格式
+                        console.log(xhr.response);
+                        box1.innerHTML = xhr.response.name;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

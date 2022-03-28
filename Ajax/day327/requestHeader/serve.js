@@ -12,6 +12,7 @@ app.all('/day327/requestHeader/serve', (req, res) => {
     // 设置响应体
     res.send('setrequestheader first');
 });
+
 app.listen(8000, () => {
     console.log('开启服务，开启8000端口!!!');
 });

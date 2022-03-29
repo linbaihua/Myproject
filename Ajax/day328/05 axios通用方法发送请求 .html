@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios 发送 Ajax</title>
+    <!-- 
+        -crossorigin="anonymous"
+            -在html的标签中，有些标签时自带跨域功能的，他们的src属性可以是任意源的链接，并且均可以进行加载。但是如果在标签中添加了anonymous属性，
+                那么浏览器再去解析这些跨域资源的时候，就不会以它的自带跨域功能去加载了，
+                而是使用CORS的方式加载，就像我们的ajax一样
+            -同样的，如果说加载的资源接入了CDN，那么需要源站和CDN节点都需要有此配置，
+                如果没有，该CDN节点的这个资源就是不可用的状态，因为会报跨域问题
+        -src的引用
+            -这里面是引用axios库
+            -一种是去GitHub上引用，但是因为GitHub服务器在国外，下载速度慢
+            -还有就是去国内的CDN下载，这里就是用的国内的 BOOTCDN
+            -CDN 就是将源服务器数据智能镜像放在到处以供下载快速
+        -CORS
+            -跨资源共享，基于http头机制
+            -网站要访问别的服务器的时候就是跨域访问了
+     -->
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.26.1/axios.js"></script>
+</head>
+
+<body>
+    <button>axios send AJAX</button>
+
+    <script>
+        const btn = document.querySelectorAll('button')[0];
+        // 配置默认url
+        axios.defaults.baseURL = 'http://127.0.0.1:3000';
+        btn.onclick = function(){
+            // 通用方法配置axios
+            // 配置都是以字面量方式，非常方便
+            axios({
+                // url
+                url: '/axios-server',
+                // 发送方法
+                method: 'POST',
+                // url参数
+                params: {
+                    id: 001
+                },
+                // 自定义头部
+                headers:{
+                    a: 200,
+                    b: 300
+                },
+                // 请求体数据
+                data: {
+                    username: 'linbaihua',
+                    password: '171599'
+                }
+                // 发送成功返回
+            }).then(response => {
+                console.log(response.status);
+                console.log(response.statusText);
+                console.log(response.headers);
+                console.log(response.data);
+            })
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重复请求问题</title>
+</head>
+<body>
+    <button>点击发送</button>
+    <button>点击取消</button>
+
+    <script>
+        let btns = document.querySelectorAll('button');
+        let xhr = null;
+        // 定义flag，是否正在发送Ajax请求
+        let flag = false;
+
+        btns[0].onclick = function(){
+            // 如果有请求正在进行，还没有结束则flag为TRUE
+            if (flag) {
+                xhr.abort();
+            }
+             xhr = new XMLHttpRequest();
+            // 请求正在进行
+            flag = true;
+            xhr.open('GET', 'http://127.0.0.1:8000/delay');
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if (xhr.readyState === 4) {
+                    //  数据下载完成了（请求结束），flag = false
+                    flag = false;
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        alert(xhr.response);
+                    }
+                }
+            }
+        }
+
+        btns[1].onclick =function(){
+            // 手动取消请求
+            xhr.abort();
+        }
+    </script>
+</body>
+</html>

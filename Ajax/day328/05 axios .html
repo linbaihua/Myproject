@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios 发送 Ajax</title>
+    <!-- 
+        -crossorigin="anonymous"
+            -在html的标签中，有些标签时自带跨域功能的，他们的src属性可以是任意源的链接，并且均可以进行加载。但是如果在标签中添加了anonymous属性，
+                那么浏览器再去解析这些跨域资源的时候，就不会以它的自带跨域功能去加载了，
+                而是使用CORS的方式加载，就像我们的ajax一样
+            -同样的，如果说加载的资源接入了CDN，那么需要源站和CDN节点都需要有此配置，
+                如果没有，该CDN节点的这个资源就是不可用的状态，因为会报跨域问题
+        -src的引用
+            -这里面是引用axios库
+            -一种是去GitHub上引用，但是因为GitHub服务器在国外，下载速度慢
+            -还有就是去国内的CDN下载，这里就是用的国内的 BOOTCDN
+            -CDN 就是将源服务器数据智能镜像放在到处以供下载快速
+        -CORS
+            -跨资源共享，基于http头机制
+            -网站要访问别的服务器的时候就是跨域访问了
+     -->
+    <script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/axios/0.26.1/axios.js"></script>
+</head>
+<body>
+    <button>GET</button>
+    <button>POST</button>
+    <button>AJAX</button>
+
+    <script>
+        const btns = document.querySelectorAll('button');
+        // 配置全局默认URL
+        axios.defaults.baseURL = 'http://127.0.0.1:3000';
+
+        // get
+        btns[0].onclick = function(){
+            // get请求
+            /* 
+                -使用别名配置不需要配置 URL，method，data等属性
+                -axios.get(url[, config])
+                    -这里的URL不是全部的URL，而是去找服务器中配置的app.get或者app.all
+                        前面的全部URL上面已经默认配置了，都去8000端口下去找
+            */
+            axios.get('/axios-server', //url
+            // config
+            {
+                // 与请求一起发送的URL参数
+                params:{
+                    id: 100,
+                    vip: 7
+                },
+                // 自定义的请求头信息,现在是小写h
+                headers:{
+                    name: 'linbaihua',
+                    age: 18
+                }
+            }).then(value => {
+                console.log(value); 
+            });
+        }
+
+        /* 
+            -axios.post(url[, data[, config]])
+        */
+        btns[1].onclick = function(){
+            axios.post('/axios-server', //url
+            // data是请求体发送的数据
+            {
+                username: 'admin',
+                password: 'adminpss'
+            },
+            // config
+            {
+                // URL
+                params:{
+                    id: 200,
+                    vip: 9
+                },
+                // 请求头参数
+                headers: {
+                    name: 'liqiang',
+                    age: 16
+                }
+            });
+
+            btns[2].onclick = function(){
+                /* 
+                    -默认axios
+                    -axios（method，URL，data，config）
+                */
+                axios({
+                    // 请求方法
+                    method: 'POST',
+                    // url
+                    url: '/axios-server',
+                    // url参数
+                    params:{
+                        vip: 10,
+                        level: 30
+                    },
+                    // 自定义请求头
+                    headers:{
+                        name: 'lin',
+                        age: 20
+                    },
+                    // `data` 是作为请求体被发送的数据
+                    // 仅适用 'PUT', 'POST', 'DELETE 和 'PATCH' 请求方法
+                    data:{
+                        username: 'linadmin',
+                        password: 'linadminpss'
+                    }
+                }).then(response => {
+                    // 处理成功返回的值
+                    console.log(response.status);
+                    console.log(response.readayStatus);
+                    // console.log(response.status); 
+                });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数补充</title>
+</head>
+<body>
+    <script>
+        function sayHello(){
+            console.log('hello');
+        }
+        var obj = {
+            name: 'linbaihua',
+            age: 18,
+            // 将外部函数引用作为属性值传入对象中
+            sayHello: sayHello
+        }
+        // 这样函数可以使用对象属性调用，也可以直接调用
+        obj.sayHello();
+        sayHello();
+    </script>
+</body>
+</html>

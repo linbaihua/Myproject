@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数的应用</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            border: 2px royalblue solid;
+        }
+        #box2{
+            width: 200px;
+            height: 200px;
+            border: 2px rosybrown solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+    <script>
+        /* 
+            1 箭头函数适合于this无关的回调，定时器，数组的方法回调
+            2 箭头函数不适合于this有关的回调，事件回调，对象的方法
+        */
+
+        console.log('-------------------------------------------');
+        // 1 不使用箭头函数
+        let box1 = document.getElementById('box1');
+        box1.addEventListener('click', function () {
+            // 保存当前this的值
+            let _this = this;
+            // console.log(this); //box1（现在是box1在调用函数，this指向box1）
+            setTimeout(function(){
+                // console.log(this); 这里的this指向window，因为这个函数没有绑定任何对象
+                _this.style.background = 'pink';
+            }, 2000);
+        });
+
+        console.log('---------------------------------------');
+        // 2 使用箭头函数
+        let box2 = document.getElementById('box2');
+        box2.addEventListener('click', function(){
+            // 箭头函数中的this是静态的，在声明的当前环境
+            setTimeout( () => {
+                this.style.background = 'blue';
+            }, 500);
+        });
+
+        console.log('----------------------------------------');
+        // 3 一般方法实现数组过滤
+        const arr = [2,5,8,10];
+        const result = arr.filter(function(item){
+            if (item % 2 === 0) {
+                return true;
+            }else{
+                return false;
+            }
+        });
+        console.log(result);
+
+        console.log('---------------------------------------------');
+        // 4 使用箭头函数实现数组过滤
+        const arr1 = [2,5,8,10];
+        const result1 = arr.filter(item => item % 2 === 0);
+        console.log(result1);
+
+        console.log('------------------------------------------------');
+        // 箭头函数中的this
+        // 箭头函数不提供自身的 this 绑定（this 的值将保持为闭合词法上下文的值）
+        window.name = 'liqiang';
+        let obj = {
+            name: 'linbaihua',
+            age: 18,
+            // 箭头函数中的this通俗来说就是箭头函数的爷爷环境
+            sayHello: () => {
+                console.log(this.name);
+            }
+        }    
+        obj.sayHello(); //liqiang   
+        
+    </script>
+</body>
+
+</html>

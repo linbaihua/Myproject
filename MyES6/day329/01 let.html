@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let</title>
+    <style>
+        .items{
+            width: 200px;
+            height: 200px;
+            border: 2px palegreen solid;
+        }
+    </style>
+</head>
+<body>
+        <div class="items">1</div>
+        <div class="items">2</div>
+        <div class="items">3</div>
+    <script>
+        /* 
+            -let关键字
+            -变量不能重复声明
+            -块儿级作用域，就是大括号括起来的作用域，对象字面量，if等的作用域
+            -不存在变量提升
+            -不影响作用域链，该怎么用就怎么用，就是多了上面几个特性
+        */
+        let items = document.getElementsByClassName('items');
+        for(let i = 0; i<items.length; i++){
+            items[i].onclick = function(){
+                // 因为let有块级作用域，就可以这么写了
+                items[i].style.background = 'pink';
+            }
+        }
+
+    </script>
+</body>
+</html>

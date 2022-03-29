@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简化对象写法</title>
+</head>
+<body>
+    <script>
+        let name = 'linbaihua';
+        let change = function(){
+            console.log(name);
+        }
+
+        // 允许大括号里面直接写入变量名和方法名，省略value
+        // 写方法名是也可以直接写方法名(){},必须在大括号里面，单独在外面写不可以
+        const SCHOOL = {
+            name,
+            change,
+            fun1(){
+                console.log('可以直接写方法名然后括号');
+            },
+        };
+        console.log(SCHOOL);
+
+
+    </script>
+</body>
+</html>

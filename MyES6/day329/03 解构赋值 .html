@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+            -解构赋值就是对 数组，对象里面的属性和方法进行一对一解构，方便
+                调用和读取
+        */
+       const CHAR = ['canon', 'nikon', 'sony'];
+       let [canon, nikon, sony] = CHAR;
+       console.log(canon);
+       console.log(nikon);
+       sony = 'leica'; //可以使用解构变量更改值
+       console.log(sony);
+
+       console.log('-------------------------');
+
+       const myself = {
+           name: 'liqing',
+           age: 18,
+            // 因为有块级作用域，不用使用this指定name
+           sayHello: function(){
+                console.log(name);
+           }
+       };
+       let {name, age, sayHello} = myself;
+       console.log(name);
+       console.log(sayHello);
+       sayHello();
+
+       console.log('------------------------');
+
+       //可以单独对对象中的一个方法进行解构
+       const MYSELF = {
+           name2: 'linbaihua',
+           sayHello2: function(){
+            //    console.log(name2); 显示不出来，因为下面let中没有解构name2
+               console.log('good');
+           }
+       }
+       let {sayHello2} = MYSELF; //没有解构name2
+       sayHello2();
+
+    </script>
+</body>
+</html>

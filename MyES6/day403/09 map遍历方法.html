@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map 遍历方法</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            -Map.prototype.keys()：返回键名的遍历器。
+            -Map.prototype.values()：返回键值的遍历器。
+            -Map.prototype.entries()：返回所有成员的遍历器。
+            -Map.prototype.forEach()：遍历 Map 的所有成员
+            -Map 结构的默认遍历器接口（Symbol.iterator属性），就是entries方法
+        */
+        let m1 = new Map([
+            ['canon', '5d4'],
+            ['nikon', 'd850'],
+            ['sony', 'a7m4']
+        ]);
+
+        for (const item of m1.keys()) {
+            console.log(item);
+        }
+
+        for (const item of m1.values()) {
+            console.log(item);
+        }
+
+        for (const item of m1.entries()) {
+            console.log(item);
+        }
+
+        // myMap.forEach(callback([value][,key][,map])[, thisArg])
+        // 一个参数就是value，两个参数就是 value，key,也可以传入callback
+        m1.forEach(value => {
+            console.log(value + '是我的');
+        });
+
+    </script>
+</body>
+
+</html>

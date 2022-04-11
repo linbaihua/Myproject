@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参数默认值</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            -ES6允许给函数参数赋值初始值
+            -形参初始值，赋值的参数一般靠后（潜规则）
+        */
+        console.log('-----------------------------------');
+        // 1 给形参赋初始值  
+        function add(a, b, c = 10) {
+            return a + b + c;
+        }
+        console.log(add(1, 2)); //13
+
+        console.log('------2 与解构赋值结合---------------');
+        function camera({canon, nikon, sony, panasonic='gh6'}){
+            console.log(canon);
+            console.log(nikon);
+            console.log(sony);
+            console.log(panasonic);
+        }
+        camera({
+            canon: '5d4',
+            nikon: 'd850',
+            sony: 'a74'
+        });
+
+    </script>
+</body>
+
+</html>

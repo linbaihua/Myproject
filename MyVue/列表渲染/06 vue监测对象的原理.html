@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 vue监测对象的原理</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h3>{{name}}</h3>
+        <h3>{{address}}</h3>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el:'#root',
+            data: {
+                name: 'linbaihua',
+                address: 'xiamen'
+            }
+        })
+    </script>
+</body>
+</html>

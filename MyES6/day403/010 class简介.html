@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class简介</title>
+</head>
+<body>
+    <script>
+        /* 
+            js中的class其实就是换个方式写es5中的构造方法
+        */
+
+        // 1 传统方法写构造函数
+        function Camera(canon, nikon){
+            this.canon = canon;
+            this.nikon = nikon;
+        }
+        Camera.prototype.sayHello = function(){
+            console.log(this.canon + ' r6 ' + this.nikon + ' z9 ');
+        }
+        let camera = new Camera('canon', 'nikon');
+        camera.sayHello();
+
+        // 2 class写
+        class Camera1{
+            // 构造方法
+            constructor(sony, panasonic){
+                this.sony = sony;
+                this.panasonic = panasonic;
+            }
+            // 函数名+(),只能这样写，不然出错
+            // 等同于camera1.prototype
+            sayHello(){
+                console.log(this.sony + ' a7m4 ' + this.panasonic + ' gh6 ');
+            }
+        }
+        let camera1 = new Camera1('sony', 'panasonic');
+        camera1.sayHello();
+
+    </script>
+</body>
+</html>

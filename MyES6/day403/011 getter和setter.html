@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getter和setter</title>
+</head>
+<body>
+    <script>
+        /* 
+            -与 ES5 一样，在“类”的内部可以使用get和set关键字，
+                对某个属性设置存值函数和取值函数，拦截该属性的存取行为
+        */
+
+        class Camera{
+            // canon是一个属性，不是方法，调用的时候不要加括号
+            get canon(){
+                return 'canon r6'
+            }
+            set canon(value){
+                return value;
+            }
+        }
+        let camera = new Camera();
+        console.log(camera.canon);
+        console.log(camera.canon = 'r5');
+    </script>
+</body>
+</html>

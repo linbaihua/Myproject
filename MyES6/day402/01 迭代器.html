@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器</title>
+</head>
+<body>
+    <script>
+
+        // 1 create a arry
+        let camera = ['canon', 'nikon', 'sony', 'panasonic'];
+
+        // 2 for of 返回数组的值
+        for (const c of camera) {
+            console.log(c);
+        }
+
+        // 3 for in 返回数组的索引
+        for (const v in camera) {
+            console.log(v);
+        }
+
+        // 4 foreach, 传入一个回调函数，对数组中元素进行操作
+        camera.forEach(item => {
+            console.log(item);
+        });
+
+        /* 
+            -Symbol.iterator 是一个属性
+            -加括号就是调用这个属性
+            -这个属性虽然是 Symbol 的，但是数组中也可以直接用
+            -这个属性是一个方法  fun: function(){} 这种的
+                然后是返回一个对象（迭代器对象），为了得到
+                这个对象就得调用这个方法,返回的对象中有next方法，
+                是一个指针，依次指向数组中的元素
+        */
+        let iterator = camera[Symbol.iterator]();
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next()); //指针遍历完成，最后done由false->true
+
+    </script>
+</body>
+</html>

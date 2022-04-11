@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 key的原理</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+    <div id="root">
+        <ul>
+            <!-- c是数组中的对象，index是数组索引，如果有输入类的操作，使用index
+                作为key就不可以，因为index是索引，不能唯一标识每个对象-->
+            <li v-for="(c,index) of camera" :key="c.id">
+                {{c.series}}-{{c.name}}-{{c.id}}
+                <!-- input是内联元素 -->
+                <input type="text">
+            </li>
+        </ul>
+        <button @click="add">click me</button>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el:'#root',
+            data:{
+                camera:[
+                    {id:01, series:'canon', name:'5d4'},
+                    {id:02, series:'nikon', name:'d850'},
+                    {id:03, series:'sony', name:'a7m4'},
+                ],
+            },
+            methods: {
+                add(){
+                    const p = {id:04, series:'panasonic', name:'s5'}
+                    // unshift 在数组的前面加入一组数据
+                    this.camera.unshift(p)
+                }
+            },
+        })
+    </script>
+    <!-- 
+        面试题：key的内部原理
+            1 虚拟dom中key的作用
+                -key是虚拟dom对象的唯一标识，当数据发送变化时，vue会生成新的虚拟dom
+                随后vue会比较新旧虚拟dom
+
+            2 对比规则（diff算法）
+                -通过key找到旧的虚拟dom，比较对象数据是否一样，如果一样则使用之前的真实dom（之前的数据）
+                -如果对象数据不一样，则生成新的真实dom(新数据），替换掉页面中之前的真实dom
+            
+            3 用index作为key引发的问题
+                -破坏之前的顺序，效率低，如果还有输入类的dom，就会出错，因为顺序被改变
+            
+            4 开发中如何选择key
+                -无脑使用每条数据的唯一标识，比如id,手机号，身份证号，学号等唯一值
+     -->
+</body>
+</html>

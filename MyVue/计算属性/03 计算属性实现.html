@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例-计算属性实现</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 
+        1 
+     -->
+    <div id="root">
+        姓: <input type="text" v-model="firstName"><br><br>
+        名: <input type="text" v-model="lastName"><br><br>
+        全名: <span>{{fullName}}</span>
+    </div>
+
+    <script>
+        /* 
+            1 计算属性
+                -vue._data 中没有的属性，是由 vue._data 中的属性组合出来的新属性
+                -放在新的配置项 computed 中
+                -计算属性使用对象字面量形式配置
+                -计算属性没有自己的getter and setter 方法，需要手动配置
+                -vue._data 中的属性有自动配置的getter setter 方法，所以才可以直接通过
+                    ver.xxx 访问 vue._data 中的属性
+                -给计算属性配置了 getter 方法后，就可以直接通过 vue 读取到了
+                -计算属性的结果是依靠属性中方法return的返回值
+
+            2 计算属性的优点
+                -计算属性当被多次调用的时候且值不变的时候，第一次读取到的数据会缓存，供后面
+                    读取，当所依赖的值改变的时候再更新缓存
+                -使用回调函数就没有缓存，调用几次就执行几次回调函数
+        */
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            computed: {
+                fullName: {
+                    // get() 方法，读取fullname时就调用它，返回值就是 fullname的值
+                    // getter啥时候被调用？ 1 初次读取是 2 所依赖的数据改变时
+                    get(){
+                        /* 按理说this不指向vm，但是vue给配置了getter，setter中的this为vm */
+                        return this.firstName + '-' + this.lastName;
+                    },
+                    set(value){
+                        // split() 将一个字符串以特定字符分割开
+                        const arr = value.split('')
+                        this.firstName = arr[0]
+                        this.lastName = arr[1]
+                        console.log(arr);
+                    }
+                }
+            }
+        })
+        console.log(vm);
+    </script>
+</body>
+</html>

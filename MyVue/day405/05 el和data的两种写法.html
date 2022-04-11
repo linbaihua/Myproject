@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>el和data的两种写法</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="demo">{{name}}</div>
+
+    <script>
+        Vue.config.productionTip = false;
+        const v = new Vue({
+            // el: '#demo', //el的第一种写法，在实例中指出
+            // data的第一种写法(对象字面量写法)
+            /* data: {
+                name: 'canon'
+            } */
+
+            // data的第二种写法（函数式），组件必须用这种写法
+            // 不要用箭头函数，因为箭头函数this-> window
+            data(){
+                return{
+                    name: 'canon'
+                }
+            }
+        });
+        v.$mount('#demo'); //el的第二种写法，调用函数指出
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 
+        自定义一个指令 v-big 可以将值放大10倍
+     -->
+    <div id="root">
+        <h2>n的值是:{{n}}</h2>
+        <h2>放大十倍后的n的值: <span v-big="n"></span></h2>
+        <button @click="n++">点击n值+1</button>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el:'#root',
+            data:{
+                n:1
+            },
+            directives:{
+                big(element,binding){
+                    // element是绑定的元素标签(真实dom节点），这里是span
+                    // binding，是绑定的n一些东西，binding.value就是n的值
+                    // big函数何时被调用？1 刚开始加载时 2 绑定的变量所在模板（整个div)发生改变
+                    element.innerText = binding.value * 10
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

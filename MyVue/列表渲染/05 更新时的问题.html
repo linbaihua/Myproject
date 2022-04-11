@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 问题</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <button @click="fun1">click me</button>
+        <ul>
+            <li v-for="(p, index) of persons" ::key="p.id">
+                {{p.id}}--{{p.name}}--{{p.age}}
+            </li>
+            <li v-for="item in camera">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                keyWord:'',
+                persons: [
+                    { id: '01', name: '马冬梅', age:30 },
+                    { id: '02', name: '周冬雨', age:31 },
+                    { id: '03', name: '周杰伦', age:19 },
+                    { id: '04', name: '温兆伦', age:18 }
+                ],
+                camera:['canon','nikon','sony']
+            },
+            methods: {
+                fun1(){
+                    // this.persons[0].name = 'jack', //有效果
+                    // this.persons[0].age = 20 //有效果
+                    // this.persons[0] = {id: '01', name: 'jack', age:20} //无效
+                    this.persons.splice(0,1,{ id: '01', name: '马老师', age:40 })
+                }
+            },
+        })
+        console.log(vm);
+    </script>
+    <!-- 
+        问题？
+            -就是有时候vue内置的监视，监测不到data中属性的变化，也显示不到页面上
+                但是数据确实被改了，只是vue监测不到
+            -这种情况是给数组更改得时候检测不到，因为vue不认为数被改变了，就不会
+                监视并更改数据，当数组调用某些方法（改变原数组），vue才会监视到
+                比如push,pop,shift,reverse,splice...
+     -->
+</body>
+
+</html>

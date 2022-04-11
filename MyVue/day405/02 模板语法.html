@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 
+        vue模板语法有两种
+            1 插值语法
+                -用于解析标签内容
+                -{{js表达式}}
+            2 指令语法
+                -用于解析标签中 属性 内容 绑定事件等
+                -语法  v-bind:href='xxx' or :href='xxx'
+                -Vue中有很多指定吗，且形式都是 v-xxx
+     -->
+     <div id="demo1">
+         <h1>插值语法</h1>
+         <!-- Date.now() 就是js语句，可以调用js方法，对于自定义的变量或者别的
+        识别不出来的js语句，在下面的Vue实例中对它赋值例如name,series -->
+         <h2>{{name}},{{series}},{{Date.now()}},{{1+1}}</h2>
+         <hr>
+         <h1>指令语法</h1>
+         <a v-bind:href="url">点我去百度</a>
+         <!-- <a v-bind:href="school.url" x="hello" >百度</a> -->
+     </div>
+    <script>
+        new Vue({
+            el: '#demo1',
+            data: {
+                name:'canon',
+                series: '5d',
+                url: 'http://www.baidu.com'
+            }
+        })
+    </script>
+</body>
+</html>

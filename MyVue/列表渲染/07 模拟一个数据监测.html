@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07</title>
+</head>
+<body>
+    <script>
+        let data = {
+            name: 'linbai',
+            address: 'xiamen'
+        }
+
+        // new实例对象
+        const obs= new Observe(data)
+        // 定义构造函数
+        function Observe(obj){
+            // obj中所有的属性放进一个数组
+            const keys = Object.keys(obj)
+            // 遍历数组
+            keys.forEach((k) => {
+                // defineProperties方法就是写get set方法的
+                // Object.defineProperty(obj, 属性， 属性设置)
+                Object.defineProperties(this,k,{ //this->obj,k是keys中的属性
+                    get(){
+                        return obj[k]
+                    },
+                    set(val){
+                        obj[k] = val
+                    }
+                })
+            })
+        }
+
+        let vm = {}
+        vm._data = data = obs
+    </script>
+    <!-- 
+        1 vue就是这样给每个data中的数据都做了这样的配置，一直递归到
+            没有数据为止，所以无论你的数据在哪一级对象上，都可以被
+            找到
+     -->
+</body>
+</html>

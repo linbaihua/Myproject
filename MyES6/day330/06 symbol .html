@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>什么是 Symbol</title>
+</head>
+<body>
+    <script>
+        /* 
+            -symbol 是一种数据类型，和string，number一样，声明一个变量，然后
+                赋予这个变量是symbol类型的
+            -为什么引入symbol类型？
+                -symbol代表了独一无二，symbol类型变量和属性都不可再命名，避免了
+                    命名冲突
+        */
+       console.log('-------1 创建一个symbol类型的变量-----------');
+       let a = Symbol();
+       console.log(a, typeof a);
+
+       /* 
+            -妈的有点看不懂symbol，不知道有啥用干啥的
+                伟子说可以不用看，开发用不到，后面的generator也不用看，迭代器也不用看
+       */
+    </script>
+</body>
+</html>

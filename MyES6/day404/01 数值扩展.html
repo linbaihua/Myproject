@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数值扩展</title>
+</head>
+<body>
+    <script>
+        // 1 Number.EPSION是 Js 表示的最小精度
+        //EPSILON 属性的值接近于 2.2204460492503130808472633361816E-16
+        function equa1(a, b){
+            if(Math.abs(a-b) < Number.EPSILON){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        console.log( (0.1+0,2) === 0.3); //false
+
+        // 可以视为相等
+        console.log(equa1(0.1+0.2, 0.3)); //true
+
+        // 2 Number.isFinite 检查一个数是不是有限数
+        // 3 Number.isNaN 检查一个数值是否为 NaN
+        // 4 Number.isInteger 判断一个数是否为整数
+        // 5 Math.trunc 将数字的小数部分去掉
+        // 6 Math.sign 判断一个数是正负数还是零
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map属性和方法</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            -size属性
+            -set(key,value)
+            -get(key)
+            -has(key)
+            -delete(key)
+            -clear()
+        */
+        let m1 = new Map();
+        
+        m1.set(1, 'canon');
+        m1.set(2, 'nikon');
+        m1.set('sony', 'a73');
+        
+        console.log(m1.get(1));
+        console.log(m1.get('sony'));
+
+        // has(key),是key不是value 
+        console.log(m1.has(1)); //true
+        console.log(m1.has('canon')); //false
+
+        m1.delete('sony');
+
+        m1.clear();
+ 
+        console.log(m1.size, m1);
+
+    </script>
+</body>
+
+</html>

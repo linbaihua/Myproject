@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03</title>
+    <script src="../vue.js"></script>
+    <!-- 
+        组件三步骤
+            1 定义组件
+            2 注册组件
+            3 使用组件标签
+     -->
+</head>
+<body>
+    <!-- 容器 -->
+    <div id="root">
+        <app></app>     
+    </div>
+    <script>
+        Vue.config.productionTip = false
+
+        // 定义student组件，放到school中,在school之前定义
+        const student = Vue.extend({
+            template:`
+                <div>
+                    <h4>姓名:{{name}}</h4>
+                    <h4>年龄:{{age}}</h4>
+                </div>
+            `,
+            data() {
+                return {
+                    name:'林柏华',
+                    age:18
+                }
+            },
+        })
+       
+        // 定义school组件
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h3>学校:{{name}}</h3>
+                    <h3>地址:{{address}}</h3>
+                    <student></student>
+                </div>
+            `,
+            data() {
+                return {
+                    name:'厦门理工',
+                    address:'福建',
+                }
+            },
+            components:{student}
+        })
+    
+        
+        // 定义组件hello
+        const hello = Vue.extend({
+            template:`
+                <div>
+                    <h2 style="color: yellowgreen;">{{msg}}</h2>
+                </div>
+            `,
+            data() {
+                return {
+                    msg:'欢迎来到厦门理工'
+                }
+            },
+        })
+   
+        // 定义管理组件app
+        const app = Vue.extend({
+            template:`
+                <div>
+                    <hello></hello>
+                    <school></school>
+                </div>
+            `,
+            components:{
+                hello,
+                school
+            }
+        })
+   
+        new Vue({
+            el:'#root',
+            components:{app}
+        })
+
+   </script>
+</body>
+</html>

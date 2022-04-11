@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 
+        生命周期
+            1 别名 生命周期回调函数，生命周期钩子
+            2 生命周期就是在整个页面运行的不同周期中调用一些回调函数，这些回调函数实现一些功能，
+                这些功能是刚开始加载页面的时候不用的或者不实现的，在加载页面完毕后的声明周期
+                内某个时候调用回调函数
+            3 使用 mounted（挂载）配置项配置这些回调函数
+            4 声明周期回调函数中的this是vue实例
+     -->
+    <div id="root">
+        <!-- vue和style行内样式结合，动态的改变css值，style={opacity:opacity},根据es6的语法
+            属性名和属性名同名，只用写一个，:style={opacity}意思就是指定了个行内style，设置
+            它的opacity属性，现在属性值交给vue来动态写 -->
+        <h2 :style={opacity}>不透明度</h2>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                opacity: 0.5
+            },
+            // mounted配置项，放声明周期回调函数
+            mounted() {   
+                setInterval(()=>{
+                    this.opacity -= 0.01
+                    if (this.opacity <= 0) {
+                        this.opacity = 1
+                    }
+                },16)
+            },
+        })
+
+    </script>
+</body>
+</html>

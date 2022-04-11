@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 条件渲染</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 
+        1 v-show 标签内容是否被看见
+            -其实就是display属性的作用
+        2 v-if 比较牛逼，false的时候不光不显示内容，连结构都无了
+        3 v-else-if 搭配 v-if 使用，就和正常的 if if-else 一样
+        4 template（模板）,一个框架，就和div功能一样，但是不改变页面结构
+     -->
+     <div id="root">
+         <h3 v-show="false">{{canon}}</h3>
+         <div v-if="false">{{nikon}}</div>
+
+         <div>n的值是:{{n}}</div>
+         <button @click="n++">click me n++</button>
+
+         <!-- 下面这种挨个判断的效率有点低 -->
+         <!-- 
+            <div v-if="n === 1">cannon</div><br><br>
+            <div v-if="n === 2">nikon</div><br><br>
+            <div v-if="n === 3">sony</div><br><br> 
+        -->
+        <!-- 使用if，if-else，只有有一个为TRUE，就不会再挨个判断了 -->
+        <div v-if="n === 1">canon</div>
+        <div v-else-if="n === 2">nikon</div>
+        <div v-else-if="n === 3">sony</div>
+        <div v-else>panasonic</div><br><br>
+
+        <!-- 功能 点击按钮全部出现 -->
+        <div>m的值是:{{m}}</div>
+        <button @click="m++">click me</button>
+        <!-- template 模板,只有v-if才可以，v-show不能实现功能
+            因为v-if=false没有这个结构了-->
+        <template v-show="m === 1">
+            <div>canon</div>
+            <div>nikon</div>
+            <div>sony</div>
+        </template>
+
+     </div>
+
+     <script>
+         Vue.config.productionTip = false;
+         const vm = new Vue({
+             el: '#root',
+             data: {
+                 canon: '5d4',
+                 nikon: 'd850',
+                 n: 0,
+                 m: 0,
+             },
+         })
+     </script>
+</body>
+</html>

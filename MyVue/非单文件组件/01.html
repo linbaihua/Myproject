@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01</title>
+    <script src="../vue.js"></script>
+    <!-- 
+        Vue中使用组件的步骤
+            1 定义组件
+            2 注册组件（局部注册，全局注册）
+            3 使用组件
+     -->
+</head>
+
+<body>
+    <!-- view1 -->
+    <div id="root">
+        <!-- 3 使用组件，定义组件标签 -->
+        <camera></camera>
+        <hr>
+        <student></student>
+        <hr>
+        <school></school>
+    </div>
+    <hr>
+
+    <!-- view2 -->
+    <div id="root2">
+        <school></school>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        
+        // 1 定义组件camera
+        const camera = Vue.extend({
+            // 1.1 view 模板
+            template: `
+                <div>
+                    <h2>佳能:{{canon}}</h2>
+                    <h2>尼康:{{nikon}}</h2>
+                    <button @click="sayHello">click me</button>
+                </div>
+            `,
+            // 1.2 组件model
+            data() {
+                return {
+                    canon: '5d4',
+                    nikon: 'd610'
+                }
+            },
+            methods: {
+                sayHello() {
+                    alert(this.canon)
+                }
+            },
+        })
+        
+        // 1 定义组件student
+        const student = Vue.extend({
+            template:`
+                <div>
+                    <h2>学号:{{id}}</h2>
+                    <h2>姓名:{{name}}</h2>
+                    <button @click="popupID">点我弹出学生学号</button>
+                </div>
+            `,
+            data() {
+                return {
+                    id:111111,
+                    name:'jack'
+                }
+            },
+            methods:{
+                popupID(){
+                    alert(this.id)
+                }
+            }
+        })
+
+        // 1 定义一个组件school
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h2>学校名称:{{schoolName}}</h2>
+                    <h2>学校地址:{{schoolAddress}}</h2>
+                    <button @click="popupSN">点我弹出学习名称</button>
+                </div>
+            `,
+            data() {
+                return {
+                    schoolName:'厦门理工',
+                    schoolAddress:'福建厦门'
+                }
+            },
+            methods:{
+                popupSN(){
+                    alert(this.schoolName)
+                }
+            }
+        }) 
+
+         // 2 注册组件（全局注册）
+        //  注意：全局注册组件在定义组件之后，都没定义不能注册
+         Vue.component('school', school)
+
+        // new 一个vue实例
+        new Vue({
+            el:'#root',
+            // 注册组件，局部注册就在一个vue实例中，也可以全局注册
+            components:{
+                // camera:camera, //用下面的写法，es6中属性名和属性值一样只用写一个
+                camera,
+                student
+            }
+        })
+        // 再new一个vue实例
+        new Vue({
+            el:'#root2'
+        })
+
+    </script>
+</body>
+
+</html>

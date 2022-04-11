@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>02 分析生命周期</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../vue.js"></script>
+	</head>
+	<body>
+        <div id="root">
+            <h2 v-text="n"></h2>
+            <h2>当前的n值是:{{n}}</h2>
+            <button @click="add">n+1</button>
+            <button @click="bye">点我销毁vm</button>
+        </div>
+
+        <script>
+            Vue.config.productionTip = false
+            const vm = new Vue({
+                el:'#root',
+                data:{
+                    n:1
+                },
+                methods: {
+                    add(){
+                        this.n++
+                        console.log('add');
+                    },
+                    bye(){
+                        // 销毁实例 
+                        this.$destroy()
+                    }
+                },
+                watch:{
+
+                },
+                // 1 初始化声明周期，事件
+                beforeCreate() {
+                    // 2 无法通过vm访问到data，methods
+                    console.log('beforecreate');
+                },
+                // 3 初始化数据监测，数据代理
+                created() {
+                    // 4 vm可以访问data，methods
+                    console.log('created');
+                },
+                // 5 是否有el
+                // 6 开始解析模板，生成虚拟dom，页面还不能显示内容
+                beforeMount() {
+                    // 7 页面呈现未经编译的dom结构，所有对dom的操作都无用
+                    // debugger; //调试，执行到这里停止
+                    console.log('beformount');
+                },
+                // 8 创建vm实例，虚拟dom->真实dom
+                mounted() {
+                    // 9 页面呈现经过编译的dom，可以对dom操作，但尽量避免
+                    console.log('mounted');
+                },
+                beforeUpdate() {
+                    console.log(this.n);
+                    // 10 页面尚未和数据同步
+                    // 还没有挂载完毕，如果对vm操作还是不可以的，虽然已经有vm了
+                    console.log('beforeUpdate');
+                },
+                // 11 根据新数据生成新的虚拟dom，与旧的比较，完成页面更新
+                updated() {
+                    // 12 页面和数据开始同步
+                    console.log('updated');
+                },
+                beforeDestroy() {
+                    // 13 vm中的所有操作都可以正常进行，但是不会再触发页面了，准备收尾工作，关闭功能
+                    // 一般不在这里操作，到这一步就是结束步骤了
+                    console.log('beforeDestroy');
+                },
+                destroyed() {
+                    // 14 销毁，关闭，不能再使用vm
+                    console.log('destroyed');
+                },
+            })
+        </script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 深度监视</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h3>a的值是{{numbers.a}}</h3>
+        <button @click="numbers.a++">click a</button>
+        <h3>b的值是{{numbers.b}}</h3>
+        <button @click="numbers.b++">click <b></b></button>
+    </div>
+
+    <script>
+        /* 
+            1 深度监视
+                -watch是无法监视到更深层次对象中值的改变的，它只能监视到vue._data
+                    中一级的属性是否改变
+                -使用deep属性可以监视更深层次属性的改变
+        */
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                numbers:{
+                    a:1,
+                    b:1
+                }
+            },
+            watch:{
+                // 对象中的属性名是string
+                // 在实例中调用自己的属性名（非单个单词）使用原始方式，使用'xxx',
+                'numbers.a':{
+                    // 开启深度监视
+                    handler(){
+                        console.log('a has been changed');
+                    }
+                },
+                numbers:{
+                    deep:true,
+                    handler(){
+                        console.log('numbers 中的数据被改变了');
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

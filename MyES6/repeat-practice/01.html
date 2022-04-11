@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*  const camera = {
+            name: 'sony',
+            type: ['a7', 'a72', 'a73', 'a74'],
+            [Symbol.iterator](){
+                let index = 0;
+                let self = this;
+                return {
+                    next: function(){
+                        if (index < self.type.length) {
+                            const res =  {value: self.type[index], done: false};
+                            index++;
+                            return res;
+                        }else{
+                            return {value: undefined, done: true};
+                        }
+                    }
+                }
+            }
+        }
+
+        for (const v of camera) {
+            console.log(v);
+        } */
+        const camera = {
+            name: 'nikon',
+            type: ['d610', 'd750', 'd810', 'd850'],
+            [Symbol.iterator]() {
+                let index = 0;
+                let self = this;
+                return {
+                    next: function(){
+                        if (index < self.type.length) {
+                            const res = {value: self.type[index], done: false};
+                            index++;
+                            return res;
+                        }else{
+                            return {value: undefined, done: true};
+                        }
+                    }
+                };
+            }
+        }
+
+        for (const n of camera) {
+            console.log(n);
+        }
+
+    </script>
+</body>
+</html>

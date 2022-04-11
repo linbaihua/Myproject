@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定</title>
+    <!-- 引入Vue -->
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 
+        1 单向数据绑定 v-bind 简写 ：
+        2 双向数据绑定 v-model：value 针对有value值的元素（表单类元素）
+            简写  v-model 可以直接省略value
+     -->
+     <div id="demo">
+         单向数据绑定 <input type="text" :value="name"><br>
+         双向数据绑定 <input type="text" v-model="name">
+     </div>
+
+    <script>
+        //  阻止Vue在启动时生产生产提示
+        Vue.config.productionTip = false;
+        
+        // vue实例
+        new Vue({
+            el: '#demo',
+            data: {
+                name: 'canon'
+            }
+        })   
+    </script>
+</body>
+</html>

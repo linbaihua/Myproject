@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指令语法多层结构</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <!-- canon是一个变量，camera就是一个object，canon是它里面的属性  -->
+        <p>我是{{canon}}}</p>
+        <p>我是{{camera.canon}}</p>
+    </div>
+    <script>
+        // new Vue实例
+        new Vue({
+            // 选择容器
+            el: '#demo',
+            // 匹配数据
+            data:{
+                canon: '5d4',
+                camera:{
+                    canon:'canon 5d4'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

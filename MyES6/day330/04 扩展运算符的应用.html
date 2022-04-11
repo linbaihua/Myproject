@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符的应用</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+
+        console.log('------1 数组的合并----------------');
+        const arr1 = ['canon','nikon'];
+        const arr2 = ['sony','panasonic'];
+        const arr12 = [...arr1,...arr2];
+        console.log(arr12);
+        
+        console.log('-------2 数组的克隆----------------');
+        const arr3 = ['lecia','hasu'];
+        const arr4 = [...arr3];
+        console.log(arr4);
+
+        console.log('----------3 将伪数组转换成真正的数组----------');
+        const divs = document.getElementsByTagName('div');
+        const arr5 = [...divs];
+        console.log(arr5); 
+
+    </script>
+</body>
+</html>

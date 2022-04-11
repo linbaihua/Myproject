@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 
+        1 自定义一个指令 v-fbind 
+        2 自定义指令也可以有局部自定义和全局自定义，全局自定义的写法和全局过滤器差不多，看
+            官方文档就可以
+     -->
+    <div id="root">
+        <h2>n的值是:{{n}}</h2>
+        <h2>放大十倍后的n的值: <span v-big="n"></span></h2>
+        <button @click="n++">点击n值+1</button>
+        <input type="text" v-fbind:value="n">
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el:'#root',
+            data:{
+                n:1
+            },
+            directives:{
+                big(element,binding){
+                    element.innerText = binding.value * 10
+                },
+                fbind:{
+                    // 只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
+                    bind(element, binding){
+                        element.value = binding.value
+                        console.log(this); //window
+                    },
+                    // 被绑定元素插入父节点时调用
+                    inserted(element, binding){
+                        // 聚焦
+                        element.focus()
+                        console.log(this); //window
+                    },
+                    // 所在组件的 VNode 更新时调用
+                    update(element, binding){
+                        element.value = binding.value
+                        console.log(this); //window
+                    }
+                    /* 
+                        1 指令中的this都是window，不是vue实例，注意
+                    */
+                }
+            }
+        })
+    </script>
+</body>
+</html>

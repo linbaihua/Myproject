@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>symbol的用法</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            -symbol一般用于向对象添加独一无二的属性和方法
+        */
+       console.log('---------1 第一种方式使用symbol添加方法------------');
+        let camera = {
+            name: 'this is a camera',
+            canon: function () { },
+            nikon: function () { }
+        };
+        let methods = {
+            canon: Symbol(),
+            nikon: Symbol()
+        };
+        camera[methods.canon] = function(){
+            console.log('canon 5d4');
+        }
+        camera[methods.nikon] = function(){
+            console.log('nikon d850');
+        }
+        console.log(camera);
+
+        console.log('--------2 第二种方法使用symbol添加方法-------------');
+        let camera1 = {
+            name: 'sony',
+            [Symbol('say1')]: function(){
+                console.log('this is a7m3');
+            },
+            [Symbol('say2')]: function(){
+                console.log('this is a7s3');
+            }
+        };
+        console.log(camera1);
+
+    </script>
+</body>
+
+</html>

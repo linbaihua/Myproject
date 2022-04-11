@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set 并，交，差集</title>
+</head>
+<body>
+    <script>
+
+         let s1 = new Set([1,2,3]);
+         let s2 = new Set([2,3,4]);
+
+        //  1 并集
+         let union = new Set([...s1, ...s2]);
+
+        //  2 交集
+        let intersection = new Set([...s1].filter(item => s2.has(item)))
+
+        //3 差集
+        // s1 中有 s2中没有 
+        let difference = new Set([...s1].filter(item => !s2.has(item)));
+
+         console.log(union);
+         console.log(intersection);
+         console.log(difference);
+
+    </script>
+</body>
+</html>

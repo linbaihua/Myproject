@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的static关键字</title>
+</head>
+<body>
+    <script>
+        class Camera{
+            // static 声明的静态属性属于类不属于实例
+            static brand = 'canon';
+            static series = '5D';
+        }
+        let camera = new Camera();
+        console.log(camera.brand); //undefined
+        console.log(Camera.brand); 
+        console.log(Camera.series);
+    </script>
+</body>
+</html>

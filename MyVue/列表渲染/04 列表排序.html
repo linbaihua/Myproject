@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 列表排序</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <input type="text" placeholder="search" v-model="keyWord">
+        <!-- 绑定点击事件click，事件的回调函数就是设置 sorttype的值 -->
+        <button @click="sortType = 2">年龄升序</button>
+        <button @click="sortType = 1">年龄降序</button>
+        <button @click="sortType = 0">原顺序</button>
+        <ul>
+            <li v-for="(p, index) of newPersons" ::key="p.id">
+                {{p.id}}--{{p.name}}--{{p.age}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        // #region
+        /*       
+            new Vue({
+                    el:'#root',
+                    data:{
+                        keyWord: '',
+                        newPersons:[],
+                        persons:[
+                            {id:'01', name:'马冬梅'},
+                            {id:'02', name:'周冬雨'},
+                            {id:'03', name:'周杰伦'},
+                            {id:'04', name:'温兆伦'}
+                        ]
+                    },
+                    watch:{
+                        keyWord:{
+                            immediate: true,
+                            handler(newValue){
+                                // filter函数为TRUE时留下，false不要
+                                this.newPersons = this.persons.filter( item => {
+                                    return item.name.indexOf(newValue) !== -1})
+                            }
+                        }
+                    }
+                }) 
+        */
+        // #region
+        new Vue({
+            el: '#root',
+            data: {
+                keyWord:'',
+                // 判断排序类型，初始为0原顺序，1降序，2升序
+                sortType:0,
+                persons: [
+                    { id: '01', name: '马冬梅', age:30 },
+                    { id: '02', name: '周冬雨', age:31 },
+                    { id: '03', name: '周杰伦', age:19 },
+                    { id: '04', name: '温兆伦', age:18 }
+                ]
+            },
+            computed:{
+                newPersons(){
+                    // 过滤列表
+                    // filter函数返回一个新数组，根据返回值为TRUE或者false选择是否过滤
+                    const arr = this.persons.filter((p) => {
+                        // indexof原用来寻找指定字符的下标位置，这里用来检测是否包含某个字符
+                        // 当找不到时返回-1
+                        return p.name.indexOf(this.keyWord) !== -1
+                    })
+
+                    // 当sorttype=0时，转换为false，就不需要排序，否则进行排序
+                    if (this.sortType) {
+                        // sort方法根据返回值的正负排序
+                        arr.sort((p1,p2) => {
+                            // return的是正负数值，return给sort选择排序方法
+                            return this.sortType == 1? p2.age-p1.age: p1.age-p2.age
+                        })
+                    }
+
+                    // return值给计算属性
+                    return arr
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

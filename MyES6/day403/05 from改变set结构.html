@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用array.from方法改变set结构</title>
+</head>
+<body>
+    <script>
+        /* 
+            1 array.from(对象，callback（可选))
+                -返回一个新数组
+                -对一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例
+            2 array.map()
+                -返回一个数组
+                -对数组中的元素执行回调函数
+                -关键是set可以用
+            3 set如何使用数组方法
+                -...set -> array
+                -array -> set(通过new Set)
+        */
+        let s1 = new Set([1,2,3,4]);
+
+        // 1 map()
+        s1 = new Set([...s1].map(item => item*2));
+        console.log(s1);
+
+        // 2 array.from
+        console.log(s1);
+        // array.from 将set变成数组
+        let s2 = Array.from(s1, item => item*3); 
+        console.log(s2);
+        // new set 将数组变成set
+        s2 = new Set(s2);
+        console.log(s2);
+
+    </script>
+</body>
+</html>

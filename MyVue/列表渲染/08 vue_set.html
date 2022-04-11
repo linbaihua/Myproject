@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>school information</h2>
+        <h3>scholl name is:{{school.name}}</h3>
+
+        <!-- v-if判断有无值，没值的时候不显示，有值的时候显示，{{school.address}}先把读值语法
+            写好，有值的时候就可以直接读出来了-->
+        <h3 v-if="school.address">scholl address is:{{school.address}}</h3>
+
+        <br>
+        <h2>student information</h2>
+        <button @click="addSex">add one sex attribute,default is man</button>
+        <h3>student_name:{{student.name}}</h3>
+        <h3 v-if="student.sex">student_age:{{student.sex}}</h3>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el:'#root',
+            // 只能添加school.age,student.age等二级属性，不能添加与school同级的对象
+            data:{
+                school:{
+                    name:'xiamenligong'
+                },
+                student:{
+                    name:'jack'
+                }
+            },
+            methods:{
+                addSex(){
+                    // Vue.set(this.student,'sex','man')
+                    this.$set(this.student,'sex','man')
+                }
+            }
+        })
+    </script>
+    <!-- 
+        1 Vue.set(添加的属性隶属对象，'属性名'，'属性值') 或者它的替代写法vm.$set(target,name,value)
+        2 上面的方法可以给school和student这样的对象添加属性，不能添加data中的一级对象，只能添加
+            二级
+        3 添加的时候，data中可以先没有这个值，但是在容器中，也就是view先显示出来（但没有value），
+            因为不先写出来的话即使set添加了值，页面也没有读取值的语句
+        4 如果没有值的时候不想先显示出来，可以使用v-if方法判断是否有值
+     -->
+</body>
+</html>

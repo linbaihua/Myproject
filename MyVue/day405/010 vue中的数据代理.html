@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <h1>学校名称：{{name}}</h1>
+        <h1>学校地址：{{address}}</h1>
+    </div>
+    <script>
+        /* 
+            1 vue中的数据代理
+                通过vm对象来代理data对象中属性的操作
+            2 vue中数据代理的好处
+                更加方便的操作data中的数据
+            3 基本原理
+                就是通过vm中的getter和setter方法改变data中的属性
+        */
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#demo',
+            data: {
+                name: 'xiamenligong',
+                address: 'fujianxiamen'
+            }
+        });
+        console.log(vm); 
+        console.log(vm.name); //xiamenligong
+        console.log(vm._data.name); //xiamenligong
+        /* 
+            -为什么 vm.name === vm._data.name?
+                因为 vm.name 自动调用vm中的getter方法，可以读取到
+                vm._data.name
+        */
+    </script>
+</body>
+</html>

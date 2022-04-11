@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2 :style="{opacity}">opactiy</h2>
+        <button @click="stop">销毁定时器</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el:'#root',
+            data:{
+                opacity:1
+            },
+            methods: {
+                stop(){
+                    this.$destroy()
+                }
+            },
+            mounted() {
+                // this.xxx 就是直接创建了xxx属性
+                this.timer = setInterval(() => {
+                    this.opacity -= 0.01
+                    if (this.opacity <= 0) {
+                        this.opacity = 1
+                    }
+                    console.log('setinterval');
+                },16)
+            },
+            beforeDestroy() {
+                // 清理定时器
+                clearInterval(this.timer)
+            },
+        })
+    </script>
+    <!-- 
+        常用的生命钩子
+            1 mounted 发送Ajax请求，启动定时器，绑定自定义事件等
+            2 beforeDestroy 清除定时器，解绑自定义事件，取消订阅消息
+        
+        销毁vue实例
+            1 销毁后借助vue开发者工具看不到任何消息
+            2 销毁后自定义事件会失效，但原生dom依然有用
+            3 一般不在 beforeDestroy 中操作数据
+            
+     -->
+</body>
+</html>

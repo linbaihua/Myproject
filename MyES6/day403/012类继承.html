@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类继承</title>
+</head>
+<body>
+    <script>
+        // 1 对象继承
+
+        /* 
+        // 父类
+        function Camera1(brand, series){
+            this.brand = brand;
+            this.series = series;
+        }
+        // 父类方法
+        Camera1.prototype.photo = function(){
+            console.log('i can take a photo');
+        }
+        // 子类
+        function Camera2(brand, series, type){
+            Camera1.call(this, brand, series);
+            this.type = type;
+        }
+        // 设置子类构造函数的原型是父类的实例对象
+        Camera2.prototype = new Camera1;
+        Camera2.prototype.constructor = Camera2;
+        // 添加子类自己的方法
+        Camera2.prototype.video = function(){
+            console.log('i can shoot video');
+        }
+        let camera = new Camera2('panasonic', 's', 's1h');
+        camera.photo();
+        camera.video(); 
+        */
+
+        // 2 class继承
+        class Camera1{
+            constructor(brand, series){
+                this.brand = brand;
+                this.series = series;
+            }
+            photo(){
+                console.log(this.brand + this.series + ' i can take a photo');
+            }
+        }
+        // 使用extends 关键字表示继承
+        class Camera2 extends Camera1{
+            constructor(brand, series, type){
+                // 调用父类的构造函数
+                super(brand, series);
+                this.type = type;
+            }
+            video(){
+                // 调用父类的方法
+                super.photo()
+                console.log(this.type + ' i can shoot video');
+            }
+        }
+        let camera = new Camera2('canon', 'r', 'r6');
+        camera.photo();
+        camera.video();
+
+    </script>
+</body>
+</html>

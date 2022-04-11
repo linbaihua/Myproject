@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 computed 对比 watch</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        firstName: <input type="text" v-model="firstName"><br><br>
+        lastName: <input type="text" v-model="lastName"><br><br>
+        fullName: <span>{{fullName}}</span>
+    </div>
+
+    <script>
+        /* 
+            1 watch 中可以写settimeout（异步），但是计算属性不能够实现，因为watch
+                监听的属性结果不依靠return返回值，可以直接改变
+            2 计算属性的结果是靠返回值（return），无法实现异步return
+            3 当计算属性和watch都可以实现的时候选择计算属性实现，但是当需要异步时
+                选择watch实现
+            4 两个重要的原则
+                1 被vue管理的函数写成普通函数，this->vm
+                2 不被vue管理的函数写成箭头函数（异步：Ajax，定时器等），这样函数
+                    中的this才指向vm，否则指向window
+        */
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                firstName: 'zhang',
+                lastName: 'san',
+                fullName: 'zhang-san'
+            },
+            watch:{
+                // handler方法中first参数是新值
+                firstName(newValue){
+                    this.fullName = newValue + '-' + this.lastName
+                },
+                lastName(newValue){
+                    this.fullName = this.firstName + '-' + newValue
+                }
+            }
+        })
+    </script>
+</body>
+</html>

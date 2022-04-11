@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 监视属性</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- info是一个计算属性 -->
+        <h2>今天天气很{{info}}</h2>
+        <button @click="fun1">click me</button>
+    </div>
+    <script>
+        /* 
+            1 watch（监视项）
+                -监视项用于监视vue中某个属性，赋予属性回调函数，当监视
+                    的属性改变时就调用回调函数
+                -handler() 函数，可以传入两个参数，两个参数分别是
+                    改变前值改变后值 
+                -immediate 初始化时调用一下handler函数
+
+            2 监视项的写法
+                -第一张就是在创建vue实例中直接写
+                -第二种是使用 vm.$watch('属性', {监视配置})
+        */
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                isHot: true,
+            },
+            methods: {
+                fun1() {
+                    this.isHot = !this.isHot
+                }
+            },
+            computed: {
+                info() {
+                    return this.isHot ? 'hot' : 'cool'
+                }
+            },
+            /* watch:{
+                isHot:{
+                    immediate: true, //初始化时调用一下handler函数
+                    handler(newValue, oldValue){
+                        console.log(newValue, oldValue);
+                    }
+                }
+            } */
+        })
+        vm.$watch('isHot', {
+            immediate: true, //初始化时调用一下handler函数
+            handler(newValue, oldValue) {
+                console.log(newValue, oldValue);
+            }
+        })
+    </script>
+</body>
+
+</html>

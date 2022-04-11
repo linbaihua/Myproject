@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 列表过滤</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+
+    <div id="root">
+        <input type="text" placeholder="search" v-model="keyWord">
+        <ul>
+            <li v-for="(p, index) of newPersons" ::key="p.id">
+                {{p.id}}--{{p.name}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false
+        // #region
+        /*       
+            new Vue({
+                    el:'#root',
+                    data:{
+                        keyWord: '',
+                        newPersons:[],
+                        persons:[
+                            {id:'01', name:'马冬梅'},
+                            {id:'02', name:'周冬雨'},
+                            {id:'03', name:'周杰伦'},
+                            {id:'04', name:'温兆伦'}
+                        ]
+                    },
+                    watch:{
+                        keyWord:{
+                            immediate: true,
+                            handler(newValue){
+                                // filter函数为TRUE时留下，false不要
+                                this.newPersons = this.persons.filter( item => {
+                                    return item.name.indexOf(newValue) !== -1})
+                            }
+                        }
+                    }
+                }) 
+        */
+        // #region
+        new Vue({
+            el: '#root',
+            data: {
+                keyWord:'',
+                persons: [
+                    { id: '01', name: '马冬梅' },
+                    { id: '02', name: '周冬雨' },
+                    { id: '03', name: '周杰伦' },
+                    { id: '04', name: '温兆伦' }
+                ]
+            },
+            computed:{
+                // 计算属性的值来自于函数中的return
+                newPersons(){
+                    return this.persons.filter((p) => {
+                        // return TRUE or false
+                        return p.name.indexOf(this.keyWord) !== -1
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <style>
+        *{
+            margin: 20px;
+        }
+        .box1{
+            height: 50px;
+            background-color: yellowgreen;
+        }
+        .box5{
+            height: 50px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Vue中的事件修饰符：
+						1.prevent：阻止默认事件（常用）；
+						2.stop：阻止事件冒泡（常用）；
+						3.once：事件只触发一次（常用）；
+						4.capture：使用事件的捕获模式；
+						5.self：只有event.target是当前操作的元素时才触发事件；
+						6.passive：事件的默认行为立即执行，无需等待事件回调执行完毕；
+     -->
+    <div id="root">
+        <!-- 1 直接在click后面添加 prevent 可以阻止后面的默认事件 -->
+        <a href="http://www.baidu.com" @click.prevent="fun1($event)">click me!!</a>
+
+        <!-- 
+            2 阻止事件冒泡 stop 
+                -事件冒泡：button和div有同样的事件，点击button后也会触发div的事件
+                -click.stop 后，就阻止了事件冒泡
+        -->
+        <div class="box1" @click="fun2">
+            <button @click.stop="fun2">clic me stop2</button>
+        </div>
+
+        <!-- 3 事件只触发一次，click.once-->
+        <button @click.once="fun3">33333</button>
+
+        <!-- 4 capture 使用事件的捕获模式，可以设置先捕获外面的，在捕获里面的 -->
+        <!-- 5 self 只有当event.target 是当前操作元素是才触发事件，也可以阻止事件冒泡使用 -->
+        <div class='box5' @click.self="fun5">
+            <button @click="fun5">5555555</button>
+            <!-- 5 可以同时绑定两个事件修饰符，阻止默认事件和冒泡 -->
+            <a href="http://www.baidu.com" @click.prevent.stop="fun5"></a>
+        </div>
+        <!-- 6 passive 当有回调函数时，可能会先执行回调函数再触发事件行为，使用
+        passive 就可以先执行事件行为，再执行回调函数（例如wheel） -->
+        <!-- 4 5 6 一般不常用 -->
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: '#root',
+            data: {},
+            methods: {
+                fun1(event){
+                    // 1 阻止页面默认事件，这里阻止页面跳转事件
+                    event.preventDefault();
+                    alert('hello wrold');
+                    // return false; // 1 不打开新标签页，而是在当前标签页打开
+                },
+                fun2(){
+                    alert('22222');
+                },
+                fun3(){
+                    alert('333333');
+                },
+                fun5(){
+                    alert('555555');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

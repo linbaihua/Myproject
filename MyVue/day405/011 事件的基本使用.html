@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>欢迎来到{{name}}学习</h1>
+
+        <!-- vue中函数的写法 -->
+        <button v-on:click="showInfo">click me</button>
+        <!-- 简写 用@代替 v-on: -->
+        <!-- 函数中可以传参数，$event（事件对象），除了这个还可以传递
+        其它的参数，但是 $event 时vue中定义的事件对象参数 -->
+        <button @click="showInfo1($event, 666)">click me!!</button>
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+        
+        const vm = new Vue({
+            el: '#root',
+
+            /* data中存放数据（变量、属性），data中的数据都会做数据代理，
+            当然方法也可以放在data中，vue同样也会给方法做数据代理，但是这
+            样做增加了vue的负担，不推荐 */
+            data: {
+                name: 'shangguigu',
+            },
+            
+            // 存放vue中方法
+            methods: {
+                showInfo(){
+                    // console.log('hello world');
+                    alert('hello world');
+                },
+                showInfo1(event, number){
+                    /* event.target = event本身，调用event对象中的属性
+                    不能直接使用event.xxx,而用event.target.xxx*/
+                    console.log(event.target.innerText);
+                    console.log(this); //this->vue
+                    console.log(number);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

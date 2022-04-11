@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块引入的方式</title>
+</head>
+<body>
+    <script type="module">
+        // 1 通用的引入方式
+        // * 是引入所有，as后面是对引入包起的名字
+        /* import * as m1 from "./04 m1.js";
+        console.log(m1);
+        import * as mm from './05 m2.js';
+        console.log(mm);
+        import * as m3 from './06 m3.js';
+        console.log(m3); */
+
+        // 2 解构赋值形式
+        import {camera, photo} from './04 m1.js';
+        photo();
+        // 与上面camera重名，在内部使用as
+        import {camera as c2, video} from './05 m2.js';
+        console.log(c2);
+        video();
+        // default需要重新起一个名字
+        import {default as dd} from './06 m3.js';
+        console.log(dd.camera);
+        dd.movie();
+
+        // 3 简便形式，针对默认暴露,其它的方式不行
+        import m3 from './06 m3.js';
+        console.log(m3);
+    </script>
+</body>
+</html>

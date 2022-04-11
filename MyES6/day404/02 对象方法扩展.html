@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象方法扩展</title>
+</head>
+<body>
+    <script>
+        // 1 object.js 判断两个值是否完全相等
+        // 这个方法判断两个nan是TRUE
+        console.log(Object.is(2,2)); //true
+        console.log(Object.is(NaN,NaN)); //true
+        console.log(NaN == NaN); //false
+
+        // 2 object.assign 对象的合并
+        const config1 = {
+            host: 'localhost',
+            port: 3306,
+            name: 'root',
+        }
+        const config2 = {
+            host: 'localhost:127',
+            port: 5505,
+            pass: 'canon'
+        }
+        // 相同的覆盖，不相同的合并
+        console.log(Object.assign(config1, config2));
+
+    </script>
+</body>
+</html>

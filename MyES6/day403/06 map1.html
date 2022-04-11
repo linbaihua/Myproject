@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map简介</title>
+</head>
+
+<body>
+    <script>
+        /* 
+            -object对象的键值对中键只能是字符串形式，也可以说是 字符串-值 对
+            -map类型就是可以存储 值-值 键值对，键可以是别的数据类型，可以不是string
+        */
+        // name age 都是string
+        const obj1 = {
+            name: 'linbaihua',
+            age: 16
+        }
+        // address是string
+        let address = 'address';
+        obj1[address] = 'xiamen';
+        console.log(obj1);
+
+        let map1 = new Map();
+        // 数字作为键名
+        map1.set(1, 'canon');
+        map1.set(2, 'nikon');
+        map1.set(3, 'sony');
+        console.log(map1);
+
+    </script>
+</body>
+
+</html>

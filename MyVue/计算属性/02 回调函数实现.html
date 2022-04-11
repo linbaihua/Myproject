@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例-回调函数实现</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 
+        1 插值语法中也可以传入回调函数
+     -->
+    <div id="root">
+        姓: <input type="text" v-model="firstName"><br><br>
+        名: <input type="text" v-model="lastName"><br><br>
+        全名: <span>{{fullName()}}</span>
+        <!-- 插值语法也可以传入回调函数 -->
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el: '#root',
+            data: {
+                firstName: '张',
+                lastName: '三'
+            },
+            methods: {
+                fullName(){
+                    // this 是在实例对象中，就指向实例对象
+                    // 不知道this是谁时就打印看一下
+                    return this.firstName + '-' + this.lastName;
+                }
+            }
+        })
+        console.log(vm);
+    </script>
+</body>
+</html>

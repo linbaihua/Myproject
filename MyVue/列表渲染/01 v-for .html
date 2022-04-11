@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 v-for 遍历循环</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+    <div id="root">
+
+        <h2>遍历数组</h2>
+        <ul>
+            <li v-for="p of persons" :key="p.id">
+                {{p.id}}-{{p.brand}}--{{p.name}}
+            </li>
+        </ul>
+
+        <h2>遍历对象</h2>
+        <ul>
+            <!-- value是键值，key是健名 -->
+            <li v-for="(value,key) of canon" :key="key">
+                {{key}}--{{value}}
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#root',
+            data: {
+                persons:[
+                    {id:'001',brand:'canon',name:'5d4'},
+                    {id:'002',brand:'nikon',name:'d850'},
+                    {id:'003',brand:'sony',name:'a7m4'},
+                ],
+                canon:{
+                    series:'5d',
+                    name:'5d4',
+                    lens:'24-70',
+                }
+            }
+        })
+    </script>
+    <!-- 
+        1 v-for 用来循环遍历输出 数组，对象，字符串等，其中数组和对象
+            用的最多，字符串用的很少
+     -->
+</body>
+</html>

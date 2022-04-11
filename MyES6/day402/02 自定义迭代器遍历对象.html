@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义迭代器遍历对象</title>
+</head>
+
+<body>
+    <script>
+
+        const camera = {
+            name: 'canon',
+            type: ['5d', '5d2', '5d3', '5d4'],
+            /* 
+                3 自定义一个迭代器
+                -因为symbol.iterator不是所有对象都有的，object对象实例是
+                    没有这个属性的，所以我们要自己定义
+                -[Symbol.iterator]() 返回一个有next方法的对象
+                -next方法也返回一个对象
+            */
+            [Symbol.iterator]() {
+                // 数组下标
+                let index = 0;
+                let self = this;
+                return {
+                    next: function () {
+                        if (index < self.type.length) {
+                            const result = { value: self.type[index], done: false };
+                            index++;
+                            return result;
+                        } else {
+                            return { value: undefined, done: true };
+                        }
+                    }
+                }
+            }
+        }
+
+        // 2 遍历这个对象中的type数组
+        // for of遍历会自动找camera中的迭代器，这里的camera中的迭代器是自己定义的
+        for (const v of camera) {
+            console.log(v);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 深度监视简写</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h3>今天的天气真{{info}}</h3>
+        <button @click="fun1">click me</button>
+    </div>
+
+    <script>
+        /* 
+            1 computed和watch中，属性一般是以对象字面量的形式配置 xxx:{}
+            2 不过有简写方法，就是computed中的属性只有getter方法时，watch
+                中监视的属性无immediate和deep时就可以直接以函数的方式简写
+        */
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                isHot:true
+            },
+            computed:{
+                // 计算属性应该是要写getter和setter方法的
+                // 不过如果只有 getter方法久可以简写
+                info(){
+                    return this.isHot? 'hot': 'cool'
+                }
+            },
+            methods: {
+                fun1(){
+                    this.isHot = !this.isHot
+                }
+            },
+            watch:{
+                // 监视的简写方法
+                // 不写immediate和deep时候才可以简写
+                isHot(newValue, oldValue){
+                    console.log('ishot has been changed',newValue,oldValue);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

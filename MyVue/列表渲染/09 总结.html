@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>总结</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h1>学生信息</h1>
+        <!-- click是一个函数，可以直接在里面进行短的函数功能实现 -->
+        <button @click="student.age++">年龄+1岁</button>
+        <button @click="addSex">添加性别属性，默认值：男</button>
+        <!-- 不用写vm.student.sex,因为view可以直接读到model中的数据 -->
+        <button @click="student.sex = 'woman'">修改性别</button>
+        <button @click="addFriend">在列表首位添加一个朋友</button>
+        <button @click="unpdateFirstFriendName">修改第一个朋友的名字为：张三</button>
+        <button @click="addHobby">添加一个爱好</button>
+        <button @click="updateHobby"> 修改第一个爱好为：开车</button>
+        <button @click="removeSmoke">过滤掉爱好中的抽烟</button>
+        
+        <h3>姓名: {{student.name}}</h3>
+        <h3>年龄: {{student.age}}</h3>
+        <h3 v-if="student.sex">性别: {{student.sex}}</h3>
+
+        <h3>爱好:</h3>
+        <ul>
+            <li v-for="(h, index) in student.hobby" :key="index"> 
+                {{h}}
+            </li>
+        </ul>
+
+        <h3>朋友们:</h3>
+        <ul>
+            <li v-for="(f, index) in student.friends" :key="index">
+                {{f.name}}--{{f.age}}
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                student:{
+                    name:'tom',
+                    age:18,
+                    hobby:['抽烟','喝酒','烫头'],
+                    friends:[
+                        {name:'mary',age:22},
+                        {name:'tina', age:23}
+                    ]
+                }
+            },
+            methods: {
+                /* 
+                    1 student 是对象，操作对象中的属性可以使用 vue.set
+                    2 student.friends是数组，操作用数组中的方法
+                */
+                addSex(){
+                    Vue.set(this.student,'sex','man')
+                },
+                addFriend(){
+                    // 这里也可以使用 unshift 函数
+                    this.student.friends.splice(0,0,{name:'李四', age:24})
+                },
+                unpdateFirstFriendName(){
+                    this.student.friends[0].name = '张三'
+                },
+                addHobby(){
+                    this.student.hobby.push('摄影')
+                },
+                updateHobby(){
+                    // 这里不能像下面这样写，因为没有触发改变数组的方法，vue监视不到
+                    // this.student.hobby[0] = '开车'
+                    this.student.hobby.splice(0,1,'开车')
+                },
+                // 当箭头函数的函数体只有一个 `return` 语句时，可以省略 `return` 关键字和方法体的花括号
+                removeSmoke(){
+                    this.student.hobby = this.student.hobby.filter(item => item !== '抽烟')
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>symbol</title>
+</head>
+
+<body>
+    <script>
+        /*
+            -symbol是一个新的数据类型，代表唯一的， 不能与其它数据进行运算
+        */
+        // 创建symbol
+        console.log('---------1 创建symbol----------');
+        let s = Symbol(); //创建一个变量s，它的值是symbol类型，代表独一无二
+        console.log(s, typeof s); //返回symbol类型
+
+        console.log('---------2 每个symbol 都不一样');
+        let s1 = Symbol('canon'); //括号里面的值是对这个symbol类型变量的描述
+        let s2 = Symbol('canon');
+        console.log(s1 === s2); // false
+        
+        console.log('--------3 symbol.for创建可以一样----------');
+        let s3 = Symbol.for('nikon');
+        let s4 = Symbol.for('nikon');
+        console.log(s3 === s4); //true
+
+        console.log('-------4 不能与其它数据运算----------');
+        // let result = s + 100; error
+
+    </script>
+</body>
+
+</html>

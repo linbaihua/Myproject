@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set 遍历器</title>
+</head>
+<body>
+    <script>
+        /* 
+            -keys方法、values方法、entries方法返回的都是遍历器对象。由于 Set 结构没有键名，
+            只有键值（或者说键名和键值是同一个值），所以keys方法和values方法的行为完全一致
+            -Set.prototype.keys()：返回键名的遍历器
+            Set.prototype.values()：返回键值的遍历器
+            Set.prototype.entries()：返回键值对的遍历器
+            Set.prototype.forEach()：使用回调函数遍历每个成员
+        */
+
+        const set1 = new Set([1,2,3,3,3,4,4]);
+
+        for (const item of set1.keys()) {
+            console.log(item);
+        }
+        for (const item of set1.values()) {
+            console.log(item);
+        }
+        for (const item of set1.entries()) {
+            console.log(item);
+        }
+        // Set 结构的实例默认可遍历，它的默认遍历器生成函数就是它的values方法
+        // 这意味着，可以省略values方法，直接用for...of循环遍历 Set
+        for (const item of set1) {
+            console.log(item);
+        }
+        console.log('------------------------');
+        set1.forEach(item => {
+            console.log(++item);
+        });
+        // key 是键名，value是键值
+        set1.forEach((key,value) => {
+            console.log(key+':'+ ++value);
+        });
+
+    </script>
+</body>
+</html>

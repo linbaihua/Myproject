@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest参数</title>
+</head>
+<body>
+    <script>
+        console.log('-----1 ES6引入rest参数，代替arguments-------');
+        // 这个参数返回的是一个数组，我们可以调用数组的很多方法
+        function data(...args){
+            console.log(args);
+        }
+        data('canon','nikon','sony');
+
+        console.log('-----2 之前的arguments参数------------------');
+        // arguments返回的是一个object对象
+        function data1(){
+            console.log(arguments);
+        }
+        data1('nikon','canon','panasonic');
+
+        console.log('-----3 rest参数必须要放到最后----------------');
+        // args显示返回的是没有形参的参数
+        function data2(a,b,c,...args){
+            console.log(args);
+        }
+        data2(1,2,3,4,5,6);
+
+    </script>
+</body>
+</html>

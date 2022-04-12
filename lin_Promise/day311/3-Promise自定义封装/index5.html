@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="./013 catch方法与异常穿透.js"></script> -->
+    <!-- <script src="./014 Promie_resolve.js"></script> -->
+    <!-- <script src="./015 Promise_reject .js"></script> -->
+    <!-- <script src="./016 Promise_all.js"></script> -->
+    <script src="./017 Promise_race.js"></script>
+</head>
+<body>
+    <script>
+        const p = new Promise.resolve('ok1');
+        const p1 = new Promise.resolve(new Promise((resolve, reject) => {
+            // reject('err1');
+            resolve('ok2');
+        }));
+        const p2 = new Promise.resolve(Promise.resolve('ok3'));
+        const p3 = new Promise.reject('err2');
+
+        // console.log(p3);
+        // let res = Promise.all([p,p1,p2]);
+        let res = Promise.all([p,p1,p2,p3]);
+        let res1 = Promise.race([p1,p2,p3]);
+        // console.log(res);
+        console.log(res1);
+    </script>
+</body>
+</html>

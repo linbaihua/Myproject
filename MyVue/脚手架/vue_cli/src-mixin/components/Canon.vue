@@ -1,0 +1,38 @@
+<template>
+    <div id="canon">
+        <h2>{{series}}</h2>
+        <h2>{{brand}}</h2>
+        <h2>{{type}}</h2>
+        <button @click="sayHello">click me</button>
+    </div>
+</template>
+
+<script>
+// 引入混合
+import {mixin1,mixin2} from '../mixin'
+
+export default {
+    name:'Canon',
+    data() {
+        return {
+            brand:'canon',
+            type:'5d4'
+        }
+    },
+    /* methods: {
+        sayHello(){
+            alert(this.type)
+        }
+    }, */
+
+    // 配置混合项
+    mixins:[mixin1,mixin2]
+}
+</script>
+
+<style>
+    #canon{
+        color: rgb(49, 121, 64);
+        background-color: yellowgreen;
+    }
+</style>

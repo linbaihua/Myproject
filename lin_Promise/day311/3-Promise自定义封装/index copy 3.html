@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index.html</title>
+    <script src="./012 then方法封装.js"></script>
+</head>
+<body>
+    <script>
+        
+        let p = new Promise((resolve, reject) => {
+            // 1 同步修改状态
+            resolve('ok1');
+            // 2 同步修改状态then返回结果
+            // 3 异步修改状态
+            setTimeout(() => {
+                
+            }, 1000);
+            // 4 异步修改状态then返回结果
+        });
+
+        const res = p.then(value => {
+            console.log(value);
+            // throw 'error';
+        }, reason => {
+            // throw 'error reason';
+            // console.log(reason);
+            console.warn(reason);
+        });
+        // console.log(p);
+        console.log(res);
+
+    </script>
+</body>
+</html>

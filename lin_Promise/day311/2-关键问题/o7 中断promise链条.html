@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中断promise链条</title>
+</head>
+<body>
+    <script>
+        /* 
+            -问题：如何中断promise链？
+                -返回一个pending的promise对象
+        */
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('canon');
+            }, 1000);
+        });
+        p.then(value => {
+            console.log(111);
+            //有且只有一个方式,返回一个空的对象（一直在pending中）
+            return new Promise(() => {});
+        }).then(value => {
+            console.log(222);
+        }).then(value => {
+            console.log(333);
+        }).catch(reason => {
+            console.warn(reason);
+        })
+    </script>
+</body>
+</html>

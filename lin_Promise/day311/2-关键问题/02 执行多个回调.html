@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>执行多个回调</title>
+</head>
+<body>
+    <script>
+
+        const p = new Promise((resolve, reject) => {
+            // 不管你传入什么，除了promise对象，其它的都是成功
+            resolve('ok');
+        });
+        // 回调1
+        p.then(value => {
+            console.log(value);
+        });
+        // 回调2
+        p.then(value => {
+            console.log(value);
+        });
+
+        const p1 = new Promise((resolve, reject) => {
+
+            // 这里即使手动resolve，但是resolve中传入了失败的promise对象，最终结果也是reject
+            resolve(new Promise((resolve, reject) => {
+                reject('err');
+            }));
+
+        });
+        p1.then(value => {
+            console.log(value);
+        }, reason => {
+            console.log(reason); 
+            console.log(p1);
+        });
+
+    </script>
+</body>
+</html>

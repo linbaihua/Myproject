@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>then and catch</title>
+</head>
+<body>
+    <script>
+
+        /* 
+            -PromiseState
+                -pending  待定
+                -fullfilled  成功
+                -rejected  失败
+                -转态转换
+                    -pending -> fullfilled
+                    -pending -> rejected
+
+            -PromiseResult
+                -返回的结果值
+        */
+        let p = new Promise((resolve, reject) => {
+            // resolve是一个函数，传入一个参数，下面的value就是形参，OK是实参
+            // resolve('ok'); //下面的reject不会执行，因为已经读取到成功
+            reject('err');
+        });
+
+        console.log(p); 
+
+        // 第一个参数返回resolve结果，第二个参数返回reject结果
+        p.then(value => {
+            console.log(value);
+            console.log(p);
+        }, reason => {
+            console.log(reason);
+            console.log(p);
+        });
+
+        // 只用来返回reject结果
+        p.catch(reason => {
+            console.log(reason);
+            console.log(p);
+        });
+
+    </script>
+</body>
+</html>

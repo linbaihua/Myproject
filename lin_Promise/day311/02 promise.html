@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise入门</title>
+</head>
+
+<body>
+    <button id="btn">点击抽奖</button>
+    <button id="btn1">点击promise抽奖</button>
+    <script>
+        // 生成一个n-m之间的随机数
+        // random是返回0-1之间的随机数，0（包括）1（不包括）
+        function rand(m, n) {
+            return Math.ceil(Math.random() * (n - m + 1)) + m - 1;
+        }
+        console.log('-----------1 不使用promise的异步编程----------------');
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', function () {
+            // 定时器
+            setTimeout(() => {
+                let n = rand(1, 100);
+                if (n < 30) {
+                    alert('恭喜中奖');
+                } else {
+                    alert('再接再厉');
+                }
+            }, 1000);
+        });
+
+        /* 
+            -resolve,reject,value,reason潜规则这样写，当然也可以不这样写
+            -promise就是创造一个new一个promise对象，将里面的成功返回给resolve，
+                失败结果返回给reject（成功和失败的语句先不定义，在外面的then方法中定义）
+                ，然后再对象外使用 promise的then方法接收结果并定义成功和失败的语句，
+                这样一来异步编程就变得很方便，可以传参数，可以在回调之外定义回调
+                结果
+        */
+        console.log('-----------2 使用promise的异步编程-----------------');
+        const btn1 = document.getElementById('btn1');
+        btn1.addEventListener('click', function () {
+            // promie 绑定
+            const p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    let n = rand(1, 100);
+                    if (n < 30) {
+                        // resolve();
+                        resolve(n); //可以将n参数传递出去
+                    } else {
+                        reject(n);
+                    }
+                }, 1000);
+            });
+
+            p.then(
+                // 成功结果
+                (value) => {
+                    alert('success, your number is ' + value);
+                },
+                // 失败结果
+                (reason) => {
+                    alert('defeated, your number is ' + reason);
+                });
+        });
+
+    </script>
+</body>
+
+</html>

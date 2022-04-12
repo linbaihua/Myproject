@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异常穿透现象</title>
+</head>
+<body>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('ok');
+            }, 1000);
+        });
+        p.then(value => {
+            console.log(value); //ok
+            // 抛出错误，返回的promise需要进入catch函数，或者then的第二个参数
+            throw 'error'; 
+        }).then(value => {
+            console.log(222);
+        }).then(value => {
+            console.log(333);
+        }).catch(reason => {
+            console.warn(reason); //error
+        })
+        /* then(value => {
+            console.log(444);
+        }, reason => {
+            console.warn(reason); //error
+        }) */
+    </script>
+</body>
+</html>

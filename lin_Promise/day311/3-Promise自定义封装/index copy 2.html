@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index.html</title>
+    <!-- <script src="./02 promise.js"></script> -->
+    <!-- <script src="./03 resolve和reject的函数实现.js"></script> -->
+    <!-- <script src="./04 throw.js"></script> -->
+    <!-- <script src="./05 promise转态只改变一次.js"></script> -->
+    <!-- <script src="./06 then执行回调.js"></script> -->
+    <!-- <script src="./07 实现异步.js"></script> -->
+    <!-- <script src="./08 指定多个回调.js"></script> -->
+    <!-- <script src="./09 同步修改状态.js"></script> -->
+    <!-- <script src="./010 异步修改状态then返回.js"></script> -->
+    <script src="./011 同步修改转态then返回.js"></script>
+</head>
+<body>
+    <script>
+        
+        let p = new Promise((resolve, reject) => {
+            /* setTimeout(() => {
+                // resolve('canon');
+                reject('nikon');
+            }, 1000); */
+            // resolve('ok');
+            reject('err1');
+        });
+
+        const res = p.then(value => {
+            // console.log(value);
+            throw 'error';
+        }, reason => {
+            throw 'error reason';
+            // console.log(reason);
+            // console.warn(reason);
+        });
+        console.log(res);
+
+    </script>
+</body>
+</html>

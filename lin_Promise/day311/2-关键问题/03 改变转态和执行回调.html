@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改变状态和执行回调</title>
+</head>
+<body>
+    <script>
+
+        // 1 先改变转态再执行回调
+        const p = new Promise((resolve, reject) => {
+            // 1 这种promise内无回调函数，程序就同步执行
+            resolve('ok')
+        });
+        p.then(value => {
+            console.log(value);
+        });
+
+        // 2 先执行回调（但是还未返回结果，因为还没有获得到promise的状态），然后读取
+        //      转态，最后再回到回调返回结果
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() =>{
+                resolve('ok')
+            }, 1000);
+        });
+        p1.then(value => {
+            console.log(value);
+        });
+
+        /* 
+            -结论:
+                -无论哪种方式，回调的结果都是在改变转态之后，因为不知道promise的转态就无法
+                    返回哪种结果
+        */
+
+    </script>
+</body>
+</html>

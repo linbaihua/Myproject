@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>then and catch</title>
+</head>
+<body>
+    <script>
+        /* 
+            -Promise(executor) 执行器
+                1. Promise 构造函数: Promise (excutor) {}
+                (1) executor 函数: 执行器 (resolve, reject) => {}
+                (2) resolve 函数: 内部定义成功时我们调用的函数 value => {}
+                (3) reject 函数: 内部定义失败时我们调用的函数 reason => {}
+                说明: executor 会在 Promise 内部立即同步调用,异步操作在执行器中执行
+        */
+        let p = new Promise((resolve, reject) => {
+            // 直接定义promise成功
+            resolve('ok');
+        });
+        p.then(value => {
+            console.log(value);
+            console.log(p); //fulfilled ok
+        });
+
+        let p1 = new Promise((resolve, reject) => {
+            // 无回调函数，手动定义失败
+            reject('err');
+        });
+        // 使用then方法可以输出resolve和reject，但是第一个参数是resolve
+        // 第二个是reject，如果只输出一个reject，可以用catch方法
+        /* p1.then(reason => {
+            console.log(reason);
+        }); */
+        p1.catch(reason => {
+            console.log(reason); 
+            console.log(p1);  //rejected err
+        });
+
+    </script>
+</body>
+</html>

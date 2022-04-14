@@ -2,8 +2,11 @@
     <div id="root">
         <div class="todo-container">
             <div class="todo-wrap">
-                <MyHeader/>
-                <MyList/>
+                <!-- 将addtodo方法传递 -->
+                <MyHeader :addTodo="addTodo"/>
+                <!-- 将todoList传递给mylist组件
+                这里的todoList要和下面return中的todoList写的要一样 -->
+                <MyList :todoList='todoList'/>
                 <MyFooter/>
              </div>
         </div>
@@ -17,7 +20,26 @@ import MyList from './components/MyList.vue'
 
 export default {
     name:'App',
-    components:{MyFooter,MyHeader,MyList}
+        data() {
+            return {
+                // 在数组里面存对象
+                todoList:[
+                    // id使用string，不使用number类型，因为number有尽头，string没有
+                    // 真正开发中用的都是hash值
+                    {id:'001', title:'抽烟',done:true },
+                    {id:'002', title:'喝酒',done:false },
+                    {id:'003', title:'开车',done:true },
+                ]
+            }
+        },
+        methods:{
+            // 添加一个todo列表
+            // 这个方法传递给myheader调用
+            addTodo(todoObj){
+                this.todoList.unshift(todoObj)
+            }
+        },
+        components:{MyFooter,MyHeader,MyList}
 }
 </script>
 

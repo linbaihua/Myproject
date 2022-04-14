@@ -1,7 +1,13 @@
 <template>
     <ul class="todo-main">
         <!-- v-for遍历对象， :todo声明一个属性绑定到v-for中的todo对象-->
-        <MyItem v-for="todo in todoList" :key="todo.id" :todo='todo'/>
+        <MyItem 
+            v-for="todo in todoList" 
+            :key="todo.id" 
+            :todo='todo'
+            :checkTodo='checkTodo'
+            :deleteTodo='deleteTodo'
+        />
     </ul>
 </template>
 
@@ -11,7 +17,7 @@ export default {
     name:'MyList',
     // props用来接收父组件的数据
     components:{MyItem},
-    props:['todoList'],
+    props:['todoList','checkTodo','deleteTodo'],
 }
 </script>
 

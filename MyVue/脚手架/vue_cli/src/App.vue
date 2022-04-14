@@ -6,8 +6,8 @@
                 <MyHeader :addTodo="addTodo"/>
                 <!-- 将todoList传递给mylist组件
                 这里的todoList要和下面return中的todoList写的要一样 -->
-                <MyList :todoList='todoList'/>
-                <MyFooter/>
+                <MyList :todoList='todoList' :checkTodo='checkTodo' :deleteTodo='deleteTodo'/>
+                <MyFooter :todoList='todoList' :selectAllTodo='selectAllTodo' :clearAllTodo='clearAllTodo'/>
              </div>
         </div>
     </div>
@@ -37,6 +37,26 @@ export default {
             // 这个方法传递给myheader调用
             addTodo(todoObj){
                 this.todoList.unshift(todoObj)
+            },
+            // 修改每个todo的done
+            checkTodo(id){
+                this.todoList.forEach(todo => {
+                    if(todo.id === id) todo.done = !todo.done
+                });
+            },
+            // 删除一个todo
+            deleteTodo(id){
+                if(confirm('确认删除吗')){
+                    this.todoList = this.todoList.filter(todo => todo.id !== id)
+                }
+            },
+            // 全选或者全不选
+            selectAllTodo(done){
+                this.todoList.forEach(todo => todo.done = done)
+            },
+            // 清楚已完成的
+            clearAllTodo(){
+                this.todoList = this.todoList.filter(todo => !todo.done)
             }
         },
         components:{MyFooter,MyHeader,MyList}

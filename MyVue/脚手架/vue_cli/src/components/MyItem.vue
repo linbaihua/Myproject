@@ -4,10 +4,17 @@
             <!-- checked表示默认选中复选框，checked这里有没有，取决于todo.done
                 done=true，就有checked
                 :checked 是伪类选择器，当它的值为true时，就有效，为false无效 -->
-            <input type="checkbox" :checked='todo.done'/>
+            <input type="checkbox" 
+                :checked='todo.done' 
+                @change="checkHandle(todo.id)"   
+            />
+
+            <!-- 下面的代码也能实现修改todo的done值，但是不推荐使用，因为todo是props接收的，
+            这样做等于修改了props，但是props是只读的，不推荐修改 -->
+            <!-- <input type="checkbox" v-model='todo.done'/> -->
             <span>{{todo.title}}</span>
         </label>
-        <button class="btn btn-danger" style="display:none">删除</button>
+        <button class="btn btn-danger" @click="deleteHandle(todo.id)" >删除</button>
     </li>
 </template>
 
@@ -15,7 +22,17 @@
 export default {
     name:'MyItem',
     // 接收todo对象
-    props:['todo']
+    props:['todo','checkTodo','deleteTodo'],
+    methods: {
+        // 改变勾选
+        checkHandle(id){
+            this.checkTodo(id)
+        },
+        // 删除todo
+        deleteHandle(id){
+            this.deleteTodo(id)
+        }
+    },
 }
 </script>
 
@@ -54,5 +71,13 @@ export default {
     li:last-child {
     border-bottom: none;
     }
+
+    li:hover{
+        background-color: aliceblue;
+    }
+
+    li:hover button{
+        display: block;
+    } 
 
 </style>

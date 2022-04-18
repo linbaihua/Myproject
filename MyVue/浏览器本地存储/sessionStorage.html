@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sessionStorage</title>
+</head>
+<!-- 
+        -sessionStorage 基本和localStorage一样
+        -只不多前者浏览器关闭（会话结束）就清空数据，而后者除非手动清空，否则
+            数据一直存在，就是浏览器的缓存
+ -->
+<body>
+    <!-- 元素js里面的方法需要加括号 -->
+    <button onclick="saveDate()">添加数据</button>
+    <button onclick="readDate()">读取数据</button>
+    <button onclick="deleteDate()">删除指定数据</button>
+    <button onclick="clearDate()">清空本地数据</button>
+
+    <script>
+        let p = {name:'jack', age:18}
+        function saveDate(){
+            // localStorage是window上的一个对象方法
+            // setItem是一个方法，可以设置本地存储的数据
+            sessionStorage.setItem('msg', 'hello')
+            sessionStorage.setItem('msg2', 666)
+            // json.stringify将一个对象转换成一个string
+            sessionStorage.setItem('person', JSON.stringify(p))
+        }
+        function readDate(){
+            console.log(sessionStorage.getItem('msg'));
+            // JSON.parse将一个json（string）转换成对象类型
+            const result = JSON.parse(sessionStorage.getItem('person'))
+            console.log(result);
+        }
+        function deleteDate(){
+            sessionStorage.removeItem('msg')
+            sessionStorage.removeItem('msg2')
+        }
+        function clearDate(){
+            sessionStorage.clear()
+        }
+    </script>
+</body>
+</html>

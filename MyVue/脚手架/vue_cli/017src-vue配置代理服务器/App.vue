@@ -11,7 +11,7 @@ export default {
     name:'App',
     methods: {
         getStudents(){
-            axios.get('http://localhost:8080/students').then(
+            axios.get('http://localhost:8080/toStudents/students').then(
                 response => {
                     console.log('请求成功', response.data);
                 },
@@ -21,7 +21,7 @@ export default {
             )
         },
         getCars(){
-            axios.get('http://localhost:8080/demo/cars').then(
+            axios.get('http://localhost:8080/toCars/cars').then(
                 response => {
                     console.log('请求成功', response.data);
                 },
@@ -33,7 +33,3 @@ export default {
     },
 }
 </script>
-
-<style>
-
-</style>

@@ -1,7 +1,6 @@
 <template>
     <div>
         <Count/>
-        <hr>
         <Person/>
     </div>
 </template>
@@ -12,9 +11,6 @@
     export default {
         name:'App',
         components:{Count,Person},
-        mounted() {
-            console.log(this);
-        },
     }
 </script>
 

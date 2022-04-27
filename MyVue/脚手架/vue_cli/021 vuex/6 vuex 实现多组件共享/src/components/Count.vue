@@ -28,14 +28,17 @@ export default {
             }
         },
         methods: {
-            ...mapActions( 'countAbout',{incrementOdd:'addOdd', incrementWait:'addWait'}),
-            ...mapMutations('countAbout',{increment:'ADD', decrement:'DEC'})
+
+            // 写法有对象写法和数组写法，这里是对象写法，key是函数，value是传递过去的函数
+            ...mapActions({incrementOdd:'addOdd', incrementWait:'addWait'}),
+
+            ...mapMutations({increment:'ADD', decrement:'DEC'})
+            
         },
-        
         computed:{
-            ...mapState('countAbout',['sum','school','address']),
-            ...mapState('personAbout',['personList']),
-            ...mapGetters('countAbout',['bigSum'])
+            // 写法有对象写法和数组写法，这里是数组写法
+            ...mapState(['sum','school','address','personList']),
+            ...mapGetters(['bigSum'])
         }
     }
 </script>

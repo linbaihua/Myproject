@@ -1,19 +1,19 @@
 
 import Vue from 'vue'
 import App from './App'
-// 引入路由插件
-import VueRouter from 'vue-router'
-// 引入路由配置文件
-import router from './router'
 
+// 引入element ui组件库
+import ElementUI from 'element-ui';
+// 引入element ui组价库全部样式
+import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.config.productionTip = false
-// 使用路由插件
-Vue.use(VueRouter)
+// 使用element ui组件库（插件）
+Vue.use(ElementUI);
+
 
 new Vue({
     el:'#app',
     render: h => h(App),
-    router,
 })
 

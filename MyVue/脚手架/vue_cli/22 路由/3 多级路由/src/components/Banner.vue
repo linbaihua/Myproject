@@ -1,15 +1,11 @@
 <template>
     <div>
-        <h2>我是Home的内容</h2>
+        <h2>vue demo</h2>
     </div>
 </template>
 
 <script>
     export default {
-        name:'Home'
+        name:'Banner'
     }
 </script>
-
-<style>
-
-</style>

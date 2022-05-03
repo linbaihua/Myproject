@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person = {
+            name:'jack',
+            age:18
+        }
+        
+        // proxy代理，拦截任意属性的变化，然后通过reflect对原属性进行操作
+        const p = new Proxy(person,{
+            // 有人读取p的属性时调用
+            // target时目标对象，propName时被获取的属性名
+            get(target,propName){
+                console.log(`有人读取了p身上的${propName}属性`)
+                return Reflect.get(target,propName)
+            },
+            // 有人修改p属性的时候调用
+            set(target,propName){
+                console.log(`有人修改了p身上的${propName}属性，我要去更新界面了`);
+                Reflect.set(target,propName,value)
+            },
+            // 有人删除p的某个属性时调用
+            deleteProperty(target,propName){
+                console.log(`有人删除了p身上的${propName}属性，我要去更新界面了`);
+                return Reflect.deleteProperty(target,propName)
+            }
+        })
+
+        let obj = {a:1,b:2}
+
+    </script>
+</body>
+</html>

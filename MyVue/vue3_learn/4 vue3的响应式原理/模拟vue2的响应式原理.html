@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person = {
+            name:'jack',
+            age:18
+        }
+        // 模拟vue2中实现的响应式
+        let p = {}
+        Object.defineProperty(p,'name',{
+            configurable:true,
+            get(){
+                console.log('有人读取了name属性');
+                return person.name
+            },
+            set(value){
+                console.log('有人修改了name属性');
+                person.name = value
+            }
+        })
+        Object.defineProperty(p,'age',{
+            configurable:true,
+            get(){
+                console.log('有人读取了age属性');
+                return person.age
+            },
+            set(value){
+                console.log('有人修改了age属性，我发现了，我要去更改');
+                person.age = value
+            }
+        })
+    </script>
+</body>
+</html>

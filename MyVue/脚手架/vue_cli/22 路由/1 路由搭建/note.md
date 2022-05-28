@@ -9,5 +9,5 @@
 ● vue-route版本对应
 ● router-link
 ● router文件夹放路由
-● active-class
+● active-class  
 ● router-view

@@ -3,7 +3,7 @@ import Vue from 'vue'
 import App from './App'
 // 引入路由插件
 import VueRouter from 'vue-router'
-// 引入路由配置文件
+// 引入路由配置文件,可以省略index.js，默认就是
 import router from './router'
 
 

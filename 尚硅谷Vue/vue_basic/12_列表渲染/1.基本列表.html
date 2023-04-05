@@ -11,22 +11,58 @@
 						1.用于展示列表数据
 						2.语法：v-for="(item, index) in xxx" :key="yyy"
 						3.可遍历：数组、对象、字符串（用的很少）、指定次数（用的很少）
+						4.index 在数组中是下标，在对象中是键值对中键
+				
+				for in 适合遍历对象，如果遍历数组的话遍历的是数组的索引
+				for of 适合遍历数组，遍历的直接是数组的值
+				v-for 建议统一使用 for of 遍历
+					如果需要索引值则可以传入第二个参数 index
+				不过在vue中没什么区别，都可以用
 		-->
 		<!-- 准备好一个容器-->
 		<div id="root">
-			<!-- 遍历数组 -->
-			<h2>人员列表（遍历数组）</h2>
+
+			<h2>for in 遍历数组(item,index) </h2>
 			<ul>
-				<li v-for="(p,index) of persons" :key="index">
-					{{p.name}}-{{p.age}}
+				<li v-for="(item,index) in persons" :key="index">
+					{{item.name}}-{{item.age}}--{{index}}
 				</li>
 			</ul>
 
-			<!-- 遍历对象 -->
-			<h2>汽车信息（遍历对象）</h2>
+			<h2>for in 遍历数组(item) </h2>
 			<ul>
-				<li v-for="(value,k) of car" :key="k">
-					{{k}}-{{value}}
+				<li v-for="item in persons" :key="item.name">
+					{{item}}
+				</li>
+			</ul>
+
+			<!-- 遍历对象的时候index就是键 -->
+			<h2>for in 遍历对象(item,index) </h2>
+			<ul>
+				<li v-for="(item,index) in car" :key="index">
+					{{item}}--{{index}}
+				</li>
+			</ul>
+
+			<h2>for of 遍历数组(item,index) </h2>
+			<ul>
+				<li v-for="(item,index) of persons" :key="index">
+					{{item.name}}-{{item.age}}--{{index}}
+				</li>
+			</ul>
+
+			<h2>for of 遍历数组(item) </h2>
+			<ul>
+				<li v-for="item of persons" :key="item.name">
+					{{item}}
+				</li>
+			</ul>
+
+			<!-- 遍历对象的时候index就是键 -->
+			<h2>for of 遍历对象(item,index) </h2>
+			<ul>
+				<li v-for="(item,index) of car" :key="index">
+					{{item}}--{{index}}
 				</li>
 			</ul>
 

@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var aa 
+        console.log(aa); //undefined，JavaScript中未初始化的变量是 undefined
+
+        var yourname =  prompt('please intput your name')
+        alert('your name is ' + yourname)
+
+        console.log(Number.MAX_VALUE);
+        console.log(Number.MIN_VALUE);
+
+        console.log(Number.MAX_VALUE * 2);
+        console.log(-Number.MAX_VALUE*2);
+
+        // NaN
+        console.log(111- 'lin');
+        // isNaN()  判断是不是数字
+
+        // 任何东西和字符串相加最后都是字符串
+        console.log(true + 'lin');
+        console.log(undefined + 'lin');
+        
+        // undefined
+        /* 
+            undefined与任何数相加除了与字符串拼接后是字符串外，其它都按做
+            加减来看，结果就是NaN
+        */
+        console.log(undefined + 1); //NaN
+        console.log(undefined + true); //NaN
+        console.log(undefined + 'lin'); //undefinedlin
+        console.log(undefined + null); // NaN
+
+        console.log('--------------null--------------');
+
+        // NULL
+        console.log(null + 1);  //1
+        console.log(null + true); //1
+        console.log(null + 'lin'); //nulllin
+
+        /* 
+            在 +- 中，null=0, undefine 就是NaN, false = 0, 字符串与任何数 +- 都是字符串
+        */
+
+
+        console.log('----------typeof---------------');
+        console.log(typeof 'lin');
+        console.log(typeof 11);
+        console.log(typeof true);
+        console.log(typeof undefined);
+        console.log(typeof null);  //object
+        // 注意：prompt接收的是字符串类型的输入
+
+
+        // 字面量的概念
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

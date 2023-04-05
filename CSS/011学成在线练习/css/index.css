@@ -1,0 +1,349 @@
+/* 1 总体样式 */
+* {
+    margin: 0;
+    padding: 0;
+    /* 内减模式 */
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 双伪元素清除浮动 */
+.clearfix::before,
+.clearfix::after {
+    content: '';
+    display: table;
+}
+
+.clearfix::after {
+    clear: both;
+}
+
+/* 2 设置版心 */
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+body {
+    background-color: #f3f5f7;
+}
+
+/* 3 头部 */
+.header {
+    width: 1200px;
+    height: 42px;
+    /* background-color: yellowgreen; */
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* logo */
+.header h1 {
+    float: left;
+}
+
+/* .nav{
+    float: left;
+    margin-left: 70px;
+    height: 42px;
+    background-color: yellow;
+}
+
+.nav li{
+    float: left;
+    margin-right: 26px;
+    background-color: wheat;
+}
+
+.nav li a{
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 9px;
+}
+
+.nav li a:hover{
+    border-bottom: 2px solid skyblue;
+}  */
+
+/* nav就直观nav的盒子大小和位置
+    nav>li 管它的盒子大小和位置
+    nav>li>a 就管它的位置大小和字体啥的 */
+
+/* 导航区域 */
+.nav {
+    float: left;
+    /* background-color: yellow; */
+    height: 42px;
+    margin-left: 70px;
+}
+
+.nav li {
+    float: left;
+    /* background-color: antiquewhite; */
+    height: 42px;
+    margin-right: 26px;
+}
+
+.nav li a {
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 9px;
+
+    /* 字体 */
+    font-family: MicrosoftYaHei;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 2px;
+    color: #050505;
+
+}
+
+.nav li a:hover {
+    border-bottom: 2px solid skyblue;
+}
+
+/* 搜索框 */
+.search {
+    float: left;
+    width: 358px;
+    height: 42px;
+    margin-left: 59px;
+    border: 2px solid skyblue;
+    border-right: 0;
+}
+
+.search input {
+    float: left;
+    width: 356px;
+    height: 38px;
+    border: 0;
+    padding-left: 20px;
+}
+
+.search input::placeholder {
+    font-family: MicrosoftYaHei;
+    font-size: 14px;
+    color: #bfbfbf;
+}
+
+/* 搜索按钮 */
+.header button {
+    float: left;
+    width: 50px;
+    height: 42px;
+    /* 在这里使用backimage不使用img，因为
+        这里就是个按钮，不一定非得放图片 */
+    background-image: url(../images/btn.png);
+    border: 0;
+}
+
+/* header-登录用户 */
+.user {
+    float: right;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    margin-right: 35px;
+}
+
+.user img {
+    /* 调整img图片垂直居中 */
+    vertical-align: middle;
+}
+
+/* 2 banner */
+.banner {
+    height: 420px;
+    background-color: #1c036c;
+}
+
+/* 关于为什么wrapper的div不在bannerdiv下面，是因为wrapper的div
+    是 banner的div的子盒子 */
+.banner .wrapper {
+    height: 420px;
+    background-image: url(../images/banner2.png);
+}
+
+.banner .left {
+    width: 190px;
+    height: 420px;
+    /* background-color: #000000;
+    opacity: 0.3; */
+    /* 使用rgba使得颜色透明，而不是整体设置opacity */
+    background-color: rgba(0, 125, 255, .3);
+    float: left;
+
+    line-height: 44px;
+    padding: 0 20px;
+    padding-top: 12px;
+}
+
+.banner .left a{
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.banner .left span{
+    /* 行内元素也可以浮动 */
+    float: right;
+}
+
+.banner .left a:hover{
+    color: skyblue;
+}
+
+.banner .right {
+    width: 228px;
+    height: 300px;
+    background-color: #ffffff;
+    float: right;
+    margin-top: 50px;
+}
+
+.banner .right h1{
+	height: 48px;
+    background-color: #87ceeb;
+    color: fff;
+    font-size: 18px;
+    text-align: center;
+    line-height: 48px;
+}
+.banner .right .content{
+    padding: 0 18px;
+    padding-top: 5px;
+}
+.banner .right .content dl{
+    padding: 12px 0;
+    border-bottom: 2px solid rgb(212, 212, 212);
+}
+.banner .right .content dt{
+    font-size: 16px;
+}
+.banner .right .content dd{
+    font-size: 14px;
+    opacity: .6;
+}
+.banner .right h2{
+    border: 2px solid skyblue;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    margin: 5px 10px 0;
+}
+.banner .right h2 a{
+    color: rgba(0, 120, 255, .6);
+    font-size: 18px;
+}
+
+/* 3 精品推荐 */
+.goods{
+    height: 60px;
+    background-color:fff;
+    margin-top: 8px;
+    box-shadow: 0px 2px 3px 0px 
+		rgba(118, 118, 118, 0.2);
+    /* 文字可以继承 */
+    line-height: 60px;
+    padding-left: 35px;
+    padding-right: 26px;
+}
+.goods h2{
+    float: left;
+    line-height: 60px;
+    font-size: 20px;
+    color: 00a4ff;
+}
+.goods li{
+    float: left;
+}
+.goods li a{
+    padding: 0 30px;
+    border-left: 1px solid #bfbfbf;
+}
+.goods .hobby{
+    float: right;
+    color: #619ab1;
+    font-size: 14;
+}
+
+/* 4 课程推荐 */
+.subject{
+    /* background-color:pink; */
+    height: 600px;
+    margin-top: 20px;
+}
+.subject .thead{
+    /* background-color: #87ceeb; */
+    height: 40px;
+    line-height: 40px;
+}
+.thead h2{
+    float: left;
+    font-size: 20px;
+    color: #302a2a;
+}
+.thead a{
+    float: right;
+    margin-right: 20px;
+    font-size: 16px;
+}
+.subject .content li{
+    float: left;
+    width: 228px;
+    height: 270px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.subject .content li:nth-child(5n){
+    margin-right: 0;
+}
+
+/* 5 版权 */
+.footer{
+    height: 600px;
+    background-color: fff;
+    margin-top: 40px;
+    padding-top: 30px;
+}
+
+
+.footer .left{
+    float: left;
+}
+.footer .left p{
+    margin-top: 20px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.footer .left a{
+    display: block;
+    width: 150px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    font-size: 30px;
+    border: 1px solid skyblue;
+    color: skyblue;
+}
+.footer .right{
+    float: right;
+    padding-right: 30px;
+}
+.footer .right dl{
+    float: left;
+    padding: 0 30px;
+    font-size: 20px;
+}
+.footer .right dl dt{
+    font-size: 26px;
+}

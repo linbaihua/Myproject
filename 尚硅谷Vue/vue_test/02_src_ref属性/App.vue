@@ -7,6 +7,14 @@
 </template>
 
 <script>
+
+	/* 
+		ref引用
+			使用vm.$refs.refname 可以获得DOM对象，通过这个可以对DOM对象操作
+			每个元素都有一个 $refs 对象，vue中想要获得这个对象通过给dom绑定一个
+				ref,然后通过 this.$refs.refname 就可以获得
+	*/
+
 	//引入School组件
 	import School from './components/School'
 

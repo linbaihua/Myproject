@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 产生随机数组  */
+        function getRandomArr(min, max, size){
+            let arr = []
+            for (let i = 0; i < size; i++) {
+                let num = Math.floor(Math.random()*(max-min+1)+min)
+                arr.push(num)             
+            }
+            return arr
+        }
+        let arr = getRandomArr(2,10,10)
+        console.log(arr);
+    </script>
+</body>
+</html>

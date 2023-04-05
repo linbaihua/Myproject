@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let temp = prompt('please input some')
+        // console.log(temp - 3);
+
+        // 且运算，如果都是真，则取后面的值（最后的）
+        // 如果两个都是假，则直接取第一个（短路）
+        console.log(2 && 3); //3
+        console.log(5 && 4); //4
+        console.log(null && 4); //null
+        console.log(undefined && 1); // undefined
+        console.log(undefined && null); // undefined
+        console.log(null && undefined); // null
+
+        // 或运算，如果都是真则取最大的那个真
+        // 都是假，则取最后面一个假
+        console.log(5 || 4);
+        console.log(5 || 8);
+        console.log(1 || 8);
+        console.log(0 || 8);
+        console.log(0 || null); //null
+        console.log(null || undefined); // undefined
+        console.log(null || 0); // 0
+    </script>
+</body>
+</html>

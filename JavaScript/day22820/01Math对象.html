@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Math  数学对象 */
+        console.log(Math.PI);
+
+        console.log('--------------------');
+        console.log(Math.abs('-2'));
+        console.log(Math.abs(false));
+        console.log(Math.abs(true));
+        console.log(Math.abs(null));
+        console.log(Math.abs(' '));
+        console.log(Math.abs(undefined));
+        console.log(Math.abs('li'));
+        console.log(Math.abs('5555'));
+        console.log(Math.abs('1.5'));
+        console.log(Math.abs('-1.5'));
+
+        console.log('-----------');
+        console.log(Math.ceil(3.0)); //3
+        console.log(Math.ceil(3.6)); //4
+        console.log(Math.ceil(-3.4)); //-3
+        console.log(Math.ceil(null)); //0
+        console.log(Math.ceil(false)); //0
+        console.log(Math.ceil('5.6')); //6
+        console.log(Math.ceil('-5.6')); //-5
+        console.log(Math.ceil(' ')); //0
+        console.log(Math.ceil(undefined)); //NaN
+
+        console.log('-----------------');
+        console.log(Math.floor(3.9)); //3
+        console.log(Math.floor('3.8')); //3
+        console.log(Math.floor('-3.8')); //-4
+
+        console.log('------Matn.max()-----------');
+        console.log(Math.max(1,2,3,4));
+        console.log(Math.max(1,2,3,66));
+        console.log(Math.max(-1,-2,-3,-66)); //-1
+        console.log(Math.max(...[1,2,3])); //3
+        let arr = [1,2,3,4,5]
+        console.log(Math.max(...arr)); //5
+
+        console.log('-----Math.min()------------');
+        console.log(Math.min(1,2,3));
+
+        console.log('-----Math.random()----------');
+        console.log(Math.random()); //[0,1)
+        console.log(Math.random() * 10); //[0,1)
+        console.log(Math.floor(Math.random()*10)); //[0,9)
+
+        console.log('-----Math.round()------');
+        console.log(Math.round(0.5)); //1
+        console.log(Math.round(0.49)); //0
+        console.log(Math.round(-1.5)); //-1,注意负数0.5的时候
+        console.log(Math.round(-1.51)); //-2
+
+        console.log('----Math.sqrt()------');
+        console.log(Math.sqrt(9));
+        console.log(Math.sqrt(2));
+        console.log(Math.sqrt(-9)); //NaN
+
+    </script>
+</body>
+</html>

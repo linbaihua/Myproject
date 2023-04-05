@@ -5,6 +5,7 @@
 </template>
 
 <script>
+// nanoid 用于自动生成id的一个库
 	import {nanoid} from 'nanoid'
 	export default {
 		name:'MyHeader',
@@ -45,6 +46,7 @@
 	.todo-header input:focus {
 		outline: none;
 		border-color: rgba(82, 168, 236, 0.8);
+		/* inset 阴影内向 */
 		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
 	}
 </style>

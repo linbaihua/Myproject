@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 500px;
+            height: 500px;
+        }
+        thead{
+            color: yellowgreen;
+            background-color: yellow;
+        }
+        tbody{
+            background-color: wheat;
+        }
+        tfoot{
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <caption><strong>大标题caption</strong></caption>
+        <thead>
+            <tr>
+                <th>品牌</th>
+                <th>型号</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>canon</td>
+                <td>6d</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td>nikon</td>
+                <td>z62</td>
+                <td rowspan="2">合并行rowspan</td>
+            </tr>
+            <tr>
+                <td>sony</td>
+                <td>m3</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>佳能</td>
+                <td colspan="2">合并列colsapn</td>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+
+    </script>
+</body>
+</html>

@@ -23,6 +23,10 @@
 		<!-- 准备好一个容器-->
 		<div id="root">
 			<form @submit.prevent="demo">
+				<!-- v-model.trim   trim 将前后空格去掉 
+					v-model.number  将字符串转换为number，input接收得都是字符串形式
+					v-model 简写就是 v-model：value
+				-->
 				账号：<input type="text" v-model.trim="userInfo.account"> <br/><br/>
 				密码：<input type="password" v-model="userInfo.password"> <br/><br/>
 				年龄：<input type="number" v-model.number="userInfo.age"> <br/><br/>
@@ -35,6 +39,7 @@
 				吃饭<input type="checkbox" v-model="userInfo.hobby" value="eat">
 				<br/><br/>
 				所属校区
+				<!-- option 中得value 会传递给 select中 -->
 				<select v-model="userInfo.city">
 					<option value="">请选择校区</option>
 					<option value="beijing">北京</option>
@@ -46,7 +51,9 @@
 				其他信息：
 				<textarea v-model.lazy="userInfo.other"></textarea> <br/><br/>
 				<input type="checkbox" v-model="userInfo.agree">阅读并接受<a href="http://www.atguigu.com">《用户协议》</a>
+				<!--  button 提交和 input 提交都可以-->
 				<button>提交</button>
+				<!-- <input type="submit"> -->
 			</form>
 		</div>
 	</body>

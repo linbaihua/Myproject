@@ -9,7 +9,7 @@
 	<body>
 		<!-- 准备好一个容器-->
 		<div id="root">
-			
+			<!-- <app></app> -->
 		</div>
 	</body>
 
@@ -81,6 +81,7 @@
 
 		//创建vm
 		new Vue({
+			// 可以在 vm 中直接使用 template 渲染组件
 			template:'<app></app>',
 			el:'#root',
 			//注册组件（局部）

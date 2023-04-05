@@ -1,19 +1,16 @@
 
 import Vue from 'vue'
 import App from './App'
-
-// 引入element ui组件库
-import ElementUI from 'element-ui';
-// 引入element ui组价库全部样式
-import 'element-ui/lib/theme-chalk/index.css';
+// 引入 store
+// vue官方推荐就是 store中包含 index.js，所以路径写到 store就可以找到index.js
+import store from './store'
 
 Vue.config.productionTip = false
-// 使用element ui组件库（插件）
-Vue.use(ElementUI);
-
 
 new Vue({
     el:'#app',
     render: h => h(App),
-})
 
+    // 使用store
+    store,
+})

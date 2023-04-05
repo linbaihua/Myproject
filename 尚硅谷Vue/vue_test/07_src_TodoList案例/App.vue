@@ -2,6 +2,7 @@
 	<div id="root">
 		<div class="todo-container">
 			<div class="todo-wrap">
+				<!-- v-bind可以传递函数过去 -->
 				<MyHeader :addTodo="addTodo"/>
 				<MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
 				<MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"/>
@@ -13,7 +14,7 @@
 <script>
 	import MyHeader from './components/MyHeader'
 	import MyList from './components/MyList'
-	import MyFooter from './components/MyFooter.vue'
+	import MyFooter from './components/MyFooter.vue';
 
 	export default {
 		name:'App',

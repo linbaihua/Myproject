@@ -28,6 +28,7 @@
 		-->
 		<!-- 准备好一个容器-->
 		<div id="root">
+			<!-- 渲染组件 -->
 			<hello></hello>
 			<hr>
 			<h1>{{msg}}</h1>
@@ -78,6 +79,7 @@
 					<h2>学生年龄：{{age}}</h2>
 				</div>
 			`,
+			// 非vm中 data 使用函数写法，反正统一用函数写法就行了
 			data(){
 				return {
 					studentName:'张三',
@@ -101,6 +103,7 @@
 		})
 		
 		//第二步：全局注册组件
+		// 'hello'(注册的组件名，后面的hello是写的组件)
 		Vue.component('hello',hello)
 
 		//创建vm

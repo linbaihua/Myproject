@@ -3,6 +3,7 @@
 		<h1>{{msg}}</h1>
 		<h2>学生姓名：{{name}}</h2>
 		<h2>学生性别：{{sex}}</h2>
+		<!-- 插值语法中允许有表达式 -->
 		<h2>学生年龄：{{myAge+1}}</h2>
 		<button @click="updateAge">尝试修改收到的年龄</button>
 	</div>
@@ -10,7 +11,7 @@
 
 <script>
 	export default {
-		name:'Student',
+		name:'Student', //name是 export 的name
 		data() {
 			console.log(this)
 			return {

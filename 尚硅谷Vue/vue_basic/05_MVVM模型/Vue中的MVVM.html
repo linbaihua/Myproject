@@ -8,10 +8,14 @@
 	</head>
 	<body>
 		<!-- 
+			MVC模型  之前的模型
+				1 model 数据
+				2 view 视图
+				3 controller  逻辑控制器，非常麻烦
 			MVVM模型
 						1. M：模型(Model) ：data中的数据
-						2. V：视图(View) ：模板代码
-						3. VM：视图模型(ViewModel)：Vue实例
+						2. V：视图(View) ：模板代码(就是IUI界面)
+						3. VM：视图模型(ViewModel)：向上与视图数据双向绑定，向下与后端接口对接数据
 			观察发现：
 						1.data中所有的属性，最后都出现在了vm身上。
 						2.vm身上所有的属性 及 Vue原型上所有属性，在Vue模板中都可以直接使用。
